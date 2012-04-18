@@ -14,10 +14,6 @@ import org.fusesource.jansi.AnsiRenderer;
 
 public class JANSITest {
     
-    /**
-     * @param args
-     * @throws IOException
-     */
     public static void main(String[] args) throws IOException {
         
         // String file = "/home/stefano/Downloads/ROY-ED1.ANS";
@@ -45,6 +41,7 @@ public class JANSITest {
         String tmp;
         
         LineNumberReader lr = new LineNumberReader(new FileReader("Connect_4_LabelV2.ans"));
+        
         while ((tmp = lr.readLine()) != null) {
             AnsiConsole.out.println(AnsiRenderer.render(tmp));
         }
