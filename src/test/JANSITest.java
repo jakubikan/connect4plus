@@ -13,9 +13,9 @@ import org.fusesource.jansi.AnsiConsole;
 import org.fusesource.jansi.AnsiRenderer;
 
 public class JANSITest {
-    
+
     public static void main(String[] args) throws IOException {
-        
+
         // String file = "/home/stefano/Downloads/ROY-ED1.ANS";
         // if (args.length > 0)
         // file = args[0];
@@ -34,17 +34,19 @@ public class JANSITest {
         // }
         // f.close();
         // System.out.println("=======================================================================");
-        
+
         AnsiConsole.systemInstall();
         //
-        AnsiConsole.out.println("\033[46;1;31m TESTAUSGABE \033[43;4;34m KUNTER \033[45;1;32m BUNT \033[44;1;33m ANGESTRICHEN \033[0m");
+        AnsiConsole.out
+                .println("\033[46;1;31m TESTAUSGABE \033[43;4;34m KUNTER \033[45;1;32m BUNT \033[44;1;33m ANGESTRICHEN \033[0m");
         String tmp;
-        
-        LineNumberReader lr = new LineNumberReader(new FileReader("Connect_4_LabelV2.ans"));
-        
+
+        LineNumberReader lr = new LineNumberReader(new FileReader(
+                "Connect_4_LabelV2.ans"));
+
         while ((tmp = lr.readLine()) != null) {
             AnsiConsole.out.println(AnsiRenderer.render(tmp));
         }
-        
+
     }
 }
