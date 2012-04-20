@@ -5,12 +5,12 @@ package test;
  * @created: Apr 11, 2012
  */
 
-import java.io.FileReader;
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.LineNumberReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 import org.fusesource.jansi.AnsiConsole;
-import org.fusesource.jansi.AnsiRenderer;
 
 public class JANSITest {
     
@@ -35,16 +35,30 @@ public class JANSITest {
         // f.close();
         // System.out.println("=======================================================================");
         
+        JANSITest test = new JANSITest();
+        test.readANSI();
+        
+    }
+    
+    private void readANSI() throws IOException {
         AnsiConsole.systemInstall();
-        //
+        
         AnsiConsole.out.println("\033[46;1;31m TESTAUSGABE \033[43;4;34m KUNTER \033[45;1;32m BUNT \033[44;1;33m ANGESTRICHEN \033[0m");
+        
+        String fileName = "Connect_4_LabelV2.ans";
+        
+        InputStream is = this.getClass().getResourceAsStream(fileName);
+        // BufferedInputStream in = new BufferedInputStream(is);
+        InputStreamReader ir = new InputStreamReader(is);
+        BufferedReader br = new BufferedReader(ir);
         String tmp;
-        
-        LineNumberReader lr = new LineNumberReader(new FileReader("Connect_4_LabelV2.ans"));
-        
-        while ((tmp = lr.readLine()) != null) {
-            AnsiConsole.out.println(AnsiRenderer.render(tmp));
+        while ((tmp = br.readLine()) != null) {
+            System.out.print(tmp);
         }
         
+        br.close();
+        System.out.println();
+        
+        AnsiConsole.systemUninstall();
     }
 }
