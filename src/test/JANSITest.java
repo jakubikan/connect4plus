@@ -42,5 +42,6 @@ public class JANSITest {
         System.out.println();
         
         AnsiConsole.systemUninstall();
+        
     }
 }
