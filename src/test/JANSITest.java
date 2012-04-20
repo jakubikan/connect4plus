@@ -16,25 +16,6 @@ public class JANSITest {
     
     public static void main(String[] args) throws IOException {
         
-        // String file = "/home/stefano/Downloads/ROY-ED1.ANS";
-        // if (args.length > 0)
-        // file = args[0];
-        //
-        // // Allows us to disable ANSI processing.
-        // if ("true".equals(System.getProperty("jansi", "true"))) {
-        // AnsiConsole.systemInstall();
-        // }
-        //
-        // System.out.print(ansi().reset().eraseScreen().cursor(1, 1));
-        // System.out.print("=======================================================================");
-        // FileInputStream f = new FileInputStream(file);
-        // int c;
-        // while ((c = f.read()) >= 0) {
-        // System.out.write(c);
-        // }
-        // f.close();
-        // System.out.println("=======================================================================");
-        
         JANSITest test = new JANSITest();
         test.readANSI();
         
@@ -48,10 +29,11 @@ public class JANSITest {
         String fileName = "Connect_4_LabelV2.ans";
         
         InputStream is = this.getClass().getResourceAsStream(fileName);
-        // BufferedInputStream in = new BufferedInputStream(is);
         InputStreamReader ir = new InputStreamReader(is);
         BufferedReader br = new BufferedReader(ir);
+        
         String tmp;
+        
         while ((tmp = br.readLine()) != null) {
             System.out.print(tmp);
         }
