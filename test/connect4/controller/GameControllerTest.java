@@ -7,7 +7,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import connect4.controller.GameController;
 import connect4.model.Player;
 
 public class GameControllerTest {
@@ -34,6 +33,7 @@ public class GameControllerTest {
 		assertTrue(GameController.getInstance().getUI() != null);
 		assertEquals(0, row);
 		assertTrue(GameController.getInstance().getPlayerAt(0, 3) == player1);
+		assertTrue(GameController.getInstance().gameHasStarted());
 	}
 
 }

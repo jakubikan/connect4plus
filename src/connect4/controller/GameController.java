@@ -12,14 +12,23 @@ import connect4.ui.tui.TUI;
 public class GameController {
 
 	private GameField gameField;
-	private Player[] player = new Player[2];
+	private Player[] player;
 	private static GameController instance;
 	private UI ui;
+	private boolean bGameHasStarted;
 
 	public static String newline = System.getProperty("line.separator");
 
 	private GameController() {
-		this.init();
+		this.gameField = GameField.getInstance();
+		this.player = new Player[2];
+		this.bGameHasStarted = false;
+	}
+
+	public void newGame() {
+		this.createPlayer();
+		this.ui = new TUI();
+		this.bGameHasStarted = true;
 	}
 
 	public static GameController getInstance() {
@@ -30,25 +39,20 @@ public class GameController {
 		return instance;
 	}
 
+	public boolean gameHasStarted() {
+		return this.bGameHasStarted;
+	}
+
 	public UI getUI() {
 		return this.ui;
-	}
-
-	public void newGame() {
-		this.createPlayer();
-		this.ui = new TUI();
-	}
-
-	private void init() {
-		this.gameField = GameField.getInstance();
 	}
 
 	public Player getPlayerNamerOnTurn() {
 		return null;
 	}
 
-	public void dropCoin(int col, Player player) {
-		this.gameField.dropCoin(col, player);
+	public int dropCoin(int col, Player player) {
+		return this.gameField.dropCoin(col, player);
 	}
 
 	public void undoStep() {

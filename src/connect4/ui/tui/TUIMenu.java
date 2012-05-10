@@ -1,5 +1,6 @@
 package connect4.ui.tui;
 
+import connect4.controller.GameController;
 import connect4.ui.Menu;
 
 public class TUIMenu extends Menu {
@@ -57,5 +58,19 @@ public class TUIMenu extends Menu {
 	public void loadSaveGame() {
 		// TODO Auto-generated method stub
 
+	}
+
+	public String renderMenu() {
+		String menu = "Bitte wählen Sie folgende Optionen: "
+				+ GameController.getInstance().newline + "1. Neues Spiel"
+				+ GameController.getInstance().newline + "2. Spielstand laden"
+				+ GameController.getInstance().newline + "3. Spiel beenden"
+				+ GameController.getInstance().newline;
+
+		if (GameController.getInstance().gameHasStarted()) {
+			menu += "4. Spiel fortsetzen";
+		}
+
+		return menu;
 	}
 }
