@@ -5,15 +5,11 @@ package connect4.ui.tui;
 
 import static org.junit.Assert.assertEquals;
 
-import java.awt.Color;
-
 import org.junit.Before;
 import org.junit.Test;
 
 import connect4.controller.GameController;
-import connect4.model.Coin;
 import connect4.model.GameField;
-import connect4.model.Human;
 import connect4.model.Player;
 
 /**

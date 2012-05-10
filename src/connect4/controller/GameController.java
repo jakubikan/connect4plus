@@ -6,8 +6,10 @@ import connect4.model.Coin;
 import connect4.model.GameField;
 import connect4.model.Human;
 import connect4.model.Player;
+import connect4.ui.Menu;
 import connect4.ui.UI;
 import connect4.ui.tui.TUI;
+import connect4.ui.tui.TUIMenu;
 
 public class GameController {
 
@@ -15,6 +17,7 @@ public class GameController {
 	private Player[] player;
 	private static GameController instance;
 	private UI ui;
+	private Menu menu;
 	private boolean bGameHasStarted;
 
 	public static String newline = System.getProperty("line.separator");
@@ -23,6 +26,7 @@ public class GameController {
 		this.gameField = GameField.getInstance();
 		this.player = new Player[2];
 		this.bGameHasStarted = false;
+		this.menu = new TUIMenu();
 	}
 
 	public void newGame() {
@@ -37,6 +41,10 @@ public class GameController {
 		}
 
 		return instance;
+	}
+
+	public Menu getMenu() {
+		return this.menu;
 	}
 
 	public boolean gameHasStarted() {

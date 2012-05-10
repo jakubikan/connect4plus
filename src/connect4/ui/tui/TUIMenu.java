@@ -62,10 +62,10 @@ public class TUIMenu extends Menu {
 
 	public String renderMenu() {
 		String menu = "Bitte wählen Sie folgende Optionen: "
-				+ GameController.getInstance().newline + "1. Neues Spiel"
-				+ GameController.getInstance().newline + "2. Spielstand laden"
-				+ GameController.getInstance().newline + "3. Spiel beenden"
-				+ GameController.getInstance().newline;
+				+ GameController.newline + "1. Neues Spiel"
+				+ GameController.newline + "2. Spielstand laden"
+				+ GameController.newline + "3. Spiel beenden"
+				+ GameController.newline;
 
 		if (GameController.getInstance().gameHasStarted()) {
 			menu += "4. Spiel fortsetzen";

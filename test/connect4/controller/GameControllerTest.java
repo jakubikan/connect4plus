@@ -34,6 +34,7 @@ public class GameControllerTest {
 		assertEquals(0, row);
 		assertTrue(GameController.getInstance().getPlayerAt(0, 3) == player1);
 		assertTrue(GameController.getInstance().gameHasStarted());
+		assertTrue(GameController.getInstance().getMenu() != null);
 	}
 
 }
