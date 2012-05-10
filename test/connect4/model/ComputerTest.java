@@ -1,4 +1,4 @@
-package connect4.model.tests;
+package connect4.model;
 
 import static org.junit.Assert.*;
 
