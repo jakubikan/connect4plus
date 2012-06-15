@@ -1,38 +1,49 @@
 package connect4.controller;
 
-import java.awt.Color;
+import javax.swing.undo.UndoManager;
 
-import connect4.model.Coin;
-import connect4.model.GameField;
 import connect4.model.Human;
 import connect4.model.Player;
-import connect4.ui.Menu;
-import connect4.ui.UI;
-import connect4.ui.tui.TUI;
-import connect4.ui.tui.TUIMenu;
+import connect4.model.gameField.GameField;
+import connect4.model.gameField.GameFieldEdit;
+import connect4.util.observer.Observable;
 
-public class GameController {
+public final class GameController extends Observable {
 
 	private GameField gameField;
-	private Player[] player;
 	private static GameController instance;
-	private UI ui;
-	private Menu menu;
 	private boolean bGameHasStarted;
+
+	private UndoManager undoManager = new UndoManager();
 
 	public static String newline = System.getProperty("line.separator");
 
 	private GameController() {
-		this.gameField = GameField.getInstance();
-		this.player = new Player[2];
+		this.gameField = new GameField();
 		this.bGameHasStarted = false;
-		this.menu = new TUIMenu();
 	}
 
 	public void newGame() {
-		this.createPlayer();
-		this.ui = new TUI();
 		this.bGameHasStarted = true;
+		gameField = new GameField();
+		this.notifyObservers();
+	}
+
+	public String getWinner() {
+		Player winner = gameField.getWinner();
+		if (winner != null) {
+			return winner.getName();
+		} else {
+			return "";
+		}
+	}
+
+	public void saveGameState() {
+
+	}
+
+	public void loadGameState() {
+
 	}
 
 	public static GameController getInstance() {
@@ -43,40 +54,150 @@ public class GameController {
 		return instance;
 	}
 
-	public Menu getMenu() {
-		return this.menu;
-	}
-
 	public boolean gameHasStarted() {
 		return this.bGameHasStarted;
 	}
 
-	public UI getUI() {
-		return this.ui;
+	public boolean dropCoinWithSuccessFeedback(final int col) {
+
+		boolean success = false;;
+
+		if (!userHasWon()) {
+			GameField previousState = null;
+			try {
+				previousState = gameField.clone();
+			} catch (CloneNotSupportedException e1) {
+				e1.printStackTrace();
+			}
+
+			try {
+				gameField.dropCoin(col);
+				gameField.changePlayerTurn(); // Change only on success the players turn
+				success = true;
+
+				GameField newState = null;
+				try {
+					newState = gameField.clone();
+				} catch (CloneNotSupportedException e) {
+					e.printStackTrace();
+				}
+
+				String undoInfo = String.format("Undoing %s Player Move",
+						getPlayerOnTurn().getName());
+				GameFieldEdit edit = new GameFieldEdit(previousState, newState,
+						undoInfo);
+				undoManager.addEdit(edit);
+				System.out.println("Added Undo for "
+						+ undoManager.getUndoPresentationName());
+
+				this.notifyObservers();
+			} catch (IllegalArgumentException e) {
+				System.out.println("Ungueltige Eingabe!\n");
+			}
+		}
+
+		return success;
 	}
 
-	public Player getPlayerNamerOnTurn() {
-		return null;
+	public Player getPlayerOnTurn() {
+		return gameField.getPlayerOnTurn();
 	}
 
-	public int dropCoin(int col, Player player) {
-		return this.gameField.dropCoin(col, player);
+	public boolean userHasWon() {
+		Player winner = gameField.getWinner();
+
+		if (winner == null) {
+			return false;
+		}
+
+		return true;
 	}
 
+	public String getPlayerNameOnTurn() {
+		Player player = gameField.getPlayerOnTurn();
+		return player.getName();
+
+	}
+
+	/**
+	 * @param gameField the gameField to set
+	 */
+	public void setGameField(GameField gameField) {
+		this.gameField = gameField;
+	}
+
+	/**
+	 * @return the gameField
+	 */
+	public GameField getGameField() {
+		return this.gameField;
+	}
 	public void undoStep() {
+		if (undoManager.canUndo()) {
+			System.out.println("Do Undo " + undoManager.getPresentationName());
+			undoManager.undo();
+		} else {
+			System.out.println("Cant Undo");
+			return;
+		}
+	}
+	/**
+	 * 
+	 */
+	public void redoStep() {
+		if (undoManager.canRedo()) {
+			System.out.println("Do Redo " + undoManager.getPresentationName());
+			undoManager.redo();
+		} else {
+			System.out.println("Cant Redo");
+			return;
+		}
+		// TODO Auto-generated method stub
+
+	}
+	public void setPlayer(final Human p) {
+		gameField.setPlayer(p);
+
+	}
+	public void setOpponend(final Player p) {
+		gameField.setOpponend(p);
 	}
 
+	// Only for Support. This method sould not be used any more
+	// DEPRECATED!!!!!
+	// Since its bad to get an Array of Objects.
 	public Player[] getPlayers() {
-		return this.player;
+		return gameField.getPlayers();
 	}
 
-	public Player getPlayerAt(int row, int col) {
-		return this.gameField.getPlayerAt(row, col);
+	public Player getPlayerAt(final int row, final int col) {
+		return gameField.getPlayerAt(row, col);
 	}
 
-	private void createPlayer() {
-		player[0] = new Human(new Coin(Color.YELLOW));
-		player[1] = new Human(new Coin(Color.RED));
+	/**
+	 * @return
+	 */
+	public Player getOpponend() {
+		return gameField.getOpponend();
+	}
+
+	/**
+	 * @return
+	 */
+	public Human getPlayer() {
+		return gameField.getPlayer();
+	}
+
+	/**
+	 * @param state
+	 */
+	public void useState(GameField state) {
+		try {
+			gameField = state.clone();
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

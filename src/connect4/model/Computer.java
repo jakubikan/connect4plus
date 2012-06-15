@@ -1,30 +1,27 @@
 package connect4.model;
 
+import java.util.Random;
+
+import connect4.controller.GameController;
+import connect4.model.gameField.GameField;
+
 public class Computer extends PlayerAbstract {
 
-	@Override
-	public int dropCoin(int column) {
-		return column;
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public void surrender() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
+	/* (non-Javadoc)
+	 * @see connect4.model.Player#dropCoin(int)
+	 */
 	@Override
-	public void setName(String string) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void getName(String string) {
-		// TODO Auto-generated method stub
-		
+	public int dropCoin(int column, GameField g) {
+		Random r = new Random();
+		int random = r.nextInt() % 7;
+		return g.dropCoin(random < 0 ? -random : random, this);
 	}
 
 }

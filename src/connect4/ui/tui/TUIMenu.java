@@ -8,23 +8,11 @@ public class TUIMenu extends Menu {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see gui.Menu#newGame()
-	 */
-	@Override
-	public void newGame() {
-		// TODO Auto-generated method stub
-
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
 	 * @see gui.Menu#quitGame()
 	 */
 	@Override
 	public void quitGame() {
-		// TODO Auto-generated method stub
-
+		System.exit(0);
 	}
 
 	/*
@@ -34,8 +22,7 @@ public class TUIMenu extends Menu {
 	 */
 	@Override
 	public void saveGame() {
-		// TODO Auto-generated method stub
-
+		GameController.getInstance().saveGameState();
 	}
 
 	/*
@@ -45,8 +32,7 @@ public class TUIMenu extends Menu {
 	 */
 	@Override
 	public void show() {
-		// TODO Auto-generated method stub
-
+		System.out.println(this.renderMenu());
 	}
 
 	/*
@@ -56,8 +42,7 @@ public class TUIMenu extends Menu {
 	 */
 	@Override
 	public void loadSaveGame() {
-		// TODO Auto-generated method stub
-
+		GameController.getInstance().loadGameState();
 	}
 
 	public String renderMenu() {
