@@ -9,11 +9,15 @@ public abstract class Menu {
 	public abstract void loadSaveGame();
 
 	public void newGame() {
-		GameController.getInstance().getUI().drawGameField();
+		GameController.getInstance().newGame();
 	}
 
 	public abstract void quitGame();
 
 	public abstract void show();
+
+	public void exitGame() {
+		System.exit(0);
+	}
 
 }
