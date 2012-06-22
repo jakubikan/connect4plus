@@ -8,17 +8,13 @@ import java.awt.RenderingHints;
 
 import javax.swing.JPanel;
 
-import connect4.ui.gui.swing.events.ArrowManager;
-import connect4.ui.gui.swing.events.ArrowMouseListener;
-import connect4.util.observer.IObserver;
-
 /**
  * @author: Stefano Di Martino
  * @created: May 27, 2012
  */
 
 @SuppressWarnings("serial")
-public class ArrowCell extends JPanel implements IObserver {
+public class ArrowCell extends JPanel {
     private final int column;
     private boolean drawArrow;
     
@@ -42,7 +38,6 @@ public class ArrowCell extends JPanel implements IObserver {
         this.drawArrow = false;
         this.column = column;
         this.createArrow();
-        this.addMouseListener(new ArrowMouseListener(this, column));
     }
     
     private void setArrowBackAndForegroundColor() {
@@ -80,10 +75,5 @@ public class ArrowCell extends JPanel implements IObserver {
             
             g2.fillPolygon(arrow);
         }
-    }
-    
-    @Override
-    public void update() {
-        ArrowManager.getInstance().markColumnWhereMouseHasEntered(this.column);
     }
 }

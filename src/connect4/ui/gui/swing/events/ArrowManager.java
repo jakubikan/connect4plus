@@ -1,14 +1,13 @@
 package connect4.ui.gui.swing.events;
 
 import connect4.ui.gui.swing.widgets.ArrowCell;
-import connect4.util.observer.Observable;
 
 /**
  * @author: Stefano Di Martino
  * @created: May 27, 2012
  */
 
-public final class ArrowManager extends Observable {
+public final class ArrowManager {
     private int currentColumn;
     private ArrowCell[] arrowCells;
     private static ArrowManager instance;
