@@ -39,14 +39,6 @@ public final class GameController extends Observable {
         }
     }
     
-    public void saveGameState() {
-        
-    }
-    
-    public void loadGameState() {
-        
-    }
-    
     public static GameController getInstance() {
         if (instance == null) {
             instance = new GameController();
@@ -70,7 +62,7 @@ public final class GameController extends Observable {
                 try {
                     previousState = gameField.clone();
                 } catch (CloneNotSupportedException e1) {
-                    e1.printStackTrace();
+                    System.err.println(e1.toString());
                 }
                 
                 System.out.println("Getting Player");
@@ -89,7 +81,7 @@ public final class GameController extends Observable {
                 try {
                     newState = gameField.clone();
                 } catch (CloneNotSupportedException e) {
-                    e.printStackTrace();
+                    System.err.println(e.toString());
                 }
                 
                 String undoInfo = String.format("Undoing %s Player Move", getPlayerOnTurn()
@@ -162,8 +154,6 @@ public final class GameController extends Observable {
             System.out.println("Cant Redo");
             return;
         }
-        // TODO Auto-generated method stub
-        
     }
     
     public void setPlayer(final Human p) {

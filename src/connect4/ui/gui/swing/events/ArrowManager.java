@@ -8,8 +8,7 @@ import connect4.util.observer.Observable;
  * @created: May 27, 2012
  */
 
-public class ArrowManager extends Observable {
-    
+public final class ArrowManager extends Observable {
     private int currentColumn;
     private ArrowCell[] arrowCells;
     private static ArrowManager instance;
@@ -20,7 +19,6 @@ public class ArrowManager extends Observable {
         if (instance == null) {
             instance = new ArrowManager();
         }
-        
         return instance;
     }
     

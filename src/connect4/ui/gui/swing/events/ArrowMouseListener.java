@@ -4,7 +4,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import connect4.controller.GameController;
-import connect4.ui.gui.swing.widgets.ArrowCell;
+import connect4.util.observer.IObserver;
 import connect4.util.observer.Observable;
 
 /**
@@ -12,17 +12,16 @@ import connect4.util.observer.Observable;
  * @created: May 27, 2012
  */
 public class ArrowMouseListener extends Observable implements MouseListener {
+    private final int column;
     
-    private final ArrowCell arrowCell;
-    
-    public ArrowMouseListener(final ArrowCell arrowCell) {
-        this.arrowCell = arrowCell;
-        this.addObserver(arrowCell);
+    public ArrowMouseListener(final IObserver observer, final int column) {
+        this.column = column;
+        this.addObserver(observer);
     }
     
     @Override
     public void mouseReleased(MouseEvent e) {
-        GameController.getInstance().dropCoinWithSuccessFeedback(arrowCell.getColumn());
+        GameController.getInstance().dropCoinWithSuccessFeedback(this.column);
     }
     
     @Override

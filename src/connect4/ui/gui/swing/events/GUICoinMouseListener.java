@@ -3,7 +3,7 @@ package connect4.ui.gui.swing.events;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import connect4.ui.gui.swing.widgets.GUICoin;
+import connect4.util.observer.IObserver;
 import connect4.util.observer.Observable;
 
 /**
@@ -11,21 +11,21 @@ import connect4.util.observer.Observable;
  * @created: May 27, 2012
  */
 public class GUICoinMouseListener extends Observable implements MouseListener {
-    private final GUICoin guiCoin;
+    private final int column;
     
-    public GUICoinMouseListener(final GUICoin guiCoin) {
-        this.guiCoin = guiCoin;
-        this.addObserver(guiCoin);
+    public GUICoinMouseListener(final IObserver observer, final int column) {
+        this.column = column;
+        this.addObserver(observer);
     }
     
     @Override
     public void mouseEntered(final MouseEvent e) {
-        ArrowManager.getInstance().markColumnWhereMouseHasEntered(guiCoin.getColumn());
+        ArrowManager.getInstance().markColumnWhereMouseHasEntered(this.column);
     }
     
     @Override
     public void mouseExited(final MouseEvent e) {
-        ArrowManager.getInstance().markColumnWhereMouseHasEntered(guiCoin.getColumn());
+        ArrowManager.getInstance().markColumnWhereMouseHasEntered(this.column);
     }
     
     @Override
