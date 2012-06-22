@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.Random;
 
 import connect4.model.Coin;
+import connect4.model.Computer;
 import connect4.model.Human;
 import connect4.model.Player;
 
@@ -28,7 +29,7 @@ public class GameField implements Cloneable {
 		gameWon = false;
 		player = new Human(new Coin(Color.RED));
 		player.setName("Hugo");
-		opponend = new Human(new Coin(Color.RED));
+		opponend = new Computer();
 		opponend.setName("Boesewicht");
 		initPlayerOnTurn();
 	}
@@ -40,7 +41,6 @@ public class GameField implements Cloneable {
 			playerOnTurn = player;
 		} else {
 			playerOnTurn = opponend;
-
 		}
 
 	}
@@ -107,14 +107,12 @@ public class GameField implements Cloneable {
 	// function
 	public int dropCoin(final int column) {
 		int row = 0;
-		Player p = this.getPlayerOnTurn();
-		row = p.dropCoin(column, this);
+		row = dropCoin(column, playerOnTurn);
 		return row;
 	}
 
 	public int dropCoin(final int column, final Player p) {
 		int row = 0;
-
 		row = dropCoin(row, column, p);
 		gameWon = hasWon(p, row, column);
 		if (gameWon) {

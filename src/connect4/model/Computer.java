@@ -2,8 +2,6 @@ package connect4.model;
 
 import java.util.Random;
 
-import connect4.model.gameField.GameField;
-
 public class Computer extends PlayerAbstract {
 
 	@Override
@@ -17,10 +15,26 @@ public class Computer extends PlayerAbstract {
 	 * @see connect4.model.Player#dropCoin(int)
 	 */
 	@Override
-	public int dropCoin(final int column, final GameField g) {
+	public int dropCoin(final int column) {
+		setMove(column);
+		return getMove();
+	}
+
+	public Computer() {
+		super();
+	}
+
+	@Override
+	public int getMove() {
 		Random r = new Random();
 		int random = r.nextInt() % 7;
-		return g.dropCoin(random < 0 ? -random : random, this);
+		return random < 0 ? -random : random;
+
+	}
+
+	@Override
+	public void setMove(final int column) {
+
 	}
 
 }

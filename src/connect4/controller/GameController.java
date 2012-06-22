@@ -14,9 +14,10 @@ public final class GameController extends Observable {
 	private static GameController instance;
 	private boolean bGameHasStarted;
 
-	private UndoManager undoManager = new UndoManager();
+	private final UndoManager undoManager = new UndoManager();
 
-	public static String newline = System.getProperty("line.separator");
+	public static String newline = System
+			.getProperty("line.separator");
 
 	private GameController() {
 		this.gameField = new GameField();
@@ -60,8 +61,7 @@ public final class GameController extends Observable {
 
 	public boolean dropCoinWithSuccessFeedback(final int col) {
 
-		boolean success = false;;
-
+		boolean success = false;
 		if (!userHasWon()) {
 			GameField previousState = null;
 			try {
@@ -71,8 +71,13 @@ public final class GameController extends Observable {
 			}
 
 			try {
-				gameField.dropCoin(col);
-				gameField.changePlayerTurn(); // Change only on success the players turn
+
+				Player p = gameField.getPlayerOnTurn();
+				int move = p.dropCoin(col);
+
+				gameField.dropCoin(move);
+				gameField.changePlayerTurn(); // Change only on success the
+												// players turn
 				success = true;
 
 				GameField newState = null;
@@ -82,10 +87,11 @@ public final class GameController extends Observable {
 					e.printStackTrace();
 				}
 
-				String undoInfo = String.format("Undoing %s Player Move",
-						getPlayerOnTurn().getName());
-				GameFieldEdit edit = new GameFieldEdit(previousState, newState,
-						undoInfo);
+				String undoInfo = String.format(
+						"Undoing %s Player Move", getPlayerOnTurn()
+								.getName());
+				GameFieldEdit edit = new GameFieldEdit(previousState,
+						newState, undoInfo);
 				undoManager.addEdit(edit);
 				System.out.println("Added Undo for "
 						+ undoManager.getUndoPresentationName());
@@ -95,7 +101,6 @@ public final class GameController extends Observable {
 				System.out.println("Ungueltige Eingabe!\n");
 			}
 		}
-
 		return success;
 	}
 
@@ -120,9 +125,10 @@ public final class GameController extends Observable {
 	}
 
 	/**
-	 * @param gameField the gameField to set
+	 * @param gameField
+	 *            the gfinal ld to set
 	 */
-	public void setGameField(GameField gameField) {
+	public void setGameField(final GameField gameField) {
 		this.gameField = gameField;
 	}
 
@@ -132,21 +138,25 @@ public final class GameController extends Observable {
 	public GameField getGameField() {
 		return this.gameField;
 	}
+
 	public void undoStep() {
 		if (undoManager.canUndo()) {
-			System.out.println("Do Undo " + undoManager.getPresentationName());
+			System.out.println("Do Undo "
+					+ undoManager.getPresentationName());
 			undoManager.undo();
 		} else {
 			System.out.println("Cant Undo");
 			return;
 		}
 	}
+
 	/**
 	 * 
 	 */
 	public void redoStep() {
 		if (undoManager.canRedo()) {
-			System.out.println("Do Redo " + undoManager.getPresentationName());
+			System.out.println("Do Redo "
+					+ undoManager.getPresentationName());
 			undoManager.redo();
 		} else {
 			System.out.println("Cant Redo");
@@ -155,10 +165,12 @@ public final class GameController extends Observable {
 		// TODO Auto-generated method stub
 
 	}
+
 	public void setPlayer(final Human p) {
 		gameField.setPlayer(p);
 
 	}
+
 	public void setOpponend(final Player p) {
 		gameField.setOpponend(p);
 	}
@@ -191,7 +203,7 @@ public final class GameController extends Observable {
 	/**
 	 * @param state
 	 */
-	public void useState(GameField state) {
+	public void useState(final GameField state) {
 		try {
 			gameField = state.clone();
 		} catch (CloneNotSupportedException e) {
