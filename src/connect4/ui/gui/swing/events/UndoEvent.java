@@ -15,33 +15,27 @@ import connect4.util.observer.Observable;
  * @created: Jun 22, 2012
  */
 public class UndoEvent extends Observable implements MouseListener {
-
-	public UndoEvent(final IObserver oberserver) {
-		this.addObserver(oberserver);
-	}
-
-	@Override
-	public void mouseClicked(final MouseEvent e) {
-	}
-
-	@Override
-	public void mousePressed(final MouseEvent e) {
-		GameController.getInstance().undoStep();
-		System.out.println(GameController.getInstance()
-				.getGameField());
-		this.notifyObservers();
-	}
-
-	@Override
-	public void mouseReleased(final MouseEvent e) {
-	}
-
-	@Override
-	public void mouseEntered(final MouseEvent e) {
-	}
-
-	@Override
-	public void mouseExited(final MouseEvent e) {
-	}
-
+    
+    public UndoEvent(final IObserver oberserver) {
+        this.addObserver(oberserver);
+    }
+    
+    @Override
+    public void mouseClicked(final MouseEvent e) {}
+    
+    @Override
+    public void mousePressed(final MouseEvent e) {
+        GameController.getInstance().undoStep();
+        this.notifyObservers();
+    }
+    
+    @Override
+    public void mouseReleased(final MouseEvent e) {}
+    
+    @Override
+    public void mouseEntered(final MouseEvent e) {}
+    
+    @Override
+    public void mouseExited(final MouseEvent e) {}
+    
 }
