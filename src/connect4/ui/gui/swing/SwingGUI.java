@@ -3,25 +3,18 @@ package connect4.ui.gui.swing;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
-import java.net.URL;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JToolBar;
 
 import connect4.controller.GameController;
 import connect4.model.Player;
 import connect4.model.gameField.GameField;
 import connect4.ui.UI;
 import connect4.ui.gui.swing.events.ArrowManager;
-import connect4.ui.gui.swing.events.NewGameEvent;
-import connect4.ui.gui.swing.events.RedoEvent;
-import connect4.ui.gui.swing.events.UndoEvent;
 import connect4.ui.gui.swing.widgets.ArrowCell;
 import connect4.ui.gui.swing.widgets.GUICoin;
 import connect4.util.observer.IObserver;
@@ -38,11 +31,6 @@ public class SwingGUI extends JFrame implements UI, IObserver {
     private final GUICoin coinCells[][] = new GUICoin[GameField.DEFAULT_ROWS][GameField.DEFAULT_COLUMNS];
     private final ArrowCell arrowCells[] = new ArrowCell[GameField.DEFAULT_COLUMNS];
     private final StatusDisplay statusDisplay = new StatusDisplay();
-    private final JToolBar toolBar = new JToolBar("Toolbar");
-    
-    static final private String UNDO = "previous";
-    static final private String REDO = "next";
-    private static final String NEW_GAME = "new game";
     
     // Game Stuff
     private final GameController controller = GameController.getInstance();;
@@ -99,11 +87,9 @@ public class SwingGUI extends JFrame implements UI, IObserver {
         cellWrapper.setPreferredSize(new Dimension(400, 300));
         statusDisplay.setPreferredSize(new Dimension(100, 100));
         
-        addButtons();
-        
         lineAxisPanel.add(cellWrapper);
         lineAxisPanel.add(statusDisplay);
-        pageAxisPanel.add(toolBar);
+        pageAxisPanel.add(new ToolBar(this));
         pageAxisPanel.add(lineAxisPanel);
         
         contentPane.add(pageAxisPanel);
@@ -112,47 +98,10 @@ public class SwingGUI extends JFrame implements UI, IObserver {
         
         this.setContentPane(contentPane);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(800, 700);
+        this.setSize(800, 710);
         this.setVisible(true);
         
         this.createBufferStrategy(2);
-    }
-    
-    private void addButtons() {
-        JButton button = null;
-        
-        button = makeNavigationButton("New Game", NEW_GAME, "New Game", "New Game");
-        button.addMouseListener(new NewGameEvent(this));
-        toolBar.add(button);
-        
-        button = makeNavigationButton("Undo", UNDO, "Undo", "Undo");
-        button.addMouseListener(new UndoEvent(this));
-        toolBar.add(button);
-        
-        button = makeNavigationButton("Redo", REDO, "Redo", "Redo");
-        button.addMouseListener(new RedoEvent(this));
-        toolBar.add(button);
-    }
-    
-    private JButton makeNavigationButton(final String imageName, final String actionCommand,
-                                            final String toolTipText, final String altText) {
-        // Look for the image.
-        String imgLocation = "images/" + imageName + ".gif";
-        URL imageURL = SwingGUI.class.getResource(imgLocation);
-        
-        // Create and initialize the button.
-        JButton button = new JButton();
-        button.setActionCommand(actionCommand);
-        button.setToolTipText(toolTipText);
-        
-        if (imageURL != null) { // image found
-            button.setIcon(new ImageIcon(imageURL, altText));
-        } else { // no image found
-            button.setText(altText);
-            System.err.println("Resource not found: " + imgLocation);
-        }
-        
-        return button;
     }
     
     @Override

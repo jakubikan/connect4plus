@@ -13,7 +13,7 @@ import connect4.controller.GameController;
  */
 
 @SuppressWarnings("serial")
-class StatusDisplay extends JPanel {
+final class StatusDisplay extends JPanel {
     private JLabel status = new JLabel();
     private GameController controller;
     
