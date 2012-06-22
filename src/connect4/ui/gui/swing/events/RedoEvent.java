@@ -15,27 +15,33 @@ import connect4.util.observer.Observable;
  * @created: Jun 22, 2012
  */
 public class RedoEvent extends Observable implements MouseListener {
-    
-    public RedoEvent(IObserver oberserver) {
-        this.addObserver(oberserver);
-    }
-    
-    @Override
-    public void mouseClicked(MouseEvent e) {}
-    
-    @Override
-    public void mousePressed(MouseEvent e) {
-        GameController.getInstance().redoStep();
-        this.notifyObservers();
-    }
-    
-    @Override
-    public void mouseReleased(MouseEvent e) {}
-    
-    @Override
-    public void mouseEntered(MouseEvent e) {}
-    
-    @Override
-    public void mouseExited(MouseEvent e) {}
-    
+
+	public RedoEvent(final IObserver oberserver) {
+		this.addObserver(oberserver);
+	}
+
+	@Override
+	public void mouseClicked(final MouseEvent e) {
+	}
+
+	@Override
+	public void mousePressed(final MouseEvent e) {
+		GameController.getInstance().redoStep();
+		System.out.println(GameController.getInstance()
+				.getGameField());
+		this.notifyObservers();
+	}
+
+	@Override
+	public void mouseReleased(final MouseEvent e) {
+	}
+
+	@Override
+	public void mouseEntered(final MouseEvent e) {
+	}
+
+	@Override
+	public void mouseExited(final MouseEvent e) {
+	}
+
 }

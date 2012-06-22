@@ -10,32 +10,31 @@ import connect4.controller.GameController;
 
 /**
  * @author jakub
- *
+ * 
  */
 @SuppressWarnings("serial")
 public class GameFieldEdit extends AbstractUndoableEdit {
 	/**
-	* @author:  jakub
-	* @created: May 30, 2012
-	*/
-	private GameField previousState;
-	private GameField newState;
-	private String name;
+	 * @author: jakub
+	 * @created: May 30, 2012
+	 */
+	private final GameField previousState;
+	private final GameField newState;
+	private final String name;
 
 	/**
-	 * @param name 
+	 * @param name
 	 * 
 	 */
-	public GameFieldEdit(GameField previousState, GameField newState,
-			String name) {
+	public GameFieldEdit(final GameField previousState,
+			final GameField newState, final String name) {
 		this.previousState = previousState;
 		this.newState = newState;
 		this.name = name;
-		System.out.println(previousState);
-		System.out.println(newState);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see javax.swing.undo.AbstractUndoableEdit#redo()
 	 */
 	@Override
@@ -43,13 +42,15 @@ public class GameFieldEdit extends AbstractUndoableEdit {
 		super.redo();
 		GameController.getInstance().useState(newState);
 	}
+
 	@Override
 	public void undo() throws CannotRedoException {
 		super.undo();
 		GameController.getInstance().useState(previousState);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see javax.swing.undo.AbstractUndoableEdit#getPresentationName()
 	 */
 	@Override
