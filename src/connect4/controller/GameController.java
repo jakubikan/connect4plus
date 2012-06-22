@@ -19,7 +19,7 @@ public final class GameController extends Observable {
     public static String newline = System.getProperty("line.separator");
     
     private GameController() {
-        undoManager.discardAllEdits();
+        this.undoManager.discardAllEdits();
         this.gameField = new GameField();
         this.bGameHasStarted = false;
     }

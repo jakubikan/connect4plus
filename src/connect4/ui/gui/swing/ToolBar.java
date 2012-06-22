@@ -1,5 +1,7 @@
 package connect4.ui.gui.swing;
 
+import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
@@ -25,6 +27,8 @@ final class ToolBar extends JPanel {
     
     public ToolBar(final IObserver observer) {
         this.observer = observer;
+        this.setBackground(Color.WHITE);
+        this.toolBar.setBackground(Color.WHITE);
         addButtons();
         this.add(toolBar);
     }
@@ -49,7 +53,7 @@ final class ToolBar extends JPanel {
                                             final String altText) {
         // Create and initialize the button.
         JButton button = new JButton();
-        
+        button.setBackground(Color.WHITE);
         button.setActionCommand(actionCommand);
         button.setToolTipText(toolTipText);
         button.setText(altText);
