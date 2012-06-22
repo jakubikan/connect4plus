@@ -21,12 +21,14 @@ public class GUICoinMouseListener extends Observable implements
 
 	@Override
 	public void mouseEntered(final MouseEvent e) {
+		System.out.println(guiCoin.getColumn());
 		ArrowManager.getInstance().markColumnWhereMouseHasEntered(
 				guiCoin.getColumn());
 	}
 
 	@Override
 	public void mouseExited(final MouseEvent e) {
+		System.out.println(guiCoin.getColumn());
 		ArrowManager.getInstance().markColumnWhereMouseHasEntered(
 				guiCoin.getColumn());
 	}

@@ -161,7 +161,6 @@ public class SwingGUI extends JFrame implements UI, IObserver {
 	@Override
 	public void drawGameField() {
 		statusDisplay.update();
-		System.out.println("Zeichne UI neu...");
 		for (int currentRow = 0; currentRow < GameField.DEFAULT_ROWS; currentRow++) {
 			for (int currentColumn = 0; currentColumn < GameField.DEFAULT_COLUMNS; currentColumn++) {
 				Player player = this.controller.getPlayerAt(

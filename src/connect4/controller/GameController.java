@@ -63,8 +63,9 @@ public final class GameController extends Observable {
 
 		boolean success = false;
 		if (!userHasWon()) {
-
 			try {
+
+				System.out.println("Copying State");
 				GameField previousState = null;
 				try {
 					previousState = gameField.clone();
@@ -72,10 +73,14 @@ public final class GameController extends Observable {
 					e1.printStackTrace();
 				}
 
+				System.out.println("Getting Player");
 				Player p = gameField.getPlayerOnTurn();
+				System.out.println("Trying to Calculate Move");
 				int move = p.dropCoin(col);
-				System.out.println("Making move: " + move);
+				System.out.println(p.getName() + " making move: "
+						+ move);
 
+				System.out.println("Trying to make Move");
 				gameField.dropCoin(move);
 				gameField.changePlayerTurn(); // Change only on success the
 												// players turn

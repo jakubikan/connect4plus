@@ -1,15 +1,12 @@
 package connect4.model;
 
-import javax.swing.undo.UndoManager;
-
 import connect4.controller.GameController;
 import connect4.model.gameField.GameField;
 
 public class Computer extends PlayerAbstract {
 
 	GameField gameField;
-	private final UndoManager undoManager = new UndoManager();
-	int doNextColumn;
+	int doNextColumn = 0;
 
 	@Override
 	public void surrender() {
@@ -45,7 +42,6 @@ public class Computer extends PlayerAbstract {
 			e.printStackTrace();
 		}
 
-		System.out.println("Computer macht Zug:" + doNextColumn);
 		maxWert(5);
 		return doNextColumn;
 

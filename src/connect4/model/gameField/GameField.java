@@ -125,7 +125,11 @@ public class GameField implements Cloneable {
 			final Player p) {
 		int row1 = row;
 
-		if (row >= DEFAULT_ROWS || column >= DEFAULT_COLUMNS) {
+		if (row >= DEFAULT_COLUMNS - 1) {
+			return row1;
+		}
+
+		if (column >= DEFAULT_COLUMNS) {
 			throw new IllegalArgumentException();
 		}
 
