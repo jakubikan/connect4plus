@@ -62,8 +62,6 @@ public final class GameController extends Observable {
 	public boolean dropCoinWithSuccessFeedback(final int col) {
 
 		boolean success = false;
-		;
-
 		if (!userHasWon()) {
 
 			try {
@@ -73,7 +71,12 @@ public final class GameController extends Observable {
 				} catch (CloneNotSupportedException e1) {
 					e1.printStackTrace();
 				}
-				gameField.dropCoin(col);
+
+				Player p = gameField.getPlayerOnTurn();
+				int move = p.dropCoin(col);
+				System.out.println("Making move: " + move);
+
+				gameField.dropCoin(move);
 				gameField.changePlayerTurn(); // Change only on success the
 												// players turn
 				success = true;
@@ -99,7 +102,6 @@ public final class GameController extends Observable {
 				System.out.println("Ungueltige Eingabe!\n");
 			}
 		}
-
 		return success;
 	}
 

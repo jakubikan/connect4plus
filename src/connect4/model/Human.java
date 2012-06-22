@@ -1,16 +1,15 @@
 package connect4.model;
 
-import connect4.model.gameField.GameField;
-
-
 public class Human extends PlayerAbstract {
 
-	public Human(Coin playerCoin) {
-		if (playerCoin == null)
+	int move = 0;
+
+	public Human(final Coin playerCoin) {
+		if (playerCoin == null) {
 			throw new IllegalArgumentException();
+		}
 		this.playerCoin = playerCoin;
 	}
-
 
 	@Override
 	public void surrender() {
@@ -18,13 +17,27 @@ public class Human extends PlayerAbstract {
 
 	}
 
-
-	/* (non-Javadoc)
-	 * @see connect4.model.Player#dropCoin(int, connect4.model.gameField.GameField)
+	/*
+	 * (non-Javadoc)
+	 * @see connect4.model.Player#dropCoin(int,
+	 * connect4.model.gameField.GameField)
 	 */
 	@Override
-	public int dropCoin(int column, GameField g) {
-		return g.dropCoin(column, this);
+	public int dropCoin(final int column) {
+		setMove(column);
+		System.out.printf("%s macht Zug: %d\n", name, column);
+		return getMove();
+	}
+
+	@Override
+	public int getMove() {
+		return move;
+	}
+
+	@Override
+	public void setMove(final int column) {
+		move = column;
+
 	}
 
 }

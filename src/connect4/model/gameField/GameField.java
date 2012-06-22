@@ -3,7 +3,6 @@ package connect4.model.gameField;
 import java.awt.Color;
 import java.util.Random;
 
-import connect4.controller.GameController;
 import connect4.model.Coin;
 import connect4.model.Computer;
 import connect4.model.Human;
@@ -30,7 +29,7 @@ public class GameField implements Cloneable {
 		gameWon = false;
 		player = new Human(new Coin(Color.RED));
 		player.setName("Hugo");
-		opponend = new Human(new Coin(Color.RED));
+		opponend = new Computer();
 		opponend.setName("Boesewicht");
 		initPlayerOnTurn();
 	}
@@ -42,12 +41,12 @@ public class GameField implements Cloneable {
 			playerOnTurn = player;
 		} else {
 			playerOnTurn = opponend;
-
 		}
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -69,6 +68,7 @@ public class GameField implements Cloneable {
 
 		return b.toString();
 	}
+
 	// Only for Support. This method sould not be used any more
 	// DEPRECATED!!!!!
 	// Since its bad to get an Array of Objects.
@@ -78,39 +78,41 @@ public class GameField implements Cloneable {
 		p[1] = opponend;
 		return p;
 	}
+
 	public Player getPlayerOnTurn() {
 		return playerOnTurn;
 	}
+
 	public void setPlayer(final Human p) {
 		player = p;
 
 	}
+
 	public void setOpponend(final Player p) {
 		opponend = p;
 
 	}
+
 	public Player getOpponend() {
 		return opponend;
 	}
+
 	public Human getPlayer() {
 		return player;
 	}
 
-	// This dropCoin function delegates to the 
+	// This dropCoin function delegates to the
 	// player.dropCoin function
-	// The Player therefore calls the dropCoin(colum, player) 
+	// The Player therefore calls the dropCoin(colum, player)
 	// function
 	public int dropCoin(final int column) {
 		int row = 0;
-		Player p = this.getPlayerOnTurn();
-		row = p.dropCoin(column, this);
-		GameController.getInstance().notifyObservers();
+		row = dropCoin(column, playerOnTurn);
 		return row;
 	}
 
-	public int dropCoin(final int column, Player p) {
+	public int dropCoin(final int column, final Player p) {
 		int row = 0;
-
 		row = dropCoin(row, column, p);
 		gameWon = hasWon(p, row, column);
 		if (gameWon) {
@@ -119,7 +121,8 @@ public class GameField implements Cloneable {
 		return row;
 	}
 
-	private int dropCoin(final int row, final int column, final Player p) {
+	private int dropCoin(final int row, final int column,
+			final Player p) {
 		int row1 = row;
 
 		if (row >= DEFAULT_ROWS || column >= DEFAULT_COLUMNS) {
@@ -134,7 +137,8 @@ public class GameField implements Cloneable {
 
 		return row1;
 	}
-	public Player getPlayerAt(int row, int column) {
+
+	public Player getPlayerAt(final int row, final int column) {
 		return gameField[row][column];
 	}
 
@@ -142,23 +146,19 @@ public class GameField implements Cloneable {
 		return playerWon;
 	}
 
-	private boolean hasWon(Player playerToCheck, int rowToCheck,
-			int columnToCheck) {
+	private boolean hasWon(final Player playerToCheck,
+			final int rowToCheck, final int columnToCheck) {
 
 		// Check horizontal
 		for (int rows = 0; rows < DEFAULT_ROWS; rows++) {
 			for (int columns = 0; columns < DEFAULT_COLUMNS - 3; columns++) {
-				int checkCount = (gameField[rows][columns] == playerToCheck)
-						? 1
+				int checkCount = (gameField[rows][columns] == playerToCheck) ? 1
 						: 0;
-				checkCount += (gameField[rows][columns + 1] == playerToCheck)
-						? 1
+				checkCount += (gameField[rows][columns + 1] == playerToCheck) ? 1
 						: 0;
-				checkCount += (gameField[rows][columns + 2] == playerToCheck)
-						? 1
+				checkCount += (gameField[rows][columns + 2] == playerToCheck) ? 1
 						: 0;
-				checkCount += (gameField[rows][columns + 3] == playerToCheck)
-						? 1
+				checkCount += (gameField[rows][columns + 3] == playerToCheck) ? 1
 						: 0;
 				if (checkCount == 4) {
 					return true;
@@ -168,17 +168,13 @@ public class GameField implements Cloneable {
 		// Check vertical
 		for (int rows = 0; rows < DEFAULT_ROWS - 3; rows++) {
 			for (int columns = 0; columns < DEFAULT_COLUMNS; columns++) {
-				int checkCount = (gameField[rows][columns] == playerToCheck)
-						? 1
+				int checkCount = (gameField[rows][columns] == playerToCheck) ? 1
 						: 0;
-				checkCount += (gameField[rows + 1][columns] == playerToCheck)
-						? 1
+				checkCount += (gameField[rows + 1][columns] == playerToCheck) ? 1
 						: 0;
-				checkCount += (gameField[rows + 2][columns] == playerToCheck)
-						? 1
+				checkCount += (gameField[rows + 2][columns] == playerToCheck) ? 1
 						: 0;
-				checkCount += (gameField[rows + 3][columns] == playerToCheck)
-						? 1
+				checkCount += (gameField[rows + 3][columns] == playerToCheck) ? 1
 						: 0;
 				if (checkCount == 4) {
 					return true;
@@ -188,17 +184,13 @@ public class GameField implements Cloneable {
 		// Check diagonal /
 		for (int rows = 0; rows < DEFAULT_ROWS - 3; rows++) {
 			for (int columns = 0; columns < DEFAULT_COLUMNS - 3; columns++) {
-				int checkCount = (gameField[columns][rows] == playerToCheck)
-						? 1
+				int checkCount = (gameField[columns][rows] == playerToCheck) ? 1
 						: 0;
-				checkCount += (gameField[rows + 1][columns + 1] == playerToCheck)
-						? 1
+				checkCount += (gameField[rows + 1][columns + 1] == playerToCheck) ? 1
 						: 0;
-				checkCount += (gameField[rows + 2][columns + 2] == playerToCheck)
-						? 1
+				checkCount += (gameField[rows + 2][columns + 2] == playerToCheck) ? 1
 						: 0;
-				checkCount += (gameField[rows + 3][columns + 3] == playerToCheck)
-						? 1
+				checkCount += (gameField[rows + 3][columns + 3] == playerToCheck) ? 1
 						: 0;
 				if (checkCount == 4) {
 					return true;
@@ -208,17 +200,13 @@ public class GameField implements Cloneable {
 		// Check Diagonal \
 		for (int rows = 0; rows < DEFAULT_ROWS - 3; rows++) {
 			for (int columns = 3; columns < DEFAULT_COLUMNS; columns++) {
-				int checkCount = (gameField[rows][columns] == playerToCheck)
-						? 1
+				int checkCount = (gameField[rows][columns] == playerToCheck) ? 1
 						: 0;
-				checkCount += (gameField[rows + 1][columns - 1] == playerToCheck)
-						? 1
+				checkCount += (gameField[rows + 1][columns - 1] == playerToCheck) ? 1
 						: 0;
-				checkCount += (gameField[rows + 2][columns - 2] == playerToCheck)
-						? 1
+				checkCount += (gameField[rows + 2][columns - 2] == playerToCheck) ? 1
 						: 0;
-				checkCount += (gameField[rows + 3][columns - 3] == playerToCheck)
-						? 1
+				checkCount += (gameField[rows + 3][columns - 3] == playerToCheck) ? 1
 						: 0;
 				if (checkCount == 4) {
 					return true;
@@ -227,6 +215,7 @@ public class GameField implements Cloneable {
 		}
 		return false;
 	}
+
 	public void changePlayerTurn() {
 		if (playerOnTurn == opponend) {
 			playerOnTurn = player;
@@ -235,7 +224,78 @@ public class GameField implements Cloneable {
 		}
 	}
 
-	/* (non-Javadoc)
+	public int evaluatePlayerScore() {
+
+		int[] scoreField = new int[10];
+		Player playerToCheck = getPlayerOnTurn();
+
+		// Check horizontal
+		for (int rows = 0; rows < DEFAULT_ROWS; rows++) {
+			for (int columns = 0; columns < DEFAULT_COLUMNS - 3; columns++) {
+				int checkCount = (gameField[rows][columns] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows][columns + 1] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows][columns + 2] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows][columns + 3] == playerToCheck) ? 1
+						: 0;
+
+				scoreField[checkCount]++;
+			}
+		}
+		// Check vertical
+		for (int rows = 0; rows < DEFAULT_ROWS - 3; rows++) {
+			for (int columns = 0; columns < DEFAULT_COLUMNS; columns++) {
+				int checkCount = (gameField[rows][columns] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows + 1][columns] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows + 2][columns] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows + 3][columns] == playerToCheck) ? 1
+						: 0;
+				scoreField[checkCount]++;
+			}
+		}
+		// Check diagonal /
+		for (int rows = 0; rows < DEFAULT_ROWS - 3; rows++) {
+			for (int columns = 0; columns < DEFAULT_COLUMNS - 3; columns++) {
+				int checkCount = (gameField[columns][rows] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows + 1][columns + 1] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows + 2][columns + 2] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows + 3][columns + 3] == playerToCheck) ? 1
+						: 0;
+				scoreField[checkCount]++;
+			}
+		}
+		// Check Diagonal \
+		for (int rows = 0; rows < DEFAULT_ROWS - 3; rows++) {
+			for (int columns = 3; columns < DEFAULT_COLUMNS; columns++) {
+				int checkCount = (gameField[rows][columns] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows + 1][columns - 1] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows + 2][columns - 2] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows + 3][columns - 3] == playerToCheck) ? 1
+						: 0;
+				scoreField[checkCount]++;
+			}
+		}
+		int result = 0;
+		result += 32 * scoreField[3];
+		result += 4 * scoreField[2];
+		result += 1 * scoreField[1];
+
+		return result;
+	}
+
+	/*
+	 * (non-Javadoc)
 	 * @see java.lang.Object#clone()
 	 */
 	@Override
