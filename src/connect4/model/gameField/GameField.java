@@ -224,6 +224,76 @@ public class GameField implements Cloneable {
 		}
 	}
 
+	public int evaluatePlayerScore() {
+
+		int[] scoreField = new int[10];
+		Player playerToCheck = getPlayerOnTurn();
+
+		// Check horizontal
+		for (int rows = 0; rows < DEFAULT_ROWS; rows++) {
+			for (int columns = 0; columns < DEFAULT_COLUMNS - 3; columns++) {
+				int checkCount = (gameField[rows][columns] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows][columns + 1] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows][columns + 2] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows][columns + 3] == playerToCheck) ? 1
+						: 0;
+
+				scoreField[checkCount]++;
+			}
+		}
+		// Check vertical
+		for (int rows = 0; rows < DEFAULT_ROWS - 3; rows++) {
+			for (int columns = 0; columns < DEFAULT_COLUMNS; columns++) {
+				int checkCount = (gameField[rows][columns] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows + 1][columns] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows + 2][columns] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows + 3][columns] == playerToCheck) ? 1
+						: 0;
+				scoreField[checkCount]++;
+			}
+		}
+		// Check diagonal /
+		for (int rows = 0; rows < DEFAULT_ROWS - 3; rows++) {
+			for (int columns = 0; columns < DEFAULT_COLUMNS - 3; columns++) {
+				int checkCount = (gameField[columns][rows] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows + 1][columns + 1] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows + 2][columns + 2] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows + 3][columns + 3] == playerToCheck) ? 1
+						: 0;
+				scoreField[checkCount]++;
+			}
+		}
+		// Check Diagonal \
+		for (int rows = 0; rows < DEFAULT_ROWS - 3; rows++) {
+			for (int columns = 3; columns < DEFAULT_COLUMNS; columns++) {
+				int checkCount = (gameField[rows][columns] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows + 1][columns - 1] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows + 2][columns - 2] == playerToCheck) ? 1
+						: 0;
+				checkCount += (gameField[rows + 3][columns - 3] == playerToCheck) ? 1
+						: 0;
+				scoreField[checkCount]++;
+			}
+		}
+		int result = 0;
+		result += 32 * scoreField[3];
+		result += 4 * scoreField[2];
+		result += 1 * scoreField[1];
+
+		return result;
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * @see java.lang.Object#clone()

@@ -3,8 +3,6 @@ package connect4.ui.gui.swing.events;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import connect4.controller.GameController;
-import connect4.model.Computer;
 import connect4.ui.gui.swing.widgets.GUICoin;
 import connect4.util.observer.Observable;
 
@@ -35,9 +33,6 @@ public class GUICoinMouseListener extends Observable implements
 
 	@Override
 	public void mousePressed(final MouseEvent e) {
-		if (GameController.getInstance().getPlayerOnTurn() instanceof Computer) {
-			this.notifyObservers();
-		}
 	}
 
 	@Override

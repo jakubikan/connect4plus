@@ -25,6 +25,7 @@ public class Human extends PlayerAbstract {
 	@Override
 	public int dropCoin(final int column) {
 		setMove(column);
+		System.out.printf("%s macht Zug: %d\n", name, column);
 		return getMove();
 	}
 

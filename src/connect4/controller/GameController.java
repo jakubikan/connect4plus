@@ -74,6 +74,7 @@ public final class GameController extends Observable {
 
 				Player p = gameField.getPlayerOnTurn();
 				int move = p.dropCoin(col);
+				System.out.println("Making move: " + move);
 
 				gameField.dropCoin(move);
 				gameField.changePlayerTurn(); // Change only on success the
