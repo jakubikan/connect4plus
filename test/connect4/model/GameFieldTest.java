@@ -11,14 +11,12 @@ import org.junit.Test;
 import connect4.model.gameField.GameField;
 
 public class GameFieldTest {
-	
+
 	GameField gameField;
 	Player player;
 	Player opponend;
 	Coin playerCoin;
 	Coin opponendCoin;
-	
-	
 
 	@Before
 	public void setUp() throws Exception {
@@ -35,11 +33,10 @@ public class GameFieldTest {
 		gameField = new GameField();
 	}
 
-	
 	@Test
 	public void dropCointTest() {
 		int row;
-		
+
 		row = gameField.dropCoin(3, player);
 		assertEquals(0, row);
 		assertEquals(gameField.getPlayerAt(row, 3), player);
@@ -66,10 +63,10 @@ public class GameFieldTest {
 		assertEquals(gameField.getPlayerAt(row, 1), opponend);
 		assertEquals(gameField.getPlayerAt(1, 1), opponend);
 	}
-	
+
 	@Test
 	public void newGameFieldTest() {
-		
+
 		int row;
 		row = gameField.dropCoin(0, opponend);
 		row = gameField.dropCoin(0, opponend);
@@ -78,8 +75,7 @@ public class GameFieldTest {
 		gameField = new GameField();
 		assertEquals(gameField.getPlayerAt(0, 0), null);
 	}
-	
-	
+
 	@Test
 	public void isWonTest() {
 		int row;
@@ -88,11 +84,11 @@ public class GameFieldTest {
 		row = gameField.dropCoin(0, opponend);
 		row = gameField.dropCoin(0, opponend);
 		row = gameField.dropCoin(0, opponend);
-		
+
 		assertEquals(gameField.getWinner(), opponend);
-		
+
 		gameField = new GameField();
-		
+
 		row = gameField.dropCoin(0, opponend);
 		row = gameField.dropCoin(0, opponend);
 		row = gameField.dropCoin(0, player);
@@ -100,14 +96,11 @@ public class GameFieldTest {
 		row = gameField.dropCoin(0, opponend);
 		row = gameField.dropCoin(0, opponend);
 		assertEquals(gameField.getWinner(), null);
-		
+
 		gameField = new GameField();
-		
+
 		/*
-		 *    o
-		 *   ox
-		 *  oxx
-		 * oxxxoo
+		 * o ox oxx oxxxoo
 		 */
 		row = gameField.dropCoin(0, opponend);
 		row = gameField.dropCoin(1, player);
@@ -120,15 +113,13 @@ public class GameFieldTest {
 		row = gameField.dropCoin(4, opponend);
 		row = gameField.dropCoin(3, player);
 		row = gameField.dropCoin(3, opponend);
+		System.out.println(gameField);
 		assertEquals(gameField.getWinner(), opponend);
-		
+
 		gameField = new GameField();
-		
+
 		/*
-		 *     x
-		 *     ox
-		 *     xox
-		 *    xoxox
+		 * x ox xox xoxox
 		 */
 		row = gameField.dropCoin(6, player);
 		row = gameField.dropCoin(5, opponend);
@@ -141,8 +132,9 @@ public class GameFieldTest {
 		row = gameField.dropCoin(4, player);
 		row = gameField.dropCoin(2, opponend);
 		row = gameField.dropCoin(3, player);
+		System.out.println(gameField);
 		assertEquals(gameField.getWinner(), player);
-		
+
 	}
 
 }

@@ -35,14 +35,15 @@ public class GUICoinMouseListener extends Observable implements
 
 	@Override
 	public void mousePressed(final MouseEvent e) {
+
 	}
 
 	@Override
 	public void mouseReleased(final MouseEvent e) {
-		this.notifyObservers();
 	}
 
 	@Override
 	public void mouseClicked(final MouseEvent e) {
+		this.notifyObservers();
 	}
 }

@@ -152,72 +152,54 @@ public class GameField implements Cloneable {
 
 	private boolean hasWon(final Player playerToCheck,
 			final int rowToCheck, final int columnToCheck) {
+		// see if there are 4 disks in a row, horizontal, vertical or diagonal
+		// horizontal rows
+		for (int row = 0; row < DEFAULT_ROWS; row++) {
+			for (int col = 0; col < DEFAULT_COLUMNS - 3; col++) {
+				if (gameField[row][col] == playerToCheck
+						&& gameField[row][col] == gameField[row][col + 1]
+						&& gameField[row][col] == gameField[row][col + 2]
+						&& gameField[row][col] == gameField[row][col + 3]) {
+					return true;
+				}
+			}
+		}
+		// vertical columns
+		for (int col = 0; col < DEFAULT_COLUMNS; col++) {
+			for (int row = 0; row < DEFAULT_ROWS - 3; row++) {
+				if (gameField[row][col] == playerToCheck
+						&& gameField[row][col] == gameField[row + 1][col]
+						&& gameField[row][col] == gameField[row + 2][col]
+						&& gameField[row][col] == gameField[row + 3][col]) {
+					return true;
+				}
+			}
+		}
+		// diagonal lower left to upper right
+		for (int row = 0; row < DEFAULT_ROWS - 3; row++) {
+			for (int col = 0; col < DEFAULT_COLUMNS - 3; col++) {
+				if (gameField[row][col] == playerToCheck
+						&& gameField[row][col] == gameField[row + 1][col + 1]
+						&& gameField[row][col] == gameField[row + 2][col + 2]
+						&& gameField[row][col] == gameField[row + 3][col + 3]) {
+					return true;
+				}
+			}
+		}
+		// diagonal upper left to lower right
+		for (int row = DEFAULT_ROWS - 1; row >= 3; row--) {
+			for (int col = 0; col < DEFAULT_COLUMNS - 3; col++) {
+				if (gameField[row][col] == playerToCheck
+						&& gameField[row][col] == gameField[row - 1][col + 1]
+						&& gameField[row][col] == gameField[row - 2][col + 2]
+						&& gameField[row][col] == gameField[row - 3][col + 3]) {
+					return true;
+				}
+			}
+		}
 
-		// Check horizontal
-		for (int rows = 0; rows < DEFAULT_ROWS; rows++) {
-			for (int columns = 0; columns < DEFAULT_COLUMNS - 3; columns++) {
-				int checkCount = (gameField[rows][columns] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows][columns + 1] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows][columns + 2] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows][columns + 3] == playerToCheck) ? 1
-						: 0;
-				if (checkCount == 4) {
-					return true;
-				}
-			}
-		}
-		// Check vertical
-		for (int rows = 0; rows < DEFAULT_ROWS - 3; rows++) {
-			for (int columns = 0; columns < DEFAULT_COLUMNS; columns++) {
-				int checkCount = (gameField[rows][columns] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows + 1][columns] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows + 2][columns] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows + 3][columns] == playerToCheck) ? 1
-						: 0;
-				if (checkCount == 4) {
-					return true;
-				}
-			}
-		}
-		// Check diagonal /
-		for (int rows = 0; rows < DEFAULT_ROWS - 3; rows++) {
-			for (int columns = 0; columns < DEFAULT_COLUMNS - 3; columns++) {
-				int checkCount = (gameField[columns][rows] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows + 1][columns + 1] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows + 2][columns + 2] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows + 3][columns + 3] == playerToCheck) ? 1
-						: 0;
-				if (checkCount == 4) {
-					return true;
-				}
-			}
-		}
-		// Check Diagonal \
-		for (int rows = 0; rows < DEFAULT_ROWS - 3; rows++) {
-			for (int columns = 3; columns < DEFAULT_COLUMNS; columns++) {
-				int checkCount = (gameField[rows][columns] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows + 1][columns - 1] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows + 2][columns - 2] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows + 3][columns - 3] == playerToCheck) ? 1
-						: 0;
-				if (checkCount == 4) {
-					return true;
-				}
-			}
-		}
 		return false;
+
 	}
 
 	public void changePlayerTurn() {
@@ -233,65 +215,35 @@ public class GameField implements Cloneable {
 		int[] scoreField = new int[10];
 		Player playerToCheck = getPlayerOnTurn();
 
-		// Check horizontal
-		for (int rows = 0; rows < DEFAULT_ROWS; rows++) {
-			for (int columns = 0; columns < DEFAULT_COLUMNS - 3; columns++) {
-				int checkCount = (gameField[rows][columns] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows][columns + 1] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows][columns + 2] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows][columns + 3] == playerToCheck) ? 1
-						: 0;
+		int numMatches;
 
-				scoreField[checkCount]++;
+		// check horizontally
+		for (int y = 0; y < DEFAULT_ROWS; y++) {
+			numMatches = 0;
+			for (int x = 0; x + 1 < DEFAULT_COLUMNS; x++) {
+				if ((gameField[y][x] == gameField[y][x + 1])
+						&& ((gameField[y][x] == playerToCheck ? 1 : 0) > 0)) {
+					numMatches++;
+				}
+				scoreField[numMatches]++;
 			}
 		}
-		// Check vertical
-		for (int rows = 0; rows < DEFAULT_ROWS - 3; rows++) {
-			for (int columns = 0; columns < DEFAULT_COLUMNS; columns++) {
-				int checkCount = (gameField[rows][columns] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows + 1][columns] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows + 2][columns] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows + 3][columns] == playerToCheck) ? 1
-						: 0;
-				scoreField[checkCount]++;
+
+		// check vertically
+		for (int x = 0; x < DEFAULT_COLUMNS; x++) {
+			numMatches = 0;
+			for (int y = 0; y + 1 < DEFAULT_ROWS; y++) {
+				if ((gameField[y][x] == gameField[y + 1][x])
+						&& ((gameField[y][x] == playerToCheck ? 1 : 0) > 0)) {
+					numMatches++;
+				}
+				scoreField[numMatches]++;
 			}
 		}
-		// Check diagonal /
-		for (int rows = 0; rows < DEFAULT_ROWS - 3; rows++) {
-			for (int columns = 0; columns < DEFAULT_COLUMNS - 3; columns++) {
-				int checkCount = (gameField[columns][rows] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows + 1][columns + 1] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows + 2][columns + 2] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows + 3][columns + 3] == playerToCheck) ? 1
-						: 0;
-				scoreField[checkCount]++;
-			}
-		}
-		// Check Diagonal \
-		for (int rows = 0; rows < DEFAULT_ROWS - 3; rows++) {
-			for (int columns = 3; columns < DEFAULT_COLUMNS; columns++) {
-				int checkCount = (gameField[rows][columns] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows + 1][columns - 1] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows + 2][columns - 2] == playerToCheck) ? 1
-						: 0;
-				checkCount += (gameField[rows + 3][columns - 3] == playerToCheck) ? 1
-						: 0;
-				scoreField[checkCount]++;
-			}
-		}
+
 		int result = 0;
-		result += 32 * scoreField[3];
+		result += 32 * scoreField[4];
+		result += 17 * scoreField[3];
 		result += 4 * scoreField[2];
 		result += 1 * scoreField[1];
 

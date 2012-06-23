@@ -2,8 +2,9 @@ package connect4.model;
 
 import connect4.controller.GameController;
 import connect4.model.gameField.GameField;
+import connect4.util.observer.IObserver;
 
-public class Computer extends PlayerAbstract {
+public class Computer extends PlayerAbstract implements IObserver {
 
 	GameField gameField;
 	int doNextColumn = 0;
@@ -26,6 +27,7 @@ public class Computer extends PlayerAbstract {
 
 	public Computer() {
 		super();
+
 	}
 
 	@Override
@@ -41,8 +43,9 @@ public class Computer extends PlayerAbstract {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		GameController.getInstance().addObserver(this);
 
-		maxWert(5);
+		maxWert(7);
 		return doNextColumn;
 
 	}
@@ -104,6 +107,11 @@ public class Computer extends PlayerAbstract {
 			e1.printStackTrace();
 		}
 		return state;
+
+	}
+
+	@Override
+	public void update() {
 
 	}
 
