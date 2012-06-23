@@ -1,10 +1,10 @@
-package connect4.model.gameField;
+package connectfour.model.gameField;
 
 import java.util.Random;
 
-import connect4.model.Computer;
-import connect4.model.Human;
-import connect4.model.Player;
+import connectfour.model.Computer;
+import connectfour.model.Human;
+import connectfour.model.Player;
 
 public class GameField implements Cloneable {
 
@@ -25,7 +25,7 @@ public class GameField implements Cloneable {
 		gameField = new Player[DEFAULT_ROWS][DEFAULT_COLUMNS];
 		playerWon = null;
 		gameWon = false;
-		player = new Human(new Coin(Color.RED));
+		player = new Human();
 		player.setName("Hugo");
 		opponend = new Computer();
 		opponend.setName("Boesewicht");

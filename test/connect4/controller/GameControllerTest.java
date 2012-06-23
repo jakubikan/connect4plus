@@ -10,7 +10,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import connect4.model.Player;
+import connectfour.controller.GameController;
+import connectfour.model.Player;
 
 public class GameControllerTest {
 	private Player player1;
