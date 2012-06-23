@@ -1,6 +1,7 @@
 package connect4.model;
 
 import connect4.controller.GameController;
+import connect4.model.PlayerAbstract;
 import connect4.model.gameField.GameField;
 import connect4.util.observer.IObserver;
 

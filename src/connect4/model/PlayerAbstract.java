@@ -1,14 +1,13 @@
 package connect4.model;
 
-import connect4.model.gameField.GameField;
 
 public abstract class PlayerAbstract implements Player {
 
 	protected String name;
-	protected GameField gameField;
 	protected Coin playerCoin;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see connect4.model.Player#getCoin()
 	 */
 	@Override
@@ -17,11 +16,12 @@ public abstract class PlayerAbstract implements Player {
 		return playerCoin;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
 	 * @see connect4.model.Player#setCoin(connect4.model.Coin)
 	 */
 	@Override
-	public void setCoin(Coin c) {
+	public void setCoin(final Coin c) {
 		// TODO Auto-generated method stub
 		playerCoin = c;
 
@@ -34,7 +34,7 @@ public abstract class PlayerAbstract implements Player {
 	}
 
 	@Override
-	public void setName(String string) {
+	public void setName(final String string) {
 		// TODO Auto-generated method stub
 		name = string;
 
