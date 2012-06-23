@@ -16,8 +16,6 @@ public final class GameController extends Observable {
     
     private final UndoManager undoManager = new UndoManager();
     
-    public static String newline = System.getProperty("line.separator");
-    
     private GameController() {
         this.undoManager.discardAllEdits();
         this.gameField = new GameField();

@@ -112,7 +112,7 @@ public class GameField implements Cloneable {
     public int dropCoin(final int column, final Player p) {
         int row = 0;
         row = dropCoin(row, column, p);
-        gameWon = hasWon(p, row, column);
+        gameWon = hasWon(p);
         if (gameWon) {
             playerWon = p;
         }
@@ -147,7 +147,7 @@ public class GameField implements Cloneable {
         return playerWon;
     }
     
-    private boolean hasWon(final Player playerToCheck, final int rowToCheck, final int columnToCheck) {
+    private boolean hasWon(final Player playerToCheck) {
         
         // Check horizontal
         for (int rows = 0; rows < DEFAULT_ROWS; rows++) {

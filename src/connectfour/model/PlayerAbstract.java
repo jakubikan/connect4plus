@@ -3,9 +3,12 @@ package connectfour.model;
 import connectfour.model.gameField.GameField;
 
 public abstract class PlayerAbstract implements Player {
+    private String name;
+    private GameField gameField;
     
-    protected String name;
-    protected GameField gameField;
+    public GameField getGameField() {
+        return this.gameField;
+    }
     
     @Override
     public String getName() {
@@ -15,9 +18,6 @@ public abstract class PlayerAbstract implements Player {
     
     @Override
     public void setName(String string) {
-        // TODO Auto-generated method stub
         name = string;
-        
     }
-    
 }

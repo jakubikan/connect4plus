@@ -15,7 +15,8 @@ import connectfour.util.observer.IObserver;
  */
 
 public class TUI implements UI, IObserver {
-    final private String EXIT = "quit";
+    private final String EXIT = "quit";
+    private final String newline = System.getProperty("line.separator");
     private GameController controller;
     private Player players[];
     
@@ -102,7 +103,7 @@ public class TUI implements UI, IObserver {
                 
                 playingField.append(end);
             }
-            playingField.append(GameController.newline);
+            playingField.append(newline);
         }
         return playingField.toString();
     }
