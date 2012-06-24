@@ -5,8 +5,7 @@ import connectfour.model.gameField.GameField;
 public class Computer extends PlayerAbstract {
 
 	private int doNextColumn = 3;
-	private final boolean firstMove = true;
-	private final int deepSearch = 5;
+	private final int deepSearch = 4;
 
 	@Override
 	public void surrender() {
@@ -29,7 +28,7 @@ public class Computer extends PlayerAbstract {
 		 * < 0 ? -random : random;
 		 */
 
-		maxWert(7);
+		maxWert(6);
 		return doNextColumn;
 
 	}
@@ -58,7 +57,8 @@ public class Computer extends PlayerAbstract {
 			setGameField(previousState);
 			if (zugWert > ermittelt || newState.getWinner() == this) {
 				ermittelt = zugWert;
-				if (restTiefe >= deepSearch) {
+				if (restTiefe >= deepSearch
+						|| (newState.getWinner() == this && restTiefe >= deepSearch)) {
 					doNextColumn = i;
 				}
 			}

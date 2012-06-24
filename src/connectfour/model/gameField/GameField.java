@@ -205,6 +205,7 @@ public class GameField implements Cloneable {
 		Player opponand = playerOnTurn == player ? opponend : player;
 		int plScore = evaluatePlayerScore(playerOnTurn);
 		int opScore = evaluatePlayerScore(opponand);
+
 		return plScore - opScore;
 
 	}
