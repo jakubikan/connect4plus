@@ -200,59 +200,61 @@ public class GameField implements Cloneable {
 		}
 	}
 
-	public int evaluatePlayerScore(final Player playerToCheck) {
+	public int evaluateScore() {
 
-		int[] counters = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+		Player opponand = playerOnTurn == player ? opponend : player;
+		int plScore = evaluatePlayerScore(playerOnTurn);
+		int opScore = evaluatePlayerScore(opponand);
+		return plScore - opScore;
 
-		// Horizontal spans
-		for (int y = 0; y < DEFAULT_ROWS; y++) {
-			int score = (gameField[y][0] == playerToCheck ? 1 : -1)
-					+ (gameField[y][1] == playerToCheck ? 1 : -1)
-					+ (gameField[y][2] == playerToCheck ? 1 : -1);
-			for (int x = 3; x < DEFAULT_COLUMNS; x++) {
-				score += gameField[y][x] == playerToCheck ? 1 : -1;
-				counters[score + 4]++;
-				score -= gameField[y][x - 3] == playerToCheck ? 1
-						: -1;
-			}
-		}
-		// Vertical spans
-		for (int x = 0; x < DEFAULT_COLUMNS; x++) {
-			int score = (gameField[0][x] == playerToCheck ? 1 : -1)
-					+ (gameField[1][x] == playerToCheck ? 1 : -1)
-					+ (gameField[2][x] == playerToCheck ? 1 : -1);
-			for (int y = 3; y < DEFAULT_ROWS; y++) {
-				score += gameField[y][x] == playerToCheck ? 1 : -1;
-				counters[score + 4]++;
-				score -= gameField[y - 3][x] == playerToCheck ? 1
-						: -1;
-			}
-		}
-		// Down-right (and up-left) diagonals
-		for (int y = 0; y < DEFAULT_ROWS - 3; y++) {
-			for (int x = 0; x < DEFAULT_COLUMNS - 3; x++) {
-				int score = 0;
-				for (int idx = 0; idx < 4; idx++) {
-					score += gameField[y + idx][x + idx] == playerToCheck ? 1
-							: -1;
+	}
+
+	private int evaluatePlayerScore(final Player playerToCheck) {
+
+		int counters[] = new int[100];
+
+		int count = 0;
+		for (int row = 0; row < DEFAULT_ROWS; row++) {
+			for (int col = 0; col < DEFAULT_COLUMNS - 1; col++) {
+				if (gameField[row][col] == playerToCheck
+						&& gameField[row][col] == gameField[row][col + 1]) {
+					count++;
 				}
-				counters[score + 4]++;
 			}
+			counters[count]++;
 		}
-		// up-right (and down-left) diagonals
-		for (int y = 3; y < DEFAULT_ROWS; y++) {
-			for (int x = 0; x < DEFAULT_COLUMNS - 3; x++) {
-				int score = 0;
-				for (int idx = 0; idx < 4; idx++) {
-					score += gameField[y - idx][x + idx] == playerToCheck ? 1
-							: -1;
+
+		count = 0;
+		for (int col = 0; col < DEFAULT_COLUMNS; col++) {
+			for (int row = 0; row < DEFAULT_ROWS - 1; row++) {
+				if (gameField[row][col] == playerToCheck
+						&& gameField[row][col] == gameField[row + 1][col]) {
+					count++;
 				}
-				counters[score + 4]++;
+			}
+			counters[count]++;
+		}
+		count = 0;
+		for (int row = 0; row < DEFAULT_ROWS - 1; row++) {
+			for (int col = 0; col < DEFAULT_COLUMNS - 1; col++) {
+				if (gameField[row][col] == playerToCheck
+						&& gameField[row][col] == gameField[row + 1][col + 1]) {
+					count++;
+				}
 			}
 		}
-		int result = counters[5] + 2 * counters[6] + 5 * counters[7]
-				+ 10 * counters[8] - counters[3] - 2 * counters[2]
-				- 5 * counters[1] - 10 * counters[0];
+		counters[count]++;
+		for (int row = DEFAULT_ROWS - 1; row >= 1; row--) {
+			for (int col = 0; col < DEFAULT_COLUMNS - 1; col++) {
+				if (gameField[row][col] == playerToCheck
+						&& gameField[row][col] == gameField[row - 1][col + 1]) {
+					count++;
+				}
+			}
+			counters[count]++;
+		}
+		int result = 32 * counters[3] + 17 * counters[2] + 4
+				* counters[1] + 1 * counters[0];
 		return result;
 
 	}

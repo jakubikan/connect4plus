@@ -5,6 +5,8 @@ import connectfour.model.gameField.GameField;
 public class Computer extends PlayerAbstract {
 
 	private int doNextColumn = 3;
+	private final boolean firstMove = true;
+	private final int deepSearch = 5;
 
 	@Override
 	public void surrender() {
@@ -27,7 +29,7 @@ public class Computer extends PlayerAbstract {
 		 * < 0 ? -random : random;
 		 */
 
-		maxWert(6);
+		maxWert(7);
 		return doNextColumn;
 
 	}
@@ -42,26 +44,22 @@ public class Computer extends PlayerAbstract {
 		int zugWert;
 		for (int i = 0; i < GameField.DEFAULT_COLUMNS; i++) {
 			GameField previousState = saveState();
-			if (getGameField().dropCoin(i) >= GameField.DEFAULT_ROWS) {
+			if (getGameField().dropCoin(i) >= GameField.DEFAULT_ROWS - 1) {
 				setGameField(previousState);
 				continue;
 			}
 
 			if (restTiefe <= 1) {
-				zugWert = getGameField().evaluatePlayerScore(this);
+				zugWert = getGameField().evaluateScore();
 			} else {
 				zugWert = minWert(restTiefe - 1);
 			}
 			GameField newState = saveState();
 			setGameField(previousState);
-			System.out.printf(
-					"Zugwert: %d, Ermittelt %d, Spalte:%d\n",
-					zugWert, ermittelt, i);
 			if (zugWert > ermittelt || newState.getWinner() == this) {
 				ermittelt = zugWert;
-				if (restTiefe <= 3) {
+				if (restTiefe >= deepSearch) {
 					doNextColumn = i;
-
 				}
 			}
 
@@ -74,14 +72,14 @@ public class Computer extends PlayerAbstract {
 		int zugWert;
 		for (int i = 0; i < GameField.DEFAULT_COLUMNS; i++) {
 			GameField previousState = saveState();
-			if (getGameField().dropCoin(i) >= GameField.DEFAULT_ROWS) {
+			if (getGameField().dropCoin(i) >= GameField.DEFAULT_ROWS - 1) {
 				setGameField(previousState);
 				continue;
 
 			}
 			GameField newState = saveState();
 			if (restTiefe <= 1) {
-				zugWert = getGameField().evaluatePlayerScore(this);
+				zugWert = getGameField().evaluateScore();
 			} else {
 				zugWert = maxWert(restTiefe - 1);
 			}
