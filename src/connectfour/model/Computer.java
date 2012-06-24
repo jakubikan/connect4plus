@@ -1,10 +1,10 @@
 package connectfour.model;
 
-
 public class Computer extends PlayerAbstract {
 
 	private int doNextColumn = 3;
 	private final int deepSearch = 0;
+	private boolean firstMove = true;
 
 	@Override
 	public void surrender() {
@@ -26,7 +26,10 @@ public class Computer extends PlayerAbstract {
 		 * Random r = new Random(); int random = r.nextInt() % 7; return random
 		 * < 0 ? -random : random;
 		 */
-
+		if (firstMove && getGameField().isEmpty()) {
+			firstMove = false;
+			return doNextColumn;
+		}
 		maxWert(6);
 		return doNextColumn;
 

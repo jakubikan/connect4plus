@@ -12,6 +12,7 @@ public class GameField implements Cloneable {
 	private Human player;
 	private Player opponend;
 	private Player playerOnTurn;
+	private int modCount = 0;
 
 	private Player playerWon;
 
@@ -99,7 +100,7 @@ public class GameField implements Cloneable {
 	public int dropCoin(final int column) {
 		int row = 0;
 		row = dropCoin(column, playerOnTurn);
-
+		modCount++;
 		return row;
 	}
 
@@ -136,6 +137,11 @@ public class GameField implements Cloneable {
 
 	public Player getPlayerAt(final int row, final int column) {
 		return gameField[row][column];
+	}
+
+	public boolean isEmpty() {
+		return modCount == 0;
+
 	}
 
 	public Player getWinner() {
@@ -208,50 +214,52 @@ public class GameField implements Cloneable {
 
 	private int evaluatePlayerScore(final Player playerToCheck) {
 
-		int counters[] = new int[100];
+		int counters[] = new int[10];
 
 		int count = 0;
 		for (int row = 0; row < DEFAULT_ROWS; row++) {
+			count = 0;
 			for (int col = 0; col < DEFAULT_COLUMNS - 1; col++) {
 				if (gameField[row][col] == playerToCheck
 						&& gameField[row][col] == gameField[row][col + 1]) {
 					count++;
 				}
+				counters[count]++;
 			}
-			counters[count]++;
 		}
 
-		count = 0;
 		for (int col = 0; col < DEFAULT_COLUMNS; col++) {
+			count = 0;
 			for (int row = 0; row < DEFAULT_ROWS - 1; row++) {
 				if (gameField[row][col] == playerToCheck
 						&& gameField[row][col] == gameField[row + 1][col]) {
 					count++;
 				}
+				counters[count]++;
 			}
-			counters[count]++;
 		}
-		count = 0;
 		for (int row = 0; row < DEFAULT_ROWS - 1; row++) {
+			count = 0;
 			for (int col = 0; col < DEFAULT_COLUMNS - 1; col++) {
 				if (gameField[row][col] == playerToCheck
 						&& gameField[row][col] == gameField[row + 1][col + 1]) {
 					count++;
 				}
+				counters[count]++;
 			}
 		}
-		counters[count]++;
 		for (int row = DEFAULT_ROWS - 1; row >= 1; row--) {
+			count = 0;
 			for (int col = 0; col < DEFAULT_COLUMNS - 1; col++) {
 				if (gameField[row][col] == playerToCheck
 						&& gameField[row][col] == gameField[row - 1][col + 1]) {
 					count++;
 				}
+				counters[count]++;
 			}
-			counters[count]++;
 		}
 		int result = 32 * counters[3] + 17 * counters[2] + 4
-				* counters[1] + 1 * counters[0];
+				* counters[1];
 		return result;
 
 	}
