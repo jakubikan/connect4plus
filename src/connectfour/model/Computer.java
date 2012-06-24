@@ -5,7 +5,7 @@ import connectfour.model.gameField.GameField;
 public class Computer extends PlayerAbstract {
 
 	private int doNextColumn = 3;
-	private final int deepSearch = 4;
+	private final int deepSearch = 0;
 
 	@Override
 	public void surrender() {
@@ -72,6 +72,7 @@ public class Computer extends PlayerAbstract {
 		int zugWert;
 		for (int i = 0; i < GameField.DEFAULT_COLUMNS; i++) {
 			GameField previousState = saveState();
+			getGameField().changePlayerTurn();
 			if (getGameField().dropCoin(i) >= GameField.DEFAULT_ROWS - 1) {
 				setGameField(previousState);
 				continue;
