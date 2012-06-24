@@ -1,12 +1,12 @@
 /**
  * 
  */
-package connectfour.model.gameField;
+package connectfour.controller;
 
 import javax.swing.undo.AbstractUndoableEdit;
 import javax.swing.undo.CannotRedoException;
 
-import connectfour.controller.GameController;
+import connectfour.model.gameField.GameField;
 
 /**
  * @author jakub

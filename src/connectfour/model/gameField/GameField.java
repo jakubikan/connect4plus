@@ -18,7 +18,8 @@ public class GameField implements Cloneable {
 	private Player playerOnTurn;
 
 	private Player playerWon;
-	private boolean gameWon = false;
+
+	boolean gameWon;
 
 	public GameField() {
 		super();
@@ -99,20 +100,17 @@ public class GameField implements Cloneable {
 		return player;
 	}
 
-	// This dropCoin function delegates to the
-	// player.dropCoin function
-	// The Player therefore calls the dropCoin(colum, player)
-	// function
 	public int dropCoin(final int column) {
 		int row = 0;
 		row = dropCoin(column, playerOnTurn);
+
 		return row;
 	}
 
 	public int dropCoin(final int column, final Player p) {
 		int row = 0;
 		row = dropCoin(row, column, p);
-		gameWon = hasWon(p, row, column);
+		gameWon = hasWon(p);
 		if (gameWon) {
 			playerWon = p;
 		}
@@ -148,10 +146,7 @@ public class GameField implements Cloneable {
 		return playerWon;
 	}
 
-	private boolean hasWon(final Player playerToCheck,
-			final int rowToCheck, final int columnToCheck) {
-		// see if there are 4 disks in a row, horizontal, vertical or diagonal
-		// horizontal rows
+	private boolean hasWon(final Player playerToCheck) {
 		for (int row = 0; row < DEFAULT_ROWS; row++) {
 			for (int col = 0; col < DEFAULT_COLUMNS - 3; col++) {
 				if (gameField[row][col] == playerToCheck
@@ -162,7 +157,6 @@ public class GameField implements Cloneable {
 				}
 			}
 		}
-		// vertical columns
 		for (int col = 0; col < DEFAULT_COLUMNS; col++) {
 			for (int row = 0; row < DEFAULT_ROWS - 3; row++) {
 				if (gameField[row][col] == playerToCheck
@@ -173,7 +167,6 @@ public class GameField implements Cloneable {
 				}
 			}
 		}
-		// diagonal lower left to upper right
 		for (int row = 0; row < DEFAULT_ROWS - 3; row++) {
 			for (int col = 0; col < DEFAULT_COLUMNS - 3; col++) {
 				if (gameField[row][col] == playerToCheck
@@ -184,7 +177,6 @@ public class GameField implements Cloneable {
 				}
 			}
 		}
-		// diagonal upper left to lower right
 		for (int row = DEFAULT_ROWS - 1; row >= 3; row--) {
 			for (int col = 0; col < DEFAULT_COLUMNS - 3; col++) {
 				if (gameField[row][col] == playerToCheck
@@ -208,44 +200,61 @@ public class GameField implements Cloneable {
 		}
 	}
 
-	public int evaluatePlayerScore() {
+	public int evaluatePlayerScore(final Player playerToCheck) {
 
-		int[] scoreField = new int[10];
-		Player playerToCheck = getPlayerOnTurn();
+		int[] counters = { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
-		int numMatches;
-
-		// check horizontally
+		// Horizontal spans
 		for (int y = 0; y < DEFAULT_ROWS; y++) {
-			numMatches = 0;
-			for (int x = 0; x + 1 < DEFAULT_COLUMNS; x++) {
-				if ((gameField[y][x] == gameField[y][x + 1])
-						&& ((gameField[y][x] == playerToCheck ? 1 : 0) > 0)) {
-					numMatches++;
-				}
-				scoreField[numMatches]++;
+			int score = (gameField[y][0] == playerToCheck ? 1 : -1)
+					+ (gameField[y][1] == playerToCheck ? 1 : -1)
+					+ (gameField[y][2] == playerToCheck ? 1 : -1);
+			for (int x = 3; x < DEFAULT_COLUMNS; x++) {
+				score += gameField[y][x] == playerToCheck ? 1 : -1;
+				counters[score + 4]++;
+				score -= gameField[y][x - 3] == playerToCheck ? 1
+						: -1;
 			}
 		}
-
-		// check vertically
+		// Vertical spans
 		for (int x = 0; x < DEFAULT_COLUMNS; x++) {
-			numMatches = 0;
-			for (int y = 0; y + 1 < DEFAULT_ROWS; y++) {
-				if ((gameField[y][x] == gameField[y + 1][x])
-						&& ((gameField[y][x] == playerToCheck ? 1 : 0) > 0)) {
-					numMatches++;
-				}
-				scoreField[numMatches]++;
+			int score = (gameField[0][x] == playerToCheck ? 1 : -1)
+					+ (gameField[1][x] == playerToCheck ? 1 : -1)
+					+ (gameField[2][x] == playerToCheck ? 1 : -1);
+			for (int y = 3; y < DEFAULT_ROWS; y++) {
+				score += gameField[y][x] == playerToCheck ? 1 : -1;
+				counters[score + 4]++;
+				score -= gameField[y - 3][x] == playerToCheck ? 1
+						: -1;
 			}
 		}
-
-		int result = 0;
-		result += 32 * scoreField[4];
-		result += 17 * scoreField[3];
-		result += 4 * scoreField[2];
-		result += 1 * scoreField[1];
-
+		// Down-right (and up-left) diagonals
+		for (int y = 0; y < DEFAULT_ROWS - 3; y++) {
+			for (int x = 0; x < DEFAULT_COLUMNS - 3; x++) {
+				int score = 0;
+				for (int idx = 0; idx < 4; idx++) {
+					score += gameField[y + idx][x + idx] == playerToCheck ? 1
+							: -1;
+				}
+				counters[score + 4]++;
+			}
+		}
+		// up-right (and down-left) diagonals
+		for (int y = 3; y < DEFAULT_ROWS; y++) {
+			for (int x = 0; x < DEFAULT_COLUMNS - 3; x++) {
+				int score = 0;
+				for (int idx = 0; idx < 4; idx++) {
+					score += gameField[y - idx][x + idx] == playerToCheck ? 1
+							: -1;
+				}
+				counters[score + 4]++;
+			}
+		}
+		int result = counters[5] + 2 * counters[6] + 5 * counters[7]
+				+ 10 * counters[8] - counters[3] - 2 * counters[2]
+				- 5 * counters[1] - 10 * counters[0];
 		return result;
+
 	}
 
 	/*
@@ -261,4 +270,5 @@ public class GameField implements Cloneable {
 		}
 		return gf;
 	}
+
 }
