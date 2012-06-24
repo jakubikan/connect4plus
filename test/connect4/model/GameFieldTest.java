@@ -6,9 +6,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import connectfour.model.GameField;
 import connectfour.model.Human;
 import connectfour.model.Player;
-import connectfour.model.gameField.GameField;
 
 public class GameFieldTest {
 	GameField gameField;

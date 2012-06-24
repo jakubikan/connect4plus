@@ -1,6 +1,5 @@
 package connectfour.model;
 
-import connectfour.model.gameField.GameField;
 
 public abstract class PlayerAbstract implements Player {
 	String name;

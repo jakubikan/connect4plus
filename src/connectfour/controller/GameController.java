@@ -2,9 +2,9 @@ package connectfour.controller;
 
 import javax.swing.undo.UndoManager;
 
+import connectfour.model.GameField;
 import connectfour.model.Human;
 import connectfour.model.Player;
-import connectfour.model.gameField.GameField;
 import connectfour.util.observer.Observable;
 
 public final class GameController extends Observable {

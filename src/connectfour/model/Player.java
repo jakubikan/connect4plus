@@ -1,6 +1,5 @@
 package connectfour.model;
 
-import connectfour.model.gameField.GameField;
 
 
 public interface Player {

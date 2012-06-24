@@ -1,10 +1,6 @@
-package connectfour.model.gameField;
+package connectfour.model;
 
 import java.util.Random;
-
-import connectfour.model.Computer;
-import connectfour.model.Human;
-import connectfour.model.Player;
 
 public class GameField implements Cloneable {
 
