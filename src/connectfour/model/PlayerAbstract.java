@@ -1,8 +1,7 @@
 package connectfour.model;
 
-
 public abstract class PlayerAbstract implements Player {
-	String name;
+	private String name;
 	private GameField gameField;
 
 	@Override
@@ -15,8 +14,6 @@ public abstract class PlayerAbstract implements Player {
 		try {
 			this.gameField = gameField.clone();
 		} catch (CloneNotSupportedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 	}
 

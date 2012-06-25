@@ -54,25 +54,17 @@ public final class GameController extends Observable {
 		if (!userHasWon()) {
 			try {
 
-				System.out.println("Copying State");
 				GameField previousState = null;
 				try {
 					previousState = gameField.clone();
 				} catch (CloneNotSupportedException e1) {
-					System.err.println(e1.toString());
 				}
 
-				System.out.println("Getting Player");
 				Player p = gameField.getPlayerOnTurn();
 				p.setGameField(gameField);
 
-				System.out.println("Trying to Calculate Move");
-
 				int move = p.dropCoin(col);
-				System.out.println(p.getName() + " making move: "
-						+ move);
 
-				System.out.println("Trying to make Move");
 				gameField.dropCoin(move);
 				gameField.changePlayerTurn(); // Change only on success the
 												// players turnk
@@ -82,7 +74,6 @@ public final class GameController extends Observable {
 				try {
 					newState = gameField.clone();
 				} catch (CloneNotSupportedException e) {
-					System.err.println(e.toString());
 				}
 
 				String undoInfo = String.format(
@@ -91,12 +82,9 @@ public final class GameController extends Observable {
 				GameFieldEdit edit = new GameFieldEdit(previousState,
 						newState, undoInfo);
 				undoManager.addEdit(edit);
-				System.out.println("Added Undo for "
-						+ undoManager.getUndoPresentationName());
 
 				this.notifyObservers();
 			} catch (IllegalArgumentException e) {
-				System.out.println("Ungueltige Eingabe!\n");
 			}
 		}
 		return success;
@@ -139,11 +127,8 @@ public final class GameController extends Observable {
 
 	public void undoStep() {
 		if (undoManager.canUndo()) {
-			System.out.println("Do Undo "
-					+ undoManager.getPresentationName());
 			undoManager.undo();
 		} else {
-			System.out.println("Cant Undo");
 			return;
 		}
 	}
@@ -153,11 +138,8 @@ public final class GameController extends Observable {
 	 */
 	public void redoStep() {
 		if (undoManager.canRedo()) {
-			System.out.println("Do Redo "
-					+ undoManager.getPresentationName());
 			undoManager.redo();
 		} else {
-			System.out.println("Cant Redo");
 			return;
 		}
 	}

@@ -5,6 +5,7 @@ package connectfour.controller;
 
 import javax.swing.undo.AbstractUndoableEdit;
 import javax.swing.undo.CannotRedoException;
+import javax.swing.undo.CannotUndoException;
 
 import connectfour.model.GameField;
 
@@ -44,7 +45,7 @@ public class GameFieldEdit extends AbstractUndoableEdit {
 	}
 
 	@Override
-	public void undo() throws CannotRedoException {
+	public void undo() throws CannotUndoException {
 		super.undo();
 		GameController.getInstance().useState(previousState);
 	}

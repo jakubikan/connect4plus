@@ -3,7 +3,7 @@ package connectfour.model;
 public class Computer extends PlayerAbstract {
 
 	private int doNextColumn = 3;
-	private final int deepSearch = 5;
+	private final int deepSearch = 6;
 	private boolean firstMove = true;
 
 	@Override
@@ -112,7 +112,6 @@ public class Computer extends PlayerAbstract {
 		try {
 			state = getGameField().clone();
 		} catch (CloneNotSupportedException e1) {
-			e1.printStackTrace();
 		}
 		return state;
 

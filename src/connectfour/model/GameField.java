@@ -16,7 +16,7 @@ public class GameField implements Cloneable {
 
 	private Player playerWon;
 
-	boolean gameWon;
+	private boolean gameWon;
 
 	public GameField() {
 		super();
@@ -51,9 +51,9 @@ public class GameField implements Cloneable {
 		for (int i = DEFAULT_ROWS - 1; i >= 0; --i) {
 			for (int j = 0; j < DEFAULT_COLUMNS; ++j) {
 				Player actualPlayer = gameField[i][j];
-				if (actualPlayer == player) {
+				if (actualPlayer.equals(player)) {
 					b.append("[o]");
-				} else if (actualPlayer == opponend) {
+				} else if (actualPlayer.equals(opponend)) {
 					b.append("[x]");
 				} else {
 					b.append("[-]");
@@ -149,36 +149,17 @@ public class GameField implements Cloneable {
 	}
 
 	private boolean hasWon(final Player playerToCheck) {
-		for (int row = 0; row < DEFAULT_ROWS; row++) {
-			for (int col = 0; col < DEFAULT_COLUMNS - 3; col++) {
-				if (gameField[row][col] == playerToCheck
-						&& gameField[row][col] == gameField[row][col + 1]
-						&& gameField[row][col] == gameField[row][col + 2]
-						&& gameField[row][col] == gameField[row][col + 3]) {
-					return true;
-				}
-			}
-		}
-		for (int col = 0; col < DEFAULT_COLUMNS; col++) {
-			for (int row = 0; row < DEFAULT_ROWS - 3; row++) {
-				if (gameField[row][col] == playerToCheck
-						&& gameField[row][col] == gameField[row + 1][col]
-						&& gameField[row][col] == gameField[row + 2][col]
-						&& gameField[row][col] == gameField[row + 3][col]) {
-					return true;
-				}
-			}
-		}
-		for (int row = 0; row < DEFAULT_ROWS - 3; row++) {
-			for (int col = 0; col < DEFAULT_COLUMNS - 3; col++) {
-				if (gameField[row][col] == playerToCheck
-						&& gameField[row][col] == gameField[row + 1][col + 1]
-						&& gameField[row][col] == gameField[row + 2][col + 2]
-						&& gameField[row][col] == gameField[row + 3][col + 3]) {
-					return true;
-				}
-			}
-		}
+		boolean ret = false;
+		ret |= checkHorizontal(playerToCheck);
+		ret |= checkVertical(playerToCheck);
+		ret |= checkLeftRightDiagonal(playerToCheck);
+		ret |= checkLeftRigthDiagonal(playerToCheck);
+
+		return ret;
+
+	}
+
+	private boolean checkLeftRigthDiagonal(final Player playerToCheck) {
 		for (int row = DEFAULT_ROWS - 1; row >= 3; row--) {
 			for (int col = 0; col < DEFAULT_COLUMNS - 3; col++) {
 				if (gameField[row][col] == playerToCheck
@@ -189,22 +170,63 @@ public class GameField implements Cloneable {
 				}
 			}
 		}
-
 		return false;
+	}
 
+	private boolean checkLeftRightDiagonal(final Player playerToCheck) {
+		for (int row = 0; row < DEFAULT_ROWS - 3; row++) {
+			for (int col = 0; col < DEFAULT_COLUMNS - 3; col++) {
+				if (gameField[row][col] == playerToCheck
+						&& gameField[row][col] == gameField[row + 1][col + 1]
+						&& gameField[row][col] == gameField[row + 2][col + 2]
+						&& gameField[row][col] == gameField[row + 3][col + 3]) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	private boolean checkVertical(final Player playerToCheck) {
+		for (int col = 0; col < DEFAULT_COLUMNS; col++) {
+			for (int row = 0; row < DEFAULT_ROWS - 3; row++) {
+				if (gameField[row][col] == playerToCheck
+						&& gameField[row][col] == gameField[row + 1][col]
+						&& gameField[row][col] == gameField[row + 2][col]
+						&& gameField[row][col] == gameField[row + 3][col]) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	private boolean checkHorizontal(final Player playerToCheck) {
+		for (int row = 0; row < DEFAULT_ROWS; row++) {
+			for (int col = 0; col < DEFAULT_COLUMNS - 3; col++) {
+				if (gameField[row][col] == playerToCheck
+						&& gameField[row][col] == gameField[row][col + 1]
+						&& gameField[row][col] == gameField[row][col + 2]
+						&& gameField[row][col] == gameField[row][col + 3]) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	public void changePlayerTurn() {
-		if (playerOnTurn == opponend) {
+		if (playerOnTurn.equals(opponend)) {
 			playerOnTurn = player;
-		} else if (playerOnTurn == player) {
+		} else if (playerOnTurn.equals(player)) {
 			playerOnTurn = opponend;
 		}
 	}
 
 	public int evaluateScore() {
 
-		Player opponand = playerOnTurn == player ? opponend : player;
+		Player opponand = playerOnTurn.equals(player) ? opponend
+				: player;
 		int plScore = evaluatePlayerScore(playerOnTurn);
 		int opScore = evaluatePlayerScore(opponand);
 
