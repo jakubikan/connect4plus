@@ -72,6 +72,7 @@ public final class GameController extends Observable {
 				if (row >= GameField.DEFAULT_ROWS) {
 					success = false;
 					useState(previousState);
+					return success;
 
 				}
 				success = true;
