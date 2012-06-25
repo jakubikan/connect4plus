@@ -3,7 +3,7 @@ package connectfour.model;
 public class Computer extends PlayerAbstract {
 
 	private int doNextColumn = 3;
-	private final int deepSearch = 0;
+	private final int deepSearch = 5;
 	private boolean firstMove = true;
 
 	@Override
@@ -45,6 +45,10 @@ public class Computer extends PlayerAbstract {
 		int zugWert;
 		for (int i = 0; i < GameField.DEFAULT_COLUMNS; i++) {
 			GameField previousState = saveState();
+			if (getGameField().getPlayerOnTurn() != this) {
+				getGameField().changePlayerTurn();
+			}
+
 			if (getGameField().dropCoin(i) >= GameField.DEFAULT_ROWS - 1) {
 				setGameField(previousState);
 				continue;
@@ -57,7 +61,10 @@ public class Computer extends PlayerAbstract {
 			}
 			GameField newState = saveState();
 			setGameField(previousState);
-			if (zugWert > ermittelt || newState.getWinner() == this) {
+			if (newState.getWinner() != null) {
+				zugWert = +1000000;
+			}
+			if (zugWert > ermittelt) {
 				ermittelt = zugWert;
 				if (restTiefe >= deepSearch
 						|| (newState.getWinner() == this && restTiefe >= deepSearch)) {
@@ -74,7 +81,9 @@ public class Computer extends PlayerAbstract {
 		int zugWert;
 		for (int i = 0; i < GameField.DEFAULT_COLUMNS; i++) {
 			GameField previousState = saveState();
-			getGameField().changePlayerTurn();
+			if (getGameField().getPlayerOnTurn() == this) {
+				getGameField().changePlayerTurn();
+			}
 			if (getGameField().dropCoin(i) >= GameField.DEFAULT_ROWS - 1) {
 				setGameField(previousState);
 				continue;
@@ -85,6 +94,10 @@ public class Computer extends PlayerAbstract {
 				zugWert = getGameField().evaluateScore();
 			} else {
 				zugWert = maxWert(restTiefe - 1);
+			}
+
+			if (newState.getWinner() != null) {
+				zugWert = -1000000;
 			}
 			setGameField(previousState);
 			if (zugWert < ermittelt) {

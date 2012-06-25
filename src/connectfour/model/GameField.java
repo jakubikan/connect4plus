@@ -224,8 +224,8 @@ public class GameField implements Cloneable {
 						&& gameField[row][col] == gameField[row][col + 1]) {
 					count++;
 				}
-				counters[count]++;
 			}
+			counters[count]++;
 		}
 
 		for (int col = 0; col < DEFAULT_COLUMNS; col++) {
@@ -235,8 +235,8 @@ public class GameField implements Cloneable {
 						&& gameField[row][col] == gameField[row + 1][col]) {
 					count++;
 				}
-				counters[count]++;
 			}
+			counters[count]++;
 		}
 		for (int row = 0; row < DEFAULT_ROWS - 1; row++) {
 			count = 0;
@@ -245,8 +245,8 @@ public class GameField implements Cloneable {
 						&& gameField[row][col] == gameField[row + 1][col + 1]) {
 					count++;
 				}
-				counters[count]++;
 			}
+			counters[count]++;
 		}
 		for (int row = DEFAULT_ROWS - 1; row >= 1; row--) {
 			count = 0;
@@ -255,11 +255,17 @@ public class GameField implements Cloneable {
 						&& gameField[row][col] == gameField[row - 1][col + 1]) {
 					count++;
 				}
-				counters[count]++;
 			}
+			counters[count]++;
 		}
-		int result = 32 * counters[3] + 17 * counters[2] + 4
-				* counters[1];
+
+		int result = 0;
+		int scoreMulitplier = 1;
+		for (int counter : counters) {
+			result += counter * scoreMulitplier;
+			scoreMulitplier *= 2;
+		}
+
 		return result;
 
 	}
