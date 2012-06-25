@@ -65,9 +65,15 @@ public final class GameController extends Observable {
 
 				int move = p.dropCoin(col);
 
-				gameField.dropCoin(move);
+				int row = gameField.dropCoin(move);
+
 				gameField.changePlayerTurn(); // Change only on success the
 												// players turnk
+				if (row >= GameField.DEFAULT_ROWS) {
+					success = false;
+					useState(previousState);
+
+				}
 				success = true;
 
 				GameField newState = null;

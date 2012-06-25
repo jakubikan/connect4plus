@@ -49,7 +49,7 @@ public class Computer extends PlayerAbstract {
 				getGameField().changePlayerTurn();
 			}
 
-			if (getGameField().dropCoin(i) >= GameField.DEFAULT_ROWS - 1) {
+			if (getGameField().dropCoin(i) >= GameField.DEFAULT_ROWS) {
 				setGameField(previousState);
 				continue;
 			}
@@ -84,7 +84,7 @@ public class Computer extends PlayerAbstract {
 			if (getGameField().getPlayerOnTurn() == this) {
 				getGameField().changePlayerTurn();
 			}
-			if (getGameField().dropCoin(i) >= GameField.DEFAULT_ROWS - 1) {
+			if (getGameField().dropCoin(i) >= GameField.DEFAULT_ROWS) {
 				setGameField(previousState);
 				continue;
 
