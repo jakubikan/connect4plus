@@ -18,9 +18,9 @@ import connectfour.util.observer.IObserver;
 
 @SuppressWarnings("serial")
 final class ToolBar extends JPanel {
-    private final String UNDO = "previous";
-    private final String REDO = "next";
-    private final String NEW_GAME = "new game";
+    private final String undo = "previous";
+    private final String redo = "next";
+    private final String new_game = "new game";
     
     private final JToolBar toolBar = new JToolBar("Toolbar");
     private final IObserver observer;
@@ -36,15 +36,15 @@ final class ToolBar extends JPanel {
     private void addButtons() {
         JButton button = null;
         
-        button = makeNavigationButton(NEW_GAME, "New Game", "New Game");
+        button = makeNavigationButton(new_game, "New Game", "New Game");
         button.addMouseListener(new NewGameEvent(observer));
         toolBar.add(button);
         
-        button = makeNavigationButton(UNDO, "Undo", "Undo");
+        button = makeNavigationButton(undo, "Undo", "Undo");
         button.addMouseListener(new UndoEvent(observer));
         toolBar.add(button);
         
-        button = makeNavigationButton(REDO, "Redo", "Redo");
+        button = makeNavigationButton(redo, "Redo", "Redo");
         button.addMouseListener(new RedoEvent(observer));
         toolBar.add(button);
     }
