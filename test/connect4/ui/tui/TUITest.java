@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import connectfour.controller.GameController;
+import connectfour.model.Human;
 import connectfour.model.Player;
 import connectfour.ui.tui.TUI;
 
@@ -24,29 +25,14 @@ public class TUITest {
 	@Before
 	public void setUp() throws Exception {
 		// For this test player2 should begin.
-		do {
-			GameController.getInstance().newGame();
-
-			player1 = GameController.getInstance().getPlayers()[0];
-			player2 = GameController.getInstance().getPlayers()[1];
-		} while (GameController.getInstance().getPlayerOnTurn() != player2);
+		player1 = new Human();
+		player2 = new Human();
+		GameController.getInstance().newGame();
+		GameController.getInstance().setPlayer((Human) player1);
+		GameController.getInstance().setOpponend(player2);
 	}
 
 	@Test
-	public void test() {
-		dropCointTest1();
-		String newline = "\n";
-
-		String strCoinTest1 = "|___|_O_|___|___|___|___|___|"
-				+ newline + "|___|_X_|___|___|___|___|___|" + newline
-				+ "|___|_O_|___|___|___|___|___|" + newline
-				+ "|___|_X_|___|___|___|___|___|" + newline
-				+ "|___|_O_|___|_O_|___|___|___|" + newline
-				+ "|___|_X_|___|_X_|___|___|___|" + newline;
-
-		assertEquals(strCoinTest1, new TUI().renderGameField());
-	}
-
 	public void dropCointTest1() {
 		boolean success = true;
 		success &= GameController.getInstance()
@@ -67,5 +53,16 @@ public class TUITest {
 				.dropCoinWithSuccessFeedback(1);
 
 		assertTrue(success);
+
+		String newline = "\n";
+
+		String strCoinTest1 = "|___|_O_|___|___|___|___|___|"
+				+ newline + "|___|_X_|___|___|___|___|___|" + newline
+				+ "|___|_O_|___|___|___|___|___|" + newline
+				+ "|___|_X_|___|___|___|___|___|" + newline
+				+ "|___|_O_|___|_O_|___|___|___|" + newline
+				+ "|___|_X_|___|_X_|___|___|___|" + newline;
+
+		assertEquals(strCoinTest1, new TUI().renderGameField());
 	}
 }
