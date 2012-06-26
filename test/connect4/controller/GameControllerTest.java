@@ -23,13 +23,16 @@ public class GameControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		gc = GameController.getInstance();
+		gc.newGame();
 		gc.setOpponend(player1);
 		gc.setOpponend(player2);
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		GameController.getInstance().newGame();
+		gc.newGame();
+		gc.setOpponend(player1);
+		gc.setOpponend(player2);
 	}
 
 	@Test
@@ -96,8 +99,6 @@ public class GameControllerTest {
 
 	@Test
 	public void undoStepTest() {
-		gc.newGame();
-		System.out.println("Undo test");
 		boolean success = true;
 		success &= gc.dropCoinWithSuccessFeedback(0);
 		success &= gc.dropCoinWithSuccessFeedback(0);
@@ -108,7 +109,6 @@ public class GameControllerTest {
 		Player p = gc.getGameField().getPlayerAt(4, 0);
 		assertNotNull(p);
 		gc.undoStep();
-		System.out.println(gc.getGameField());
 		p = null;
 		p = gc.getGameField().getPlayerAt(4, 0);
 		assertNull(p);
@@ -116,8 +116,6 @@ public class GameControllerTest {
 
 	@Test
 	public void redoStepTest() {
-		gc.newGame();
-		System.out.println("Undo test");
 		boolean success = true;
 		success &= gc.dropCoinWithSuccessFeedback(0);
 		success &= gc.dropCoinWithSuccessFeedback(0);
@@ -128,7 +126,6 @@ public class GameControllerTest {
 		Player p = gc.getGameField().getPlayerAt(4, 0);
 		assertNotNull(p);
 		gc.undoStep();
-		System.out.println(gc.getGameField());
 		p = null;
 		p = gc.getGameField().getPlayerAt(4, 0);
 		assertNull(p);
