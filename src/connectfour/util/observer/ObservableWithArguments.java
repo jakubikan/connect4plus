@@ -6,18 +6,20 @@ import java.util.List;
 
 public class ObservableWithArguments extends Observable {
     
-    private List<IObserverWithArguments> subscribers = new ArrayList<IObserverWithArguments>(2);
+    private List<IObserverWithArguments> subscribersWithArguments = new ArrayList<IObserverWithArguments>(
+                                            2);
     
     public void addObserver(IObserverWithArguments s) {
-        subscribers.add(s);
+        subscribersWithArguments.add(s);
     }
     
     public void removeObserver(IObserverWithArguments s) {
-        subscribers.remove(s);
+        subscribersWithArguments.remove(s);
     }
     
     public void notifyObservers(Object arg) {
-        for (Iterator<IObserverWithArguments> iter = subscribers.iterator(); iter.hasNext();) {
+        for (Iterator<IObserverWithArguments> iter = subscribersWithArguments.iterator(); iter
+                                                .hasNext();) {
             IObserverWithArguments observer = iter.next();
             observer.update(arg);
         }

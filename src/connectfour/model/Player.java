@@ -1,8 +1,8 @@
 package connectfour.model;
 
-import connectfour.util.observer.IObserver;
+import connectfour.util.observer.IObserverWithArguments;
 
-public interface Player extends IObserver {
+public interface Player extends IObserverWithArguments {
     
     void surrender();
     

@@ -6,9 +6,9 @@ import connectfour.model.GameField;
 import connectfour.model.Human;
 import connectfour.model.Player;
 import connectfour.util.observer.IObserverWithArguments;
-import connectfour.util.observer.Observable;
+import connectfour.util.observer.ObservableWithArguments;
 
-public final class GameController extends Observable implements IObserverWithArguments {
+public final class GameController extends ObservableWithArguments implements IObserverWithArguments {
     
     private GameField gameField;
     private static GameController instance;
@@ -27,6 +27,7 @@ public final class GameController extends Observable implements IObserverWithArg
         gameField = new GameField(this);
         this.addObserver(gameField.getOpponend());
         this.notifyObservers();
+        this.notifyObservers(gameField);
     }
     
     public String getWinner() {
@@ -90,6 +91,7 @@ public final class GameController extends Observable implements IObserverWithArg
                 undoManager.addEdit(edit);
                 
                 this.notifyObservers();
+                this.notifyObservers(gameField);
             } catch (IllegalArgumentException e) {}
         }
         return success;
@@ -195,5 +197,4 @@ public final class GameController extends Observable implements IObserverWithArg
         int columnToDrop = (Integer) arg;
         this.dropCoinWithSuccessFeedback(columnToDrop);
     }
-    
 }

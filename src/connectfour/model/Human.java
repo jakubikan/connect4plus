@@ -24,5 +24,5 @@ public class Human extends PlayerAbstract {
     }
     
     @Override
-    public void update() {}
+    public void update(Object arg) {}
 }
