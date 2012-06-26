@@ -123,6 +123,7 @@ public class Computer extends PlayerAbstract {
 
 	@Override
 	public void update() {
+		this.setGameField(GameController.getInstance().getGameField());
 		if (GameController.getInstance().getGameField()
 				.getPlayerOnTurn() == this) {
 			int columnToDrop = this.getMove();
