@@ -1,5 +1,7 @@
 package connectfour.ui.gui.swing.controller;
 
+import java.util.List;
+
 import connectfour.ui.gui.swing.widgets.ArrowCell;
 import connectfour.util.observer.IObserverWithArguments;
 
@@ -10,7 +12,7 @@ import connectfour.util.observer.IObserverWithArguments;
 
 public final class ArrowManager implements IObserverWithArguments {
     private int currentColumn;
-    private ArrowCell[] arrowCells;
+    private List<ArrowCell> arrowCells;
     private static ArrowManager instance;
     
     private ArrowManager() {}
@@ -22,19 +24,19 @@ public final class ArrowManager implements IObserverWithArguments {
         return instance;
     }
     
-    public void setArrowCells(ArrowCell[] arrowCells) {
+    public void setArrowCells(List<ArrowCell> arrowCells) {
         this.arrowCells = arrowCells;
     }
     
     public void markColumnWhereMouseHasEntered(int col) {
         if (col != this.currentColumn) {
             // Hide arrow in old column
-            this.arrowCells[this.currentColumn].showArrow(false);
-            this.arrowCells[this.currentColumn].repaint();
+            this.arrowCells.get(this.currentColumn).showArrow(false);
+            this.arrowCells.get(this.currentColumn).repaint();
             
             // Show arrow in new column
-            this.arrowCells[col].showArrow(true);
-            this.arrowCells[col].repaint();
+            this.arrowCells.get(col).showArrow(true);
+            this.arrowCells.get(col).repaint();
             
             this.currentColumn = col;
         }

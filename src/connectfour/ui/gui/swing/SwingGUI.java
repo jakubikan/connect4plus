@@ -3,6 +3,8 @@ package connectfour.ui.gui.swing;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -29,7 +31,8 @@ public class SwingGUI extends JFrame implements UI, IObserver {
     // UI Stuff
     private final JPanel cellWrapper = new JPanel();
     private final GUICoin coinCells[][] = new GUICoin[GameField.DEFAULT_ROWS][GameField.DEFAULT_COLUMNS];
-    private final ArrowCell arrowCells[] = new ArrowCell[GameField.DEFAULT_COLUMNS];
+    private final List<ArrowCell> listArrowCells = new ArrayList<ArrowCell>(
+                                            GameField.DEFAULT_COLUMNS);
     private final StatusDisplay statusDisplay = new StatusDisplay();
     
     // Game Stuff
@@ -44,15 +47,14 @@ public class SwingGUI extends JFrame implements UI, IObserver {
         }
         
         for (int col = 0; col < GameField.DEFAULT_COLUMNS; col++) {
-            arrowCells[col] = new ArrowCell(col);
+            listArrowCells.add(new ArrowCell(col));
         }
-        
-        ArrowManager.getInstance().setArrowCells(this.arrowCells);
+        ArrowManager.getInstance().setArrowCells(listArrowCells);
     }
     
     private void addCells() {
         for (int col = 0; col < GameField.DEFAULT_COLUMNS; col++) {
-            cellWrapper.add(arrowCells[col]);
+            cellWrapper.add(listArrowCells.get(col));
         }
         
         for (int row = GameField.DEFAULT_ROWS - 1; row >= 0; row--) {
