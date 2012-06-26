@@ -11,19 +11,20 @@ import org.junit.Before;
 import org.junit.Test;
 
 import connectfour.controller.GameController;
+import connectfour.model.Human;
 import connectfour.model.Player;
 
 public class GameControllerTest {
-	private Player player1;
-	private Player player2;
+	private final Human player1 = new Human();
+	private final Player player2 = new Human();
 	private int row;
 	GameController gc;
 
 	@Before
 	public void setUp() throws Exception {
 		gc = GameController.getInstance();
-		player1 = GameController.getInstance().getPlayers()[0];
-		player2 = GameController.getInstance().getPlayers()[1];
+		gc.setOpponend(player1);
+		gc.setOpponend(player2);
 	}
 
 	@After
@@ -37,29 +38,28 @@ public class GameControllerTest {
 		assertTrue(player2 != null);
 		assertEquals(0, row);
 	}
-	
+
 	@Test
 	public void getPlayerOnTurnTest() {
-		
-		
-		
+
 	}
+
 	@Test
 	public void getPlayerAtTest() {
 		Player p = gc.getPlayerOnTurn();
 		gc.dropCoinWithSuccessFeedback(0);
 		Player test = gc.getPlayerAt(0, 0);
-		assertSame(p,test);
-		
+		assertSame(p, test);
+
 		p = null;
 		test = null;
 		p = gc.getPlayerOnTurn();
 		gc.dropCoinWithSuccessFeedback(0);
 		test = gc.getPlayerAt(1, 0);
-		assertSame(p,test);
-		
+		assertSame(p, test);
+
 	}
-	
+
 	@Test
 	public void dropCoinWithSuccessFeedbackTest() {
 		gc.dropCoinWithSuccessFeedback(0);
@@ -80,8 +80,9 @@ public class GameControllerTest {
 		p = null;
 		p = gc.getPlayerAt(4, 0);
 		assertNull(p);
-		
+
 	}
+
 	@Test
 	public void newGameTest() throws Exception {
 		gc.dropCoinWithSuccessFeedback(0);
@@ -92,10 +93,7 @@ public class GameControllerTest {
 		Player p = gc.getPlayerAt(0, 0);
 		assertNull(p);
 	}
-	
-	
-	
-	
+
 	@Test
 	public void undoStepTest() {
 		gc.newGame();
@@ -115,7 +113,7 @@ public class GameControllerTest {
 		p = gc.getGameField().getPlayerAt(4, 0);
 		assertNull(p);
 	}
-	
+
 	@Test
 	public void redoStepTest() {
 		gc.newGame();
