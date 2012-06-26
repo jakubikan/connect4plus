@@ -19,9 +19,9 @@ public class Computer extends PlayerAbstract {
 		return getMove();
 	}
 
-	public Computer(final IObserverWithArguments observer) {
+	public Computer(final IObserverWithArguments controllerObserver) {
 		super();
-		this.addObserver(observer);
+		this.addObserver(controllerObserver);
 	}
 
 	@Override
