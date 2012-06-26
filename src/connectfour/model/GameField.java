@@ -322,6 +322,8 @@ public class GameField implements Cloneable {
 	public GameField clone() throws CloneNotSupportedException {
 		GameField gf = (GameField) super.clone();
 		gf.gameField = this.gameField.clone();
+		gf.player = this.player;
+		gf.opponend = this.opponend;
 		for (int i = 0; i < DEFAULT_ROWS; i++) {
 			gf.gameField[i] = this.gameField[i].clone();
 		}
