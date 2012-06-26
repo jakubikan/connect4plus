@@ -14,9 +14,9 @@ import connectfour.controller.GameController;
 import connectfour.model.GameField;
 import connectfour.model.Player;
 import connectfour.ui.UI;
+import connectfour.ui.gui.swing.controller.ArrowManager;
 import connectfour.ui.gui.swing.widgets.ArrowCell;
 import connectfour.ui.gui.swing.widgets.GUICoin;
-import connectfour.ui.swing.controller.ArrowManager;
 import connectfour.util.observer.IObserver;
 
 /**

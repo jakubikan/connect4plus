@@ -1,13 +1,14 @@
-package connectfour.ui.gui.swing.events;
+package connectfour.ui.gui.swing.controller;
 
 import connectfour.ui.gui.swing.widgets.ArrowCell;
+import connectfour.util.observer.IObserverWithArguments;
 
 /**
  * @author: Stefano Di Martino
  * @created: May 27, 2012
  */
 
-public final class ArrowManager {
+public final class ArrowManager implements IObserverWithArguments {
     private int currentColumn;
     private ArrowCell[] arrowCells;
     private static ArrowManager instance;
@@ -37,5 +38,11 @@ public final class ArrowManager {
             
             this.currentColumn = col;
         }
+    }
+    
+    @Override
+    public void update(Object arg) {
+        int column = (Integer) arg;
+        this.markColumnWhereMouseHasEntered(column);
     }
 }
