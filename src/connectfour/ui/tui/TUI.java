@@ -18,7 +18,7 @@ public class TUI implements UI, IObserver {
     private final String exit = "quit";
     private final String newline = System.getProperty("line.separator");
     private final GameController controller;
-    private final Player players[];
+    private Player players[];
     
     public TUI() {
         this.controller = GameController.getInstance();
@@ -30,6 +30,8 @@ public class TUI implements UI, IObserver {
         if (controller.userHasWon()) {
             return;
         }
+        
+        this.players = controller.getPlayers();
         
         String userInput = "";
         BufferedReader ir = new BufferedReader(new InputStreamReader(System.in));

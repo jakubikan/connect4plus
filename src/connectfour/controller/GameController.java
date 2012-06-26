@@ -18,7 +18,7 @@ public final class GameController extends ObservableWithArguments implements IOb
     
     private GameController() {
         this.undoManager.discardAllEdits();
-        //		this.gameField = new GameField();
+        this.gameField = new GameField(this);
         this.bGameHasStarted = false;
     }
     
