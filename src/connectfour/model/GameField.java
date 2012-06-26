@@ -55,9 +55,9 @@ public class GameField implements Cloneable {
 		for (int i = DEFAULT_ROWS - 1; i >= 0; --i) {
 			for (int j = 0; j < DEFAULT_COLUMNS; ++j) {
 				Player actualPlayer = gameField[i][j];
-				if (actualPlayer.equals(player)) {
+				if (actualPlayer != null && actualPlayer.equals(player)) {
 					b.append("[o]");
-				} else if (actualPlayer.equals(opponend)) {
+				} else if (actualPlayer != null && actualPlayer.equals(opponend)) {
 					b.append("[x]");
 				} else {
 					b.append("[-]");

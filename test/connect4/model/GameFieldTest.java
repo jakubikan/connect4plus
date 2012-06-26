@@ -20,12 +20,12 @@ public class GameFieldTest {
 		player = new Human();
 		player.setName("Hugo");
 		opponend = new Human();
-		gameField = new GameField();
+		gameField = new GameField(null);
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		gameField = new GameField();
+		gameField = new GameField(null);
 	}
 
 	@Test
@@ -67,7 +67,7 @@ public class GameFieldTest {
 		row = gameField.dropCoin(0, opponend);
 		row = gameField.dropCoin(0, opponend);
 		row = gameField.dropCoin(0, opponend);
-		gameField = new GameField();
+		gameField = new GameField(null);
 		assertEquals(gameField.getPlayerAt(0, 0), null);
 	}
 
@@ -82,7 +82,7 @@ public class GameFieldTest {
 
 		assertEquals(gameField.getWinner(), opponend);
 
-		gameField = new GameField();
+		gameField = new GameField(null);
 
 		row = gameField.dropCoin(0, opponend);
 		row = gameField.dropCoin(0, opponend);
@@ -92,7 +92,7 @@ public class GameFieldTest {
 		row = gameField.dropCoin(0, opponend);
 		assertEquals(gameField.getWinner(), null);
 
-		gameField = new GameField();
+		gameField = new GameField(null);
 
 		/*
 		 * o ox oxx oxxxoo
@@ -110,7 +110,7 @@ public class GameFieldTest {
 		row = gameField.dropCoin(3, opponend);
 		assertEquals(gameField.getWinner(), opponend);
 
-		gameField = new GameField();
+		gameField = new GameField(null);
 
 		/*
 		 * x ox xox xoxox

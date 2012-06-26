@@ -15,21 +15,30 @@ import connectfour.model.Human;
 import connectfour.model.Player;
 
 public class GameControllerTest {
-	private final Human player1 = new Human();
-	private final Player player2 = new Human();
+	private Human player1;
+	private Player player2;
 	private int row;
 	GameController gc;
 
 	@Before
 	public void setUp() throws Exception {
 		gc = GameController.getInstance();
-		gc.setOpponend(player1);
+		gc.newGame();
+		player1 = new Human();
+		player2 = new Human();
+		row = 0;
+		gc.setPlayer(player1);
 		gc.setOpponend(player2);
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		GameController.getInstance().newGame();
+		gc.newGame();
+		row = 0;
+		player1 = new Human();
+		player2 = new Human();
+		gc.setPlayer(player1);
+		gc.setOpponend(player2);
 	}
 
 	@Test
@@ -67,6 +76,7 @@ public class GameControllerTest {
 		gc.dropCoinWithSuccessFeedback(0);
 		gc.dropCoinWithSuccessFeedback(0);
 		Player p = gc.getPlayerAt(0, 0);
+		System.out.println(gc.getGameField());
 		assertNotNull(p);
 		p = null;
 		p = gc.getPlayerAt(1, 0);
@@ -96,14 +106,13 @@ public class GameControllerTest {
 
 	@Test
 	public void undoStepTest() {
-		gc.newGame();
 		System.out.println("Undo test");
 		boolean success = true;
 		success &= gc.dropCoinWithSuccessFeedback(0);
 		success &= gc.dropCoinWithSuccessFeedback(0);
 		success &= gc.dropCoinWithSuccessFeedback(0);
 		success &= gc.dropCoinWithSuccessFeedback(0);
-		success &= gc.dropCoinWithSuccessFeedback(0);
+		System.out.println(gc.getGameField());
 		assertTrue(success);
 		Player p = gc.getGameField().getPlayerAt(4, 0);
 		assertNotNull(p);
@@ -116,10 +125,8 @@ public class GameControllerTest {
 
 	@Test
 	public void redoStepTest() {
-		gc.newGame();
 		System.out.println("Undo test");
 		boolean success = true;
-		success &= gc.dropCoinWithSuccessFeedback(0);
 		success &= gc.dropCoinWithSuccessFeedback(0);
 		success &= gc.dropCoinWithSuccessFeedback(0);
 		success &= gc.dropCoinWithSuccessFeedback(0);
