@@ -9,7 +9,9 @@ import javax.swing.JPanel;
 
 import connectfour.controller.GameController;
 import connectfour.ui.gui.swing.events.GUICoinMouseListener;
+import connectfour.ui.gui.swing.events.MouseColumnObserver;
 import connectfour.util.observer.IObserver;
+import connectfour.util.observer.IObserverWithArguments;
 
 /**
  * @author: Stefano Di Martino
@@ -22,11 +24,12 @@ public class GUICoin extends JPanel implements IObserver {
     private final int column;
     private Color color;
     
-    public GUICoin(final int column) {
+    public GUICoin(final int column, IObserverWithArguments observer) {
         this.setCoinBackAndForegroundColor();
         this.color = Color.WHITE;
         this.column = column;
-        this.addMouseListener(new GUICoinMouseListener(this, column));
+        this.addMouseListener(new GUICoinMouseListener(this));
+        this.addMouseListener(new MouseColumnObserver(observer, column));
     }
     
     private void setCoinBackAndForegroundColor() {

@@ -11,22 +11,16 @@ import connectfour.util.observer.Observable;
  * @created: May 27, 2012
  */
 public class GUICoinMouseListener extends Observable implements MouseListener {
-    private final int column;
     
-    public GUICoinMouseListener(final IObserver observer, final int column) {
-        this.column = column;
+    public GUICoinMouseListener(final IObserver observer) {
         this.addObserver(observer);
     }
     
     @Override
-    public void mouseEntered(final MouseEvent e) {
-        ArrowManager.getInstance().markColumnWhereMouseHasEntered(this.column);
-    }
+    public void mouseEntered(final MouseEvent e) {}
     
     @Override
-    public void mouseExited(final MouseEvent e) {
-        ArrowManager.getInstance().markColumnWhereMouseHasEntered(this.column);
-    }
+    public void mouseExited(final MouseEvent e) {}
     
     @Override
     public void mousePressed(final MouseEvent e) {}
