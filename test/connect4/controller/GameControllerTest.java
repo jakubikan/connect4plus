@@ -1,6 +1,5 @@
 package connect4.controller;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
@@ -33,18 +32,6 @@ public class GameControllerTest {
 		gc.newGame();
 		gc.setOpponend(player1);
 		gc.setOpponend(player2);
-	}
-
-	@Test
-	public void test() {
-		assertTrue(player1 != null);
-		assertTrue(player2 != null);
-		assertEquals(0, row);
-	}
-
-	@Test
-	public void getPlayerOnTurnTest() {
-
 	}
 
 	@Test

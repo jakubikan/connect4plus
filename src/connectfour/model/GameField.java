@@ -16,6 +16,8 @@ public class GameField implements Cloneable {
 	private Player playerOnTurn;
 	private int modCount = 0;
 
+	private final IObserverWithArguments observer;
+
 	private Player playerWon;
 
 	private boolean gameWon;
@@ -27,6 +29,7 @@ public class GameField implements Cloneable {
 		gameWon = false;
 		player = new Human();
 		player.setName("Hugo");
+		this.observer = observer;
 		opponend = new Computer(observer);
 		opponend.setName("Boesewicht");
 		initPlayerOnTurn();
@@ -43,6 +46,10 @@ public class GameField implements Cloneable {
 			playerOnTurn = opponend;
 		}
 
+	}
+
+	public final IObserverWithArguments getObserver() {
+		return observer;
 	}
 
 	@Override
@@ -102,14 +109,42 @@ public class GameField implements Cloneable {
 	public int dropCoin(final int column) {
 		int row = 0;
 		row = dropCoin(column, playerOnTurn);
+
 		modCount++;
 		return row;
+	}
+
+	private boolean removeLastLineIfFull() {
+		if (lastLineFull()) {
+
+			for (int i = 1; i < gameField.length; i++) {
+				gameField[i - 1] = gameField[i];
+			}
+			gameField[DEFAULT_ROWS - 1] = new Player[DEFAULT_COLUMNS];
+			return true;
+		}
+		return false;
+
+	}
+
+	private boolean lastLineFull() {
+		boolean result = true;
+		for (Player element : gameField[0]) {
+			result &= element != null;
+
+		}
+		return result;
 	}
 
 	public int dropCoin(final int column, final Player p) {
 		int row = 0;
 		row = dropCoin(row, column, p);
 		gameWon = hasWon(p);
+
+		if (lastLineFull() && !gameWon) {
+			removeLastLineIfFull();
+			row--;
+		}
 		if (gameWon) {
 			playerWon = p;
 		}
