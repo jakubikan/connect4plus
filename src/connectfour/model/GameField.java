@@ -110,10 +110,6 @@ public class GameField implements Cloneable {
 		int row = 0;
 		row = dropCoin(column, playerOnTurn);
 
-		if (removeLastLineIfFull()) {
-			row--;
-		}
-
 		modCount++;
 		return row;
 	}
@@ -144,6 +140,11 @@ public class GameField implements Cloneable {
 		int row = 0;
 		row = dropCoin(row, column, p);
 		gameWon = hasWon(p);
+
+		if (lastLineFull() && !gameWon) {
+			removeLastLineIfFull();
+			row--;
+		}
 		if (gameWon) {
 			playerWon = p;
 		}
