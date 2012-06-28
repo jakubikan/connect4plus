@@ -97,6 +97,8 @@ public class TUI implements UI, IObserver {
         String coin1 = "O";
         String coin2 = "X";
         
+        System.out.println("  1   2   3   4   5   6   7");
+        
         for (int currentRow = row; currentRow >= 0; currentRow--) {
             playingField.append(begin);
             
