@@ -8,13 +8,11 @@ import connectfour.ui.gui.swing.SwingGUI;
  */
 
 final class Connect4 {
-
-	private Connect4() {
-	}
-
-	public static void main(final String[] args) {
-		// GameController.getInstance().addObserver(new TUI());
-		GameController.getInstance().newGame();
-		GameController.getInstance().addObserver(new SwingGUI());
-	}
+    private Connect4() {}
+    
+    public static void main(String[] args) {
+        //        GameController.getInstance().addObserver(new TUI());
+        GameController.getInstance().newGame();
+        GameController.getInstance().addObserver(new SwingGUI());
+    }
 }
