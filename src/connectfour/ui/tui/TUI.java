@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import connectfour.controller.GameController;
+import connectfour.model.Computer;
 import connectfour.model.GameField;
 import connectfour.model.Player;
 import connectfour.ui.UI;
@@ -27,17 +28,24 @@ public class TUI implements UI, IObserver {
     
     @Override
     public void drawGameField() {
-        if (controller.userHasWon()) {
-            return;
-        }
-        
         this.players = controller.getPlayers();
         
         String userInput = "";
         BufferedReader ir = new BufferedReader(new InputStreamReader(System.in));
         
-        System.out.printf("%s ist dran\n\n", controller.getPlayerNameOnTurn());
-        System.out.println(this.renderGameField());
+        if (controller.userHasWon()) {
+            System.out.printf("%s hat gewonnen\n\n", controller.getWinner());
+            System.out.println(this.renderGameField());
+            return;
+        } else {
+            System.out.printf("%s ist dran\n\n", controller.getPlayerNameOnTurn());
+            System.out.println(this.renderGameField());
+        }
+        
+        if (controller.getPlayerOnTurn() instanceof Computer) {
+            return;
+        }
+        
         System.out.print("Eingabe: ");
         
         try {
@@ -58,7 +66,11 @@ public class TUI implements UI, IObserver {
     private void parseUserInput(final String userInput) {
         if (isInteger(userInput)) {
             int column = Integer.parseInt(userInput) - 1;
-            controller.dropCoinWithSuccessFeedback(column);
+            
+            if (!controller.dropCoinWithSuccessFeedback(column)) {
+                System.out.println("Ungueltige Eingabe!\n");
+                this.drawGameField();
+            }
         } else {
             System.out.println("Ungueltige Eingabe!\n");
             this.drawGameField();
