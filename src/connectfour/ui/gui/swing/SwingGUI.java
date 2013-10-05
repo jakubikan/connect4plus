@@ -36,9 +36,8 @@ public class SwingGUI extends JFrame implements UI, IObserver {
     private final StatusDisplay statusDisplay = new StatusDisplay();
     
     // Game Stuff
-    private final GameController controller = GameController.getInstance();;
-    private Player[] players = controller.getPlayers();
-    
+    private final GameController controller = GameController.getInstance();
+
     private void init() {
         for (int row = 0; row < GameField.DEFAULT_ROWS; row++) {
             for (int col = 0; col < GameField.DEFAULT_COLUMNS; col++) {
@@ -108,7 +107,7 @@ public class SwingGUI extends JFrame implements UI, IObserver {
     
     @Override
     public void drawGameField() {
-        players = controller.getPlayers();
+        Player[] players = controller.getPlayers();
         statusDisplay.update();
         for (int currentRow = 0; currentRow < GameField.DEFAULT_ROWS; currentRow++) {
             for (int currentColumn = 0; currentColumn < GameField.DEFAULT_COLUMNS; currentColumn++) {

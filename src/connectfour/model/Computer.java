@@ -9,11 +9,7 @@ public class Computer extends PlayerAbstract {
 	private boolean firstMove = true;
 	private final int difficulty = 5;
 
-	@Override
-	public void surrender() {
-	}
-
-	@Override
+    @Override
 	public int dropCoin(final int column) {
 		setMove(column);
 		return getMove();
@@ -116,7 +112,7 @@ public class Computer extends PlayerAbstract {
 		GameField state = null;
 		try {
 			state = getGameField().clone();
-		} catch (CloneNotSupportedException e1) {
+		} catch (CloneNotSupportedException ignored) {
 		}
 		return state;
 

@@ -16,7 +16,6 @@ import connectfour.util.observer.IObserver;
  */
 
 public class TUI implements UI, IObserver {
-    private final String exit = "quit";
     private final String newline = System.getProperty("line.separator");
     private final GameController controller;
     private Player players[];
@@ -55,8 +54,9 @@ public class TUI implements UI, IObserver {
         }
         
         System.out.println("\n\n");
-        
-        if (userInput.equals(this.exit)) {
+
+        String exit = "quit";
+        if (userInput.equals(exit)) {
             System.exit(0);
         }
         

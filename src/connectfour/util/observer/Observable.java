@@ -21,8 +21,7 @@ public class Observable {
     }
     
     public void notifyObservers() {
-        for (Iterator<IObserver> iter = subscribers.iterator(); iter.hasNext();) {
-            IObserver observer = iter.next();
+        for (IObserver observer : subscribers) {
             observer.update();
         }
     }

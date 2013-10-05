@@ -107,9 +107,7 @@ public class GameField implements Cloneable {
 	}
 
 	public int dropCoin(final int column) {
-		int row = 0;
-		row = dropCoin(column, playerOnTurn);
-
+		int row = dropCoin(column, playerOnTurn);
 		modCount++;
 		return row;
 	}
@@ -117,9 +115,7 @@ public class GameField implements Cloneable {
 	private boolean removeLastLineIfFull() {
 		if (lastLineFull()) {
 
-			for (int i = 1; i < gameField.length; i++) {
-				gameField[i - 1] = gameField[i];
-			}
+            System.arraycopy(gameField, 1, gameField, 0, gameField.length - 1);
 			gameField[DEFAULT_ROWS - 1] = new Player[DEFAULT_COLUMNS];
 			return true;
 		}

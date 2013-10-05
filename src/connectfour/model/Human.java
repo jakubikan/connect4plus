@@ -2,10 +2,7 @@ package connectfour.model;
 
 public class Human extends PlayerAbstract {
     private int move = 0;
-    
-    @Override
-    public void surrender() {}
-    
+
     @Override
     public int dropCoin(final int column) {
         setMove(column);

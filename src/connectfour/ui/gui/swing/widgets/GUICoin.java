@@ -20,7 +20,6 @@ import connectfour.util.observer.IObserverWithArguments;
 
 @SuppressWarnings("serial")
 public class GUICoin extends JPanel implements IObserver {
-    final private int radius = 40;
     private final int column;
     private Color color;
     
@@ -50,7 +49,8 @@ public class GUICoin extends JPanel implements IObserver {
         
         // Activate Anti-Aliasing!
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.fillOval(18, 20, this.radius, this.radius);
+        int radius = 40;
+        g2.fillOval(18, 20, radius, radius);
     }
     
     public int getColumn() {
