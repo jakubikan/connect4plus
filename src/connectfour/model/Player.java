@@ -3,7 +3,9 @@ package connectfour.model;
 import connectfour.util.observer.IObserverWithArguments;
 
 public interface Player extends IObserverWithArguments {
-
+    
+    void surrender();
+    
     void setName(String string);
     
     String getName();

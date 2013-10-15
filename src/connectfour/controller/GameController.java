@@ -60,7 +60,7 @@ public final class GameController extends ObservableWithArguments implements IOb
                 GameField previousState = null;
                 try {
                     previousState = gameField.clone();
-                } catch (CloneNotSupportedException ignored) {}
+                } catch (CloneNotSupportedException e1) {}
                 
                 Player p = gameField.getPlayerOnTurn();
                 p.setGameField(gameField);
@@ -83,7 +83,7 @@ public final class GameController extends ObservableWithArguments implements IOb
                 GameField newState = null;
                 try {
                     newState = gameField.clone();
-                } catch (CloneNotSupportedException ignored) {}
+                } catch (CloneNotSupportedException e) {}
                 
                 String undoInfo = String.format("Undoing %s Player Move", getPlayerOnTurn()
                                                         .getName());
@@ -92,7 +92,7 @@ public final class GameController extends ObservableWithArguments implements IOb
                 
                 this.notifyObservers();
                 this.notifyObservers(gameField);
-            } catch (IllegalArgumentException ignored) {}
+            } catch (IllegalArgumentException e) {}
         }
         return success;
     }
@@ -103,9 +103,12 @@ public final class GameController extends ObservableWithArguments implements IOb
     
     public boolean userHasWon() {
         Player winner = gameField.getWinner();
-
-        return winner != null;
-
+        
+        if (winner == null) {
+            return false;
+        }
+        
+        return true;
     }
     
     public String getPlayerNameOnTurn() {
@@ -132,6 +135,8 @@ public final class GameController extends ObservableWithArguments implements IOb
     public void undoStep() {
         if (undoManager.canUndo()) {
             undoManager.undo();
+        } else {
+            return;
         }
     }
     
@@ -141,6 +146,8 @@ public final class GameController extends ObservableWithArguments implements IOb
     public void redoStep() {
         if (undoManager.canRedo()) {
             undoManager.redo();
+        } else {
+            return;
         }
     }
     

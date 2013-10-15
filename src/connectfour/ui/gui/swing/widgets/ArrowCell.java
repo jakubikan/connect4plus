@@ -17,8 +17,21 @@ import javax.swing.JPanel;
 public class ArrowCell extends JPanel {
     private final int column;
     private boolean drawArrow;
-
-    private final Polygon arrow = new Polygon();
+    
+    // x coordinates
+    private final int arrowWidth = 10;
+    private final int xMiddleLeft = 34;
+    private final int xLeft = xMiddleLeft - arrowWidth;
+    private final int xMiddleRight = xMiddleLeft + arrowWidth;
+    private final int xRight = xMiddleRight + arrowWidth;
+    private final int xArrowPoint = xMiddleLeft + ((xMiddleRight - xMiddleLeft) / 2);
+    
+    // y coordinates
+    private final int arrowLength = 40;
+    private final int yTop = 20;
+    private final int yMiddle = yTop + arrowLength / 2;
+    private final int yArrowPoint = yTop + arrowLength;
+    private Polygon arrow = new Polygon();
     
     public ArrowCell(final int column) {
         this.setArrowBackAndForegroundColor();
@@ -33,23 +46,13 @@ public class ArrowCell extends JPanel {
     }
     
     private void createArrow() {
-        int yTop = 20;
-        int xMiddleLeft = 34;
-        arrow.addPoint(xMiddleLeft, yTop);
-        int arrowLength = 40;
-        int yMiddle = yTop + arrowLength / 2;
-        arrow.addPoint(xMiddleLeft, yMiddle);
-        int arrowWidth = 10;
-        int xLeft = xMiddleLeft - arrowWidth;
-        arrow.addPoint(xLeft, yMiddle);
-        int xMiddleRight = xMiddleLeft + arrowWidth;
-        int xArrowPoint = xMiddleLeft + ((xMiddleRight - xMiddleLeft) / 2);
-        int yArrowPoint = yTop + arrowLength;
-        arrow.addPoint(xArrowPoint, yArrowPoint);
-        int xRight = xMiddleRight + arrowWidth;
-        arrow.addPoint(xRight, yMiddle);
-        arrow.addPoint(xMiddleRight, yMiddle);
-        arrow.addPoint(xMiddleRight, yTop);
+        arrow.addPoint(this.xMiddleLeft, this.yTop);
+        arrow.addPoint(this.xMiddleLeft, this.yMiddle);
+        arrow.addPoint(this.xLeft, this.yMiddle);
+        arrow.addPoint(this.xArrowPoint, this.yArrowPoint);
+        arrow.addPoint(this.xRight, this.yMiddle);
+        arrow.addPoint(this.xMiddleRight, this.yMiddle);
+        arrow.addPoint(this.xMiddleRight, this.yTop);
     }
     
     public void showArrow(boolean show) {

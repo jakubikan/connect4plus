@@ -6,7 +6,7 @@ import java.util.List;
 
 public class ObservableWithArguments extends Observable {
     
-    private final List<IObserverWithArguments> subscribersWithArguments = new ArrayList<IObserverWithArguments>(
+    private List<IObserverWithArguments> subscribersWithArguments = new ArrayList<IObserverWithArguments>(
                                             2);
     
     public void addObserver(IObserverWithArguments s) {
@@ -18,7 +18,9 @@ public class ObservableWithArguments extends Observable {
     }
     
     public void notifyObservers(Object arg) {
-        for (IObserverWithArguments observer : subscribersWithArguments) {
+        for (Iterator<IObserverWithArguments> iter = subscribersWithArguments.iterator(); iter
+                                                .hasNext();) {
+            IObserverWithArguments observer = iter.next();
             observer.update(arg);
         }
     }

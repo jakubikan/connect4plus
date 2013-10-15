@@ -1,14 +1,15 @@
 package connect4.model;
 
-import connectfour.controller.GameController;
-import connectfour.model.GameField;
-import connectfour.model.Human;
-import connectfour.model.Player;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import connectfour.controller.GameController;
+import connectfour.model.GameField;
+import connectfour.model.Human;
+import connectfour.model.Player;
 
 public class GameFieldTest {
 	GameField gameField;

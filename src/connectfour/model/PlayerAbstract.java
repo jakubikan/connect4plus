@@ -15,7 +15,7 @@ public abstract class PlayerAbstract extends ObservableWithArguments implements 
     public final void setGameField(final GameField gameField) {
         try {
             this.gameField = gameField.clone();
-        } catch (CloneNotSupportedException ignored) {}
+        } catch (CloneNotSupportedException e) {}
     }
     
     @Override

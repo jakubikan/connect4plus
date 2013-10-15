@@ -14,8 +14,8 @@ import connectfour.controller.GameController;
 
 @SuppressWarnings("serial")
 final class StatusDisplay extends JPanel {
-    private final JLabel status = new JLabel();
-    private final GameController controller;
+    private JLabel status = new JLabel();
+    private GameController controller;
     
     public StatusDisplay() {
         this.add(status);

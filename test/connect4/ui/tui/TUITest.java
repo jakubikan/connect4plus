@@ -3,17 +3,16 @@
  */
 package connect4.ui.tui;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Before;
+import org.junit.Test;
+
 import connectfour.controller.GameController;
 import connectfour.model.Human;
 import connectfour.model.Player;
 import connectfour.ui.tui.TUI;
-
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * @author Stefano Di Martino
