@@ -11,14 +11,17 @@ libraryDependencies ++= Seq(
   "junit" % "junit" % "4.10" 
 )
 
+
 // disable using the Scala version in output paths and artifacts
 crossPaths := false
 
+
+
 // setup entry points for sonar code analyzer
-pomExtra :=
+pomExtra := 
   <build>
-    <sourceDirectory>src/connectfour</sourceDirectory>
-    <testSourceDirectory>test/connect4</testSourceDirectory>
+    <sourceDirectory>src/main/java/connectfour</sourceDirectory>
+    <testSourceDirectory>src/test/java/connect4</testSourceDirectory>
   </build>
   
 
