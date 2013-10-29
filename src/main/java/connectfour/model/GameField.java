@@ -151,6 +151,11 @@ public class GameField implements Cloneable {
 		return row;
 	}
 
+    public Player[][] getCopyOfGamefield()  throws CloneNotSupportedException{
+        GameField gf= this.clone();
+        return gf.gameField;
+    }
+
 	private int dropCoin(final int row, final int column,
 			final Player p) {
 		int row1 = row;
@@ -331,6 +336,7 @@ public class GameField implements Cloneable {
 			counters[count]++;
 		}
 	}
+
 
 	private int evaluatePlayerScore(final Player playerToCheck) {
 
