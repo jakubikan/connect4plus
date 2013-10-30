@@ -51,7 +51,7 @@ public final class GameController extends ObservableWithArguments implements IOb
     
     @Override
     public boolean dropCoinWithSuccessFeedback(final int col) {
-        boolean success = false;
+        boolean success = true;
         
         if (!userHasWon()) {
             try {
@@ -69,15 +69,12 @@ public final class GameController extends ObservableWithArguments implements IOb
                 
                 int row = gameField.dropCoin(col);
                 
-                gameField.changePlayerTurn(); // Change only on success the
-                                              // players turnk
+                gameField.changePlayerTurn(); // Change only on success the players turn
                 if (row >= GameField.DEFAULT_ROWS) {
                     success = false;
                     useState(previousState);
                     return success;
-                    
                 }
-                success = true;
                 
                 GameField newState = null;
                 try {
