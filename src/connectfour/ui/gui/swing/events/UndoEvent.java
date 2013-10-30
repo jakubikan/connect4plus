@@ -5,7 +5,7 @@ package connectfour.ui.gui.swing.events;
 
 import java.awt.event.MouseEvent;
 
-import connectfour.controller.GameController;
+import connectfour.controller.IController;
 import connectfour.util.observer.IObserver;
 
 /**
@@ -13,14 +13,16 @@ import connectfour.util.observer.IObserver;
  * @created: Jun 22, 2012
  */
 public class UndoEvent extends EventAdapter {
-    
-    public UndoEvent(final IObserver oberserver) {
+	private final IController controller;
+	
+    public UndoEvent(final IController controller, final IObserver oberserver) {
         super(oberserver);
+        this.controller = controller;
     }
     
     @Override
     public void mousePressed(final MouseEvent e) {
-        GameController.getInstance().undoStep();
+        this.controller.undoStep();
         this.notifyObservers();
     }
 }

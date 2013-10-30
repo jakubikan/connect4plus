@@ -21,23 +21,25 @@ public class GameFieldEdit extends AbstractUndoableEdit {
     private final GameField previousState;
     private final GameField newState;
     private final String name;
+    private final IController controller;
     
-    public GameFieldEdit(final GameField previousState, final GameField newState, final String name) {
+    public GameFieldEdit(final IController controller, final GameField previousState, final GameField newState, final String name) {
         this.previousState = previousState;
         this.newState = newState;
         this.name = name;
+        this.controller = controller;
     }
     
     @Override
     public void redo() throws CannotRedoException {
         super.redo();
-        GameController.getInstance().useState(newState);
+        this.controller.useState(newState);
     }
     
     @Override
     public void undo() throws CannotUndoException {
         super.undo();
-        GameController.getInstance().useState(previousState);
+        this.controller.useState(previousState);
     }
     
     @Override

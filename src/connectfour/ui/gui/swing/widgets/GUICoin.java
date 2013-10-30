@@ -7,7 +7,7 @@ import java.awt.RenderingHints;
 
 import javax.swing.JPanel;
 
-import connectfour.controller.GameController;
+import connectfour.controller.IController;
 import connectfour.ui.gui.swing.events.GUICoinMouseListener;
 import connectfour.ui.gui.swing.events.MouseColumnObserver;
 import connectfour.util.observer.IObserver;
@@ -23,13 +23,15 @@ public class GUICoin extends JPanel implements IObserver {
     final private int radius = 40;
     private final int column;
     private Color color;
+    private final IController controller;
     
-    public GUICoin(final int column, IObserverWithArguments observer) {
+	public GUICoin(final IController controller, final int column, IObserverWithArguments observer) {
         this.setCoinBackAndForegroundColor();
         this.color = Color.WHITE;
         this.column = column;
         this.addMouseListener(new GUICoinMouseListener(this));
         this.addMouseListener(new MouseColumnObserver(observer, column));
+        this.controller = controller;
     }
     
     private void setCoinBackAndForegroundColor() {
@@ -59,6 +61,6 @@ public class GUICoin extends JPanel implements IObserver {
     
     @Override
     public void update() {
-        GameController.getInstance().dropCoinWithSuccessFeedback(this.column);
+    	this.controller.dropCoinWithSuccessFeedback(this.column);
     }
 }

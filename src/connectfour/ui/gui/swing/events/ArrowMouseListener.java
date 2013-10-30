@@ -3,7 +3,7 @@ package connectfour.ui.gui.swing.events;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import connectfour.controller.GameController;
+import connectfour.controller.IController;
 import connectfour.util.observer.IObserver;
 import connectfour.util.observer.Observable;
 
@@ -13,15 +13,17 @@ import connectfour.util.observer.Observable;
  */
 public class ArrowMouseListener extends Observable implements MouseListener {
     private final int column;
+    private final IController controller;
     
-    public ArrowMouseListener(final IObserver observer, final int column) {
+    public ArrowMouseListener(IController controller, final IObserver observer, final int column) {
         this.column = column;
         this.addObserver(observer);
+        this.controller = controller;
     }
     
     @Override
     public void mouseReleased(MouseEvent e) {
-        GameController.getInstance().dropCoinWithSuccessFeedback(this.column);
+        controller.dropCoinWithSuccessFeedback(this.column);
     }
     
     @Override

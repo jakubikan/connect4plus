@@ -2,6 +2,8 @@ package connectfour.model;
 
 import java.util.Random;
 
+import com.google.inject.Inject;
+
 import connectfour.util.observer.IObserverWithArguments;
 
 public class GameField implements Cloneable {
@@ -22,6 +24,7 @@ public class GameField implements Cloneable {
 
 	private boolean gameWon;
 
+	@Inject
 	public GameField(final IObserverWithArguments observer) {
 		super();
 		gameField = new Player[DEFAULT_ROWS][DEFAULT_COLUMNS];

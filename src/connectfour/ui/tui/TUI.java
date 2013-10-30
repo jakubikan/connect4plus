@@ -1,10 +1,10 @@
 package connectfour.ui.tui;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Scanner;
 
-import connectfour.controller.GameController;
+import com.google.inject.Inject;
+
+import connectfour.controller.IController;
 import connectfour.model.Computer;
 import connectfour.model.GameField;
 import connectfour.model.Player;
@@ -18,44 +18,39 @@ import connectfour.util.observer.IObserver;
 public class TUI implements UI, IObserver {
     private final String exit = "quit";
     private final String newline = System.getProperty("line.separator");
-    private final GameController controller;
+    private final IController controller;
     private Player players[];
     
-    public TUI() {
-        this.controller = GameController.getInstance();
+    @Inject
+    public TUI(IController controller) {
+        this.controller = controller;
         this.players = controller.getPlayers();
     }
     
     @Override
     public void drawGameField() {
         this.players = controller.getPlayers();
-        
-        String userInput = "";
-        BufferedReader ir = new BufferedReader(new InputStreamReader(System.in));
-        
+		
         if (controller.userHasWon()) {
             System.out.printf("%s hat gewonnen\n\n", controller.getWinner());
-            System.out.println(this.renderGameField());
             return;
         } else {
             System.out.printf("%s ist dran\n\n", controller.getPlayerNameOnTurn());
-            System.out.println(this.renderGameField());
         }
+        
+        System.out.println(this.renderGameField());
         
         if (controller.getPlayerOnTurn() instanceof Computer) {
             return;
         }
         
+        Scanner scanner = new Scanner (System.in);
         System.out.print("Eingabe: ");
         
-        try {
-            userInput = ir.readLine();
-        } catch (IOException e) {
-            System.out.println("Eingabefehler!\n");
-        }
+        String userInput = scanner.next();
         
         System.out.println("\n\n");
-        
+        scanner.close();
         if (userInput.equals(this.exit)) {
             System.exit(0);
         }
@@ -126,6 +121,6 @@ public class TUI implements UI, IObserver {
     
     @Override
     public void update() {
-        this.drawGameField();
+    	System.out.println(this.renderGameField());
     }
 }

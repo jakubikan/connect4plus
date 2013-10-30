@@ -6,27 +6,37 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+
+import connectfour.GameControllerModule;
 import connectfour.controller.GameController;
 import connectfour.model.GameField;
 import connectfour.model.Human;
 import connectfour.model.Player;
+import connectfour.util.observer.IObserverWithArguments;
 
 public class GameFieldTest {
 	GameField gameField;
 	Player player;
 	Player opponend;
+	
+	private IObserverWithArguments obsersable;
 
 	@Before
 	public void setUp() throws Exception {
+		Injector injector = Guice.createInjector(new GameControllerModule());
+		this.obsersable = injector.getInstance(GameController.class);
+		
 		player = new Human();
 		player.setName("Hugo");
 		opponend = new Human();
-		gameField = new GameField(GameController.getInstance());
+		gameField = new GameField(obsersable);
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		gameField = new GameField(GameController.getInstance());
+		gameField = new GameField(obsersable);
 	}
 
 	@Test
@@ -68,7 +78,7 @@ public class GameFieldTest {
 		row = gameField.dropCoin(0, opponend);
 		row = gameField.dropCoin(0, opponend);
 		row = gameField.dropCoin(0, opponend);
-		gameField = new GameField(GameController.getInstance());
+		gameField = new GameField(obsersable);
 		assertEquals(gameField.getPlayerAt(0, 0), null);
 	}
 
@@ -83,7 +93,7 @@ public class GameFieldTest {
 
 		assertEquals(gameField.getWinner(), opponend);
 
-		gameField = new GameField(GameController.getInstance());
+		gameField = new GameField(obsersable);
 
 		row = gameField.dropCoin(0, opponend);
 		row = gameField.dropCoin(0, opponend);
@@ -93,7 +103,7 @@ public class GameFieldTest {
 		row = gameField.dropCoin(0, opponend);
 		assertEquals(gameField.getWinner(), null);
 
-		gameField = new GameField(GameController.getInstance());
+		gameField = new GameField(obsersable);
 
 		/*
 		 * o ox oxx oxxxoo
@@ -111,7 +121,7 @@ public class GameFieldTest {
 		row = gameField.dropCoin(3, opponend);
 		assertEquals(gameField.getWinner(), opponend);
 
-		gameField = new GameField(GameController.getInstance());
+		gameField = new GameField(obsersable);
 
 		/*
 		 * x ox xox xoxox

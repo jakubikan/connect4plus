@@ -12,7 +12,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import connectfour.controller.GameController;
+import com.google.inject.Inject;
+
+import connectfour.controller.IController;
 import connectfour.model.GameField;
 import connectfour.model.Player;
 import connectfour.ui.UI;
@@ -33,16 +35,16 @@ public class SwingGUI extends JFrame implements UI, IObserver {
     private final GUICoin coinCells[][] = new GUICoin[GameField.DEFAULT_ROWS][GameField.DEFAULT_COLUMNS];
     private final List<ArrowCell> listArrowCells = new ArrayList<ArrowCell>(
                                             GameField.DEFAULT_COLUMNS);
-    private final StatusDisplay statusDisplay = new StatusDisplay();
+    private final StatusDisplay statusDisplay;
     
     // Game Stuff
-    private final GameController controller = GameController.getInstance();;
-    private Player[] players = controller.getPlayers();
+    private final IController controller;
+    private Player[] players;
     
-    private void init() {
+    private void initGameField() {
         for (int row = 0; row < GameField.DEFAULT_ROWS; row++) {
             for (int col = 0; col < GameField.DEFAULT_COLUMNS; col++) {
-                coinCells[row][col] = new GUICoin(col, ArrowManager.getInstance());
+                coinCells[row][col] = new GUICoin(controller, col, ArrowManager.getInstance());
             }
         }
         
@@ -64,8 +66,13 @@ public class SwingGUI extends JFrame implements UI, IObserver {
         }
     }
     
-    public SwingGUI() {
-        this.init();
+    @Inject
+    public SwingGUI(IController controller) {
+    	this.controller = controller;
+    	statusDisplay = new StatusDisplay(controller);
+    	players = controller.getPlayers();
+    	
+        this.initGameField();
         
         final JPanel contentPane = new JPanel();
         contentPane.setBackground(Color.WHITE);
@@ -91,7 +98,7 @@ public class SwingGUI extends JFrame implements UI, IObserver {
         
         lineAxisPanel.add(cellWrapper);
         lineAxisPanel.add(statusDisplay);
-        pageAxisPanel.add(new ToolBar(this));
+        pageAxisPanel.add(new ToolBar(controller, this));
         pageAxisPanel.add(lineAxisPanel);
         
         contentPane.add(pageAxisPanel);

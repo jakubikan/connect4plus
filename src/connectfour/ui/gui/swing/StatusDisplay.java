@@ -5,7 +5,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import connectfour.controller.GameController;
+import connectfour.controller.IController;
 
 /**
  * @author: Stefano Di Martino
@@ -15,12 +15,12 @@ import connectfour.controller.GameController;
 @SuppressWarnings("serial")
 final class StatusDisplay extends JPanel {
     private JLabel status = new JLabel();
-    private GameController controller;
+    private IController controller;
     
-    public StatusDisplay() {
+    public StatusDisplay(IController controller) {
         this.add(status);
         this.setBackground(Color.WHITE);
-        this.controller = GameController.getInstance();
+        this.controller = controller;
         this.showPlayerOnTurn();
     }
     

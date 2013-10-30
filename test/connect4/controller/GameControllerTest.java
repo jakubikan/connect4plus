@@ -9,19 +9,26 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+
+import connectfour.GameControllerModule;
 import connectfour.controller.GameController;
+import connectfour.controller.IController;
 import connectfour.model.Human;
 import connectfour.model.Player;
 
 public class GameControllerTest {
 	private final Human player1 = new Human();
 	private final Player player2 = new Human();
-	private int row;
-	GameController gc;
-
+	
+	private IController gc;
+	
 	@Before
 	public void setUp() throws Exception {
-		gc = GameController.getInstance();
+		Injector injector = Guice.createInjector(new GameControllerModule());
+    	gc = injector.getInstance(GameController.class);
+    	
 		gc.newGame();
 		gc.setOpponend(player1);
 		gc.setOpponend(player2);

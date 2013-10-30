@@ -1,5 +1,8 @@
 package connectfour;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+
 import connectfour.controller.GameController;
 import connectfour.ui.tui.TUI;
 import connectfour.ui.gui.swing.*;
@@ -10,22 +13,14 @@ import connectfour.ui.gui.swing.*;
 
 final class Connect4 {
     private Connect4() {}
-
     
-    public static void main(String[] args) {	
-    	GameController.getInstance().addObserver(new TUI());
+    public static void main(String[] args) {
+    	Injector injector = Guice.createInjector(new GameControllerModule());
     	
+    	GameController controller = injector.getInstance(GameController.class);
+    	controller.newGame();
         
-        GameController.getInstance().newGame();
-        
-        GameController.getInstance().addObserver(new SwingGUI());
-        /*
-        Thread guiThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-            	GameController.getInstance().addObserver(new SwingGUI());            	
-            }
-        });
-        guiThread.start();*/
+    	controller.addObserver(injector.getInstance(SwingGUI.class));
+    	controller.addObserver(injector.getInstance(TUI.class));
     }
 }
