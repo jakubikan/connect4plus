@@ -8,7 +8,8 @@ version := "1.0-SNAPSHOT"
 
 // general project dependencies
 libraryDependencies ++= Seq(
-  "com.novocode" % "junit-interface" % "0.9" % "test"
+  "com.novocode" % "junit-interface" % "0.9" % "test",
+  "com.google.inject" % "guice" % "4.0-beta"
 )
 
 
