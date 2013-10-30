@@ -64,9 +64,6 @@ public final class GameController extends ObservableWithArguments implements IOb
                 Player p = gameField.getPlayerOnTurn();
                 p.setGameField(gameField);
                 
-                //                int move = p.dropCoin(col);
-                //                int row = gameField.dropCoin(move);
-                
                 int row = gameField.dropCoin(col);
                 
                 gameField.changePlayerTurn(); // Change only on success the players turn

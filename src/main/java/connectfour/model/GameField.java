@@ -155,8 +155,7 @@ public class GameField implements Cloneable {
 	}
 
     public Player[][] getCopyOfGamefield()  throws CloneNotSupportedException{
-        GameField gf= this.clone();
-        return gf.gameField;
+        return this.clone().gameField;
     }
 
 	private int dropCoin(final int row, final int column,
