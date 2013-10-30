@@ -6,10 +6,13 @@ name := "connect4plus"
 
 version := "1.0-SNAPSHOT"
 
+resolvers += "db4omaverepositories" at "http://source.db4o.com/maven"
+
 // general project dependencies
 libraryDependencies ++= Seq(
   "com.novocode" % "junit-interface" % "0.9" % "test",
-  "com.google.inject" % "guice" % "4.0-beta"
+  "com.google.inject" % "guice" % "4.0-beta",
+  "com.db4o" % "db4o-full-java5" % "8.0-SNAPSHOT"
 )
 
 
