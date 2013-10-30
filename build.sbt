@@ -8,7 +8,7 @@ version := "1.0-SNAPSHOT"
 
 // general project dependencies
 libraryDependencies ++= Seq(
-  "junit" % "junit" % "4.10" 
+  "com.novocode" % "junit-interface" % "0.9" % "test"
 )
 
 
