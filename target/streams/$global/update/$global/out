@@ -1,0 +1,568 @@
+[0m[[0minfo[0m] [0mUpdating {file:/home/stefano/Dokumente/Programming/Java/Connect4/}connect4...[0m
+[0m[[0mdebug[0m] [0m:: resolving dependencies :: de.stejack#connect4plus;1.0-SNAPSHOT[0m
+[0m[[0mdebug[0m] [0m	confs: [compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool][0m
+[0m[[0mdebug[0m] [0m	validate = true[0m
+[0m[[0mdebug[0m] [0m	refresh = false[0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'compile'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-library;2.10.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: sbt.ivyint.MergedDescriptors@5809c898[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-library;2.10.2[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.scala-lang#scala-library;2.10.2[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#scala-library;2.10.2 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.google.inject#guice;4.0-beta ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.google.inject#guice;4.0-beta {compile=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.google.inject#guice;4.0-beta[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: com.google.inject#guice;4.0-beta[0m
+[0m[[0mdebug[0m] [0m	found com.google.inject#guice;4.0-beta in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving javax.inject#javax.inject;1 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: javax.inject#javax.inject;1 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: javax.inject#javax.inject;1[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: javax.inject#javax.inject;1[0m
+[0m[[0mdebug[0m] [0m	found javax.inject#javax.inject;1 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving aopalliance#aopalliance;1.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: aopalliance#aopalliance;1.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: aopalliance#aopalliance;1.0[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: aopalliance#aopalliance;1.0[0m
+[0m[[0mdebug[0m] [0m	found aopalliance#aopalliance;1.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving com.google.guava#guava;11.0.1 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.google.guava#guava;11.0.1 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.google.guava#guava;11.0.1[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: com.google.guava#guava;11.0.1[0m
+[0m[[0mdebug[0m] [0m	found com.google.guava#guava;11.0.1 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving com.google.code.findbugs#jsr305;1.3.9 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.google.code.findbugs#jsr305;1.3.9 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.google.code.findbugs#jsr305;1.3.9[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: com.google.code.findbugs#jsr305;1.3.9[0m
+[0m[[0mdebug[0m] [0m	found com.google.code.findbugs#jsr305;1.3.9 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving cglib#cglib;3.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: cglib#cglib;3.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: cglib#cglib;3.0[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: cglib#cglib;3.0[0m
+[0m[[0mdebug[0m] [0m	found cglib#cglib;3.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving org.ow2.asm#asm;4.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.ow2.asm#asm;4.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.ow2.asm#asm;4.0[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.ow2.asm#asm;4.0[0m
+[0m[[0mdebug[0m] [0m	found org.ow2.asm#asm;4.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving org.ow2.asm#asm-util;4.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.ow2.asm#asm-util;4.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.ow2.asm#asm-util;4.0[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.ow2.asm#asm-util;4.0[0m
+[0m[[0mdebug[0m] [0m	found org.ow2.asm#asm-util;4.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving org.ow2.asm#asm-tree;4.0 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.ow2.asm#asm-tree;4.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.ow2.asm#asm-tree;4.0[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.ow2.asm#asm-tree;4.0[0m
+[0m[[0mdebug[0m] [0m	found org.ow2.asm#asm-tree;4.0 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.db4o#db4o-full-java5;8.0-SNAPSHOT ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.db4o#db4o-full-java5;8.0-SNAPSHOT {compile=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0mdon't use cache for com.db4o#db4o-full-java5;8.0-SNAPSHOT: changing=true[0m
+[0m[[0mdebug[0m] [0mdon't use cache for com.db4o#db4o-full-java5;8.0-SNAPSHOT: changing=true[0m
+[0m[[0mdebug[0m] [0m		tried /home/stefano/.ivy2/local/com.db4o/db4o-full-java5/8.0-SNAPSHOT/ivys/ivy.xml[0m
+[0m[[0mdebug[0m] [0m	local: no ivy file found for com.db4o#db4o-full-java5;8.0-SNAPSHOT[0m
+[0m[[0mdebug[0m] [0mdon't use cache for com.db4o#db4o-full-java5;8.0-SNAPSHOT: changing=true[0m
+[0m[[0mdebug[0m] [0mCLIENT ERROR: Not Found url=http://repo1.maven.org/maven2/com/db4o/db4o-full-java5/8.0-SNAPSHOT/maven-metadata.xml[0m
+[0m[[0mdebug[0m] [0m	maven-metadata not available: http://repo1.maven.org/maven2/com/db4o/db4o-full-java5/8.0-SNAPSHOT/maven-metadata.xml[0m
+[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/com/db4o/db4o-full-java5/8.0-SNAPSHOT/db4o-full-java5-8.0-SNAPSHOT.pom[0m
+[0m[[0mdebug[0m] [0mCLIENT ERROR: Not Found url=http://repo1.maven.org/maven2/com/db4o/db4o-full-java5/8.0-SNAPSHOT/db4o-full-java5-8.0-SNAPSHOT.pom[0m
+[0m[[0mdebug[0m] [0m	public: no ivy file found for com.db4o#db4o-full-java5;8.0-SNAPSHOT[0m
+[0m[[0mdebug[0m] [0mdon't use cache for com.db4o#db4o-full-java5;8.0-SNAPSHOT: changing=true[0m
+[0m[[0mdebug[0m] [0m		tried http://source.db4o.com/maven/com/db4o/db4o-full-java5/8.0-SNAPSHOT/db4o-full-java5-8.0-SNAPSHOT.pom[0m
+[0m[[0mdebug[0m] [0m	db4omaverepositories: found md file for com.db4o#db4o-full-java5;8.0-SNAPSHOT[0m
+[0m[[0mdebug[0m] [0m		=> http://source.db4o.com/maven/com/db4o/db4o-full-java5/8.0-SNAPSHOT/db4o-full-java5-8.0-SNAPSHOT.pom (8.0-SNAPSHOT)[0m
+[0m[[0mdebug[0m] [0mdownloading http://source.db4o.com/maven/com/db4o/db4o-full-java5/8.0-SNAPSHOT/db4o-full-java5-8.0-SNAPSHOT.pom ...[0m
+[0m[[0mdebug[0m] [0m	db4omaverepositories: downloading http://source.db4o.com/maven/com/db4o/db4o-full-java5/8.0-SNAPSHOT/db4o-full-java5-8.0-SNAPSHOT.pom[0m
+[0m[[0mdebug[0m] [0m	db4omaverepositories: downloading http://source.db4o.com/maven/com/db4o/db4o-full-java5/8.0-SNAPSHOT/db4o-full-java5-8.0-SNAPSHOT.pom.sha1[0m
+[0m[[0mdebug[0m] [0msha1 OK for http://source.db4o.com/maven/com/db4o/db4o-full-java5/8.0-SNAPSHOT/db4o-full-java5-8.0-SNAPSHOT.pom[0m
+[0m[[0mdebug[0m] [0m	[SUCCESSFUL ] com.db4o#db4o-full-java5;8.0-SNAPSHOT!db4o-full-java5.pom(pom.original) (593ms)[0m
+[0m[[0mdebug[0m] [0m		tried /home/stefano/.ivy2/local/com.db4o/db4o-full-java5/8.0-SNAPSHOT/jars/db4o-full-java5.jar[0m
+[0m[[0mdebug[0m] [0m	maven-metadata not available: http://repo1.maven.org/maven2/com/db4o/db4o-full-java5/8.0-SNAPSHOT/maven-metadata.xml[0m
+[0m[[0mdebug[0m] [0m		tried http://repo1.maven.org/maven2/com/db4o/db4o-full-java5/8.0-SNAPSHOT/db4o-full-java5-8.0-SNAPSHOT.jar[0m
+[0m[[0mdebug[0m] [0mCLIENT ERROR: Not Found url=http://repo1.maven.org/maven2/com/db4o/db4o-full-java5/8.0-SNAPSHOT/db4o-full-java5-8.0-SNAPSHOT.jar[0m
+[0m[[0mdebug[0m] [0m		tried http://source.db4o.com/maven/com/db4o/db4o-full-java5/8.0-SNAPSHOT/db4o-full-java5-8.0-SNAPSHOT.jar[0m
+[0m[[0mdebug[0m] [0mcom.db4o#db4o-full-java5;8.0-SNAPSHOT is changing, but has not changed: will trust cached artifacts if any[0m
+[0m[[0mdebug[0m] [0mDeleting additional old artifacts from cache for changed module com.db4o#db4o-full-java5;8.0-SNAPSHOT:[0m
+[0m[[0mdebug[0m] [0m	[0m
+[0m[[0mdebug[0m] [0m	found com.db4o#db4o-full-java5;8.0-SNAPSHOT in db4omaverepositories[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->master][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'runtime'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->master][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'test'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [test][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.novocode#junit-interface;0.9 [test->default(compile)][0m
+[0m[[0minfo[0m] [0mResolving com.novocode#junit-interface;0.9 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: com.novocode#junit-interface;0.9 {test=[default(compile)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: com.novocode#junit-interface;0.9[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: com.novocode#junit-interface;0.9[0m
+[0m[[0mdebug[0m] [0m	found com.novocode#junit-interface;0.9 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.novocode#junit-interface;0.9 [test->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.novocode#junit-interface;0.9 [test->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->junit#junit-dep;4.8.2 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving junit#junit-dep;4.8.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: junit#junit-dep;4.8.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: junit#junit-dep;4.8.2[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: junit#junit-dep;4.8.2[0m
+[0m[[0mdebug[0m] [0m	found junit#junit-dep;4.8.2 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->junit#junit-dep;4.8.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies junit#junit-dep;4.8.2->org.hamcrest#hamcrest-core;1.1 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving org.hamcrest#hamcrest-core;1.1 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.hamcrest#hamcrest-core;1.1 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.hamcrest#hamcrest-core;1.1[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.hamcrest#hamcrest-core;1.1[0m
+[0m[[0mdebug[0m] [0m	found org.hamcrest#hamcrest-core;1.1 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies junit#junit-dep;4.8.2->org.hamcrest#hamcrest-core;1.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->junit#junit-dep;4.8.2 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->junit#junit-dep;4.8.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies junit#junit-dep;4.8.2->org.hamcrest#hamcrest-core;1.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies junit#junit-dep;4.8.2->org.hamcrest#hamcrest-core;1.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->org.scala-tools.testing#test-interface;0.5 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-tools.testing#test-interface;0.5 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-tools.testing#test-interface;0.5 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-tools.testing#test-interface;0.5[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.scala-tools.testing#test-interface;0.5[0m
+[0m[[0mdebug[0m] [0m	found org.scala-tools.testing#test-interface;0.5 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->org.scala-tools.testing#test-interface;0.5 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->org.scala-tools.testing#test-interface;0.5 [compile->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->org.scala-tools.testing#test-interface;0.5 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->junit#junit-dep;4.8.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->junit#junit-dep;4.8.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->org.scala-tools.testing#test-interface;0.5 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->org.scala-tools.testing#test-interface;0.5 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.novocode#junit-interface;0.9 [test->master][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'provided'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [provided][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'optional'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [optional][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'compile-internal'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [compile-internal][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [optional][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [provided][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'runtime-internal'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [runtime-internal][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [optional][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'test-internal'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [test-internal][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [test][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->javax.inject#javax.inject;1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->aopalliance#aopalliance;1.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->com.google.guava#guava;11.0.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.guava#guava;11.0.1->com.google.code.findbugs#jsr305;1.3.9 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->cglib#cglib;3.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies cglib#cglib;3.0->org.ow2.asm#asm;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.google.inject#guice;4.0-beta->org.ow2.asm#asm-util;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-util;4.0->org.ow2.asm#asm-tree;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.ow2.asm#asm-tree;4.0->org.ow2.asm#asm;4.0 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.google.inject#guice;4.0-beta [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.db4o#db4o-full-java5;8.0-SNAPSHOT [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.novocode#junit-interface;0.9 [test->default(compile)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.novocode#junit-interface;0.9 [test->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.novocode#junit-interface;0.9 [test->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->junit#junit-dep;4.8.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->junit#junit-dep;4.8.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies junit#junit-dep;4.8.2->org.hamcrest#hamcrest-core;1.1 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies junit#junit-dep;4.8.2->org.hamcrest#hamcrest-core;1.1 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->org.scala-tools.testing#test-interface;0.5 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->org.scala-tools.testing#test-interface;0.5 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->junit#junit-dep;4.8.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->junit#junit-dep;4.8.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies junit#junit-dep;4.8.2->org.hamcrest#hamcrest-core;1.1 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies junit#junit-dep;4.8.2->org.hamcrest#hamcrest-core;1.1 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->org.scala-tools.testing#test-interface;0.5 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies com.novocode#junit-interface;0.9->org.scala-tools.testing#test-interface;0.5 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->com.novocode#junit-interface;0.9 [test->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [optional][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [provided][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'plugin'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [plugin][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'sources'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [sources][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'docs'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [docs][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'pom'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [pom][0m
+[0m[[0mdebug[0m] [0mresolving dependencies for configuration 'scala-tool'[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies for de.stejack#connect4plus;1.0-SNAPSHOT [scala-tool][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-compiler;2.10.2 [scala-tool->default][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-compiler;2.10.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang#scala-compiler;2.10.2 {scala-tool=[default, optional(default)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-compiler;2.10.2[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.scala-lang#scala-compiler;2.10.2[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#scala-compiler;2.10.2 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-compiler;2.10.2 [scala-tool->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-compiler;2.10.2 [scala-tool->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-library;2.10.2 [compile->default][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-library;2.10.2 [compile->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-library;2.10.2 [compile->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-library;2.10.2 [compile->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-library;2.10.2 [compile->optional(default)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-reflect;2.10.2 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#scala-reflect;2.10.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang#scala-reflect;2.10.2 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#scala-reflect;2.10.2[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.scala-lang#scala-reflect;2.10.2[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#scala-reflect;2.10.2 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-reflect;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.2->org.scala-lang#scala-library;2.10.2 [compile->master(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.2->org.scala-lang#scala-library;2.10.2 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-reflect;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#scala-reflect;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.2->org.scala-lang#scala-library;2.10.2 [runtime->runtime(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-reflect;2.10.2->org.scala-lang#scala-library;2.10.2 [runtime->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-compiler;2.10.2 [scala-tool->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-compiler;2.10.2 [scala-tool->optional(default)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#jline;2.10.2 [optional->master(*)][0m
+[0m[[0minfo[0m] [0mResolving org.scala-lang#jline;2.10.2 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.scala-lang#jline;2.10.2 {optional=[compile(*), master(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.scala-lang#jline;2.10.2[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.scala-lang#jline;2.10.2[0m
+[0m[[0mdebug[0m] [0m	found org.scala-lang#jline;2.10.2 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#scala-compiler;2.10.2->org.scala-lang#jline;2.10.2 [optional->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#jline;2.10.2->org.fusesource.jansi#jansi;1.4 [compile->master(*)][0m
+[0m[[0minfo[0m] [0mResolving org.fusesource.jansi#jansi;1.4 ...[0m
+[0m[[0mdebug[0m] [0msbt-chain: Checking cache for: dependency: org.fusesource.jansi#jansi;1.4 {compile=[compile(*), master(*)], runtime=[runtime(*)]}[0m
+[0m[[0mdebug[0m] [0msbt-chain: module revision found in cache: org.fusesource.jansi#jansi;1.4[0m
+[0m[[0mdebug[0m] [0m	local: revision in cache: org.fusesource.jansi#jansi;1.4[0m
+[0m[[0mdebug[0m] [0m	found org.fusesource.jansi#jansi;1.4 in sbt-chain[0m
+[0m[[0mdebug[0m] [0m== resolving dependencies org.scala-lang#jline;2.10.2->org.fusesource.jansi#jansi;1.4 [compile->compile(*)][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [scala-tool->default][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [scala-tool->runtime][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [scala-tool->compile][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [scala-tool->master][0m
+[0m[[0mdebug[0m] [0m== resolving dependencies de.stejack#connect4plus;1.0-SNAPSHOT->org.scala-lang#scala-library;2.10.2 [scala-tool->optional(default)][0m
+[0m[[0mdebug[0m] [0m	resolved ivy file produced in /home/stefano/Dokumente/Programming/Java/Connect4/target/resolution-cache/de.stejack/connect4plus/1.0-SNAPSHOT/resolved.xml.xml[0m
+[0m[[0mdebug[0m] [0m:: downloading artifacts ::[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-library;2.10.2!scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] com.google.inject#guice;4.0-beta!guice.jar[0m
+[0m[[0mdebug[0m] [0m		tried http://source.db4o.com/maven/com/db4o/db4o-full-java5/8.0-SNAPSHOT/db4o-full-java5-8.0-SNAPSHOT.jar[0m
+[0m[[0minfo[0m] [0mdownloading http://source.db4o.com/maven/com/db4o/db4o-full-java5/8.0-SNAPSHOT/db4o-full-java5-8.0-SNAPSHOT.jar ...[0m
+[0m[[0mdebug[0m] [0m	db4omaverepositories: downloading http://source.db4o.com/maven/com/db4o/db4o-full-java5/8.0-SNAPSHOT/db4o-full-java5-8.0-SNAPSHOT.jar[0m
+[0m[[0mdebug[0m] [0m	db4omaverepositories: downloading http://source.db4o.com/maven/com/db4o/db4o-full-java5/8.0-SNAPSHOT/db4o-full-java5-8.0-SNAPSHOT.jar.sha1[0m
+[0m[[0mdebug[0m] [0msha1 OK for http://source.db4o.com/maven/com/db4o/db4o-full-java5/8.0-SNAPSHOT/db4o-full-java5-8.0-SNAPSHOT.jar[0m
+[0m[[0minfo[0m] [0m	[SUCCESSFUL ] com.db4o#db4o-full-java5;8.0-SNAPSHOT!db4o-full-java5.jar (52536ms)[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] javax.inject#javax.inject;1!javax.inject.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] aopalliance#aopalliance;1.0!aopalliance.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] com.google.guava#guava;11.0.1!guava.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] cglib#cglib;3.0!cglib.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.ow2.asm#asm-util;4.0!asm-util.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] com.google.code.findbugs#jsr305;1.3.9!jsr305.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.ow2.asm#asm;4.0!asm.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.ow2.asm#asm-tree;4.0!asm-tree.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] com.novocode#junit-interface;0.9!junit-interface.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] junit#junit-dep;4.8.2!junit-dep.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-tools.testing#test-interface;0.5!test-interface.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.hamcrest#hamcrest-core;1.1!hamcrest-core.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-compiler;2.10.2!scala-compiler.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-reflect;2.10.2!scala-reflect.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#jline;2.10.2!jline.jar[0m
+[0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.fusesource.jansi#jansi;1.4!jansi.jar[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 2759ms :: artifacts dl 52598ms[0m
+[0m[[0mdebug[0m] [0m	report for de.stejack#connect4plus;1.0-SNAPSHOT compile produced in /home/stefano/Dokumente/Programming/Java/Connect4/target/resolution-cache/reports/de.stejack-connect4plus-compile.xml[0m
+[0m[[0mdebug[0m] [0m	report for de.stejack#connect4plus;1.0-SNAPSHOT runtime produced in /home/stefano/Dokumente/Programming/Java/Connect4/target/resolution-cache/reports/de.stejack-connect4plus-runtime.xml[0m
+[0m[[0mdebug[0m] [0m	report for de.stejack#connect4plus;1.0-SNAPSHOT test produced in /home/stefano/Dokumente/Programming/Java/Connect4/target/resolution-cache/reports/de.stejack-connect4plus-test.xml[0m
+[0m[[0mdebug[0m] [0m	report for de.stejack#connect4plus;1.0-SNAPSHOT provided produced in /home/stefano/Dokumente/Programming/Java/Connect4/target/resolution-cache/reports/de.stejack-connect4plus-provided.xml[0m
+[0m[[0mdebug[0m] [0m	report for de.stejack#connect4plus;1.0-SNAPSHOT optional produced in /home/stefano/Dokumente/Programming/Java/Connect4/target/resolution-cache/reports/de.stejack-connect4plus-optional.xml[0m
+[0m[[0mdebug[0m] [0m	report for de.stejack#connect4plus;1.0-SNAPSHOT compile-internal produced in /home/stefano/Dokumente/Programming/Java/Connect4/target/resolution-cache/reports/de.stejack-connect4plus-compile-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for de.stejack#connect4plus;1.0-SNAPSHOT runtime-internal produced in /home/stefano/Dokumente/Programming/Java/Connect4/target/resolution-cache/reports/de.stejack-connect4plus-runtime-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for de.stejack#connect4plus;1.0-SNAPSHOT test-internal produced in /home/stefano/Dokumente/Programming/Java/Connect4/target/resolution-cache/reports/de.stejack-connect4plus-test-internal.xml[0m
+[0m[[0mdebug[0m] [0m	report for de.stejack#connect4plus;1.0-SNAPSHOT plugin produced in /home/stefano/Dokumente/Programming/Java/Connect4/target/resolution-cache/reports/de.stejack-connect4plus-plugin.xml[0m
+[0m[[0mdebug[0m] [0m	report for de.stejack#connect4plus;1.0-SNAPSHOT sources produced in /home/stefano/Dokumente/Programming/Java/Connect4/target/resolution-cache/reports/de.stejack-connect4plus-sources.xml[0m
+[0m[[0mdebug[0m] [0m	report for de.stejack#connect4plus;1.0-SNAPSHOT docs produced in /home/stefano/Dokumente/Programming/Java/Connect4/target/resolution-cache/reports/de.stejack-connect4plus-docs.xml[0m
+[0m[[0mdebug[0m] [0m	report for de.stejack#connect4plus;1.0-SNAPSHOT pom produced in /home/stefano/Dokumente/Programming/Java/Connect4/target/resolution-cache/reports/de.stejack-connect4plus-pom.xml[0m
+[0m[[0mdebug[0m] [0m	report for de.stejack#connect4plus;1.0-SNAPSHOT scala-tool produced in /home/stefano/Dokumente/Programming/Java/Connect4/target/resolution-cache/reports/de.stejack-connect4plus-scala-tool.xml[0m
+[0m[[0mdebug[0m] [0m	resolve done (2759ms resolve - 52598ms download)[0m
+[0m[[0minfo[0m] [0mDone updating.[0m

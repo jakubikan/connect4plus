@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="de.stejack"
+		module="connect4plus"
+		revision="1.0-SNAPSHOT"
+		conf="runtime"
+		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
+		date="20131030152009"/>
+	<dependencies>
+		<module organisation="com.db4o" name="db4o-full-java5">
+			<revision name="8.0-SNAPSHOT" status="integration" pubdate="20121105183756" resolver="db4omaverepositories" artresolver="db4omaverepositories" homepage="http://www.db4o.com" downloaded="true" searched="true" default="false" conf="default(compile), default, compile, runtime, master" position="10">
+				<license name="GNU General Public License" url="http://www.db4o.com/about/company/legalpolicies/gpl.aspx"/>
+				<metadata-artifact status="successful" details="" size="597" time="593" location="/home/stefano/.ivy2/cache/com.db4o/db4o-full-java5/ivy-8.0-SNAPSHOT.xml" searched="true" original-local-location="/home/stefano/.ivy2/cache/com.db4o/db4o-full-java5/ivy-8.0-SNAPSHOT.xml.original" origin-is-local="false" origin-location="http://source.db4o.com/maven/com/db4o/db4o-full-java5/8.0-SNAPSHOT/db4o-full-java5-8.0-SNAPSHOT.pom"/>
+				<caller organisation="de.stejack" name="connect4plus" conf="compile, runtime" rev="8.0-SNAPSHOT" rev-constraint-default="8.0-SNAPSHOT" rev-constraint-dynamic="8.0-SNAPSHOT" callerrev="1.0-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="db4o-full-java5" type="jar" ext="jar" status="successful" details="" size="2642886" time="52536" location="/home/stefano/.ivy2/cache/com.db4o/db4o-full-java5/jars/db4o-full-java5-8.0-SNAPSHOT.jar">
+						<origin-location is-local="false" location="http://source.db4o.com/maven/com/db4o/db4o-full-java5/8.0-SNAPSHOT/db4o-full-java5-8.0-SNAPSHOT.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.google.inject" name="guice">
+			<revision name="4.0-beta" status="release" pubdate="20130801000226" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="1">
+				<metadata-artifact status="no" details="" size="4414" time="0" location="/home/stefano/.ivy2/cache/com.google.inject/guice/ivy-4.0-beta.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/com/google/inject/guice/4.0-beta/guice-4.0-beta.pom"/>
+				<caller organisation="de.stejack" name="connect4plus" conf="compile, runtime" rev="4.0-beta" rev-constraint-default="4.0-beta" rev-constraint-dynamic="4.0-beta" callerrev="1.0-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="guice" type="jar" ext="jar" status="no" details="" size="1488793" time="0" location="/home/stefano/.ivy2/cache/com.google.inject/guice/jars/guice-4.0-beta.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/google/inject/guice/4.0-beta/guice-4.0-beta.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="cglib" name="cglib">
+			<revision name="3.0" status="release" pubdate="20130331184656" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://cglib.sourceforge.net/" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="6">
+				<license name="ASF 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2695" time="0" location="/home/stefano/.ivy2/cache/cglib/cglib/ivy-3.0.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/cglib/cglib/3.0/cglib-3.0.pom"/>
+				<caller organisation="com.google.inject" name="guice" conf="default, compile, runtime, master" rev="3.0" rev-constraint-default="3.0" rev-constraint-dynamic="3.0" callerrev="4.0-beta"/>
+				<artifacts>
+					<artifact name="cglib" type="jar" ext="jar" status="no" details="" size="282959" time="0" location="/home/stefano/.ivy2/cache/cglib/cglib/jars/cglib-3.0.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/cglib/cglib/3.0/cglib-3.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.ow2.asm" name="asm-util">
+			<revision name="4.0" status="release" pubdate="20111206202317" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="8">
+				<metadata-artifact status="no" details="" size="4374" time="0" location="/home/stefano/.ivy2/cache/org.ow2.asm/asm-util/ivy-4.0.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/ow2/asm/asm-util/4.0/asm-util-4.0.pom"/>
+				<caller organisation="com.google.inject" name="guice" conf="default, compile, runtime, master" rev="4.0" rev-constraint-default="4.0" rev-constraint-dynamic="4.0" callerrev="4.0-beta"/>
+				<artifacts>
+					<artifact name="asm-util" type="jar" ext="jar" status="no" details="" size="36995" time="0" location="/home/stefano/.ivy2/cache/org.ow2.asm/asm-util/jars/asm-util-4.0.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/ow2/asm/asm-util/4.0/asm-util-4.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.ow2.asm" name="asm-tree">
+			<revision name="4.0" status="release" pubdate="20111206202301" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="9">
+				<metadata-artifact status="no" details="" size="4369" time="0" location="/home/stefano/.ivy2/cache/org.ow2.asm/asm-tree/ivy-4.0.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/ow2/asm/asm-tree/4.0/asm-tree-4.0.pom"/>
+				<caller organisation="org.ow2.asm" name="asm-util" conf="compile, runtime" rev="4.0" rev-constraint-default="4.0" rev-constraint-dynamic="4.0" callerrev="4.0"/>
+				<artifacts>
+					<artifact name="asm-tree" type="jar" ext="jar" status="no" details="" size="21982" time="0" location="/home/stefano/.ivy2/cache/org.ow2.asm/asm-tree/jars/asm-tree-4.0.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/ow2/asm/asm-tree/4.0/asm-tree-4.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.ow2.asm" name="asm">
+			<revision name="4.0" status="release" pubdate="20111206202219" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="7">
+				<metadata-artifact status="no" details="" size="3744" time="0" location="/home/stefano/.ivy2/cache/org.ow2.asm/asm/ivy-4.0.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/ow2/asm/asm/4.0/asm-4.0.pom"/>
+				<caller organisation="org.ow2.asm" name="asm-tree" conf="compile, runtime" rev="4.0" rev-constraint-default="4.0" rev-constraint-dynamic="4.0" callerrev="4.0"/>
+				<caller organisation="cglib" name="cglib" conf="compile, runtime" rev="4.0" rev-constraint-default="4.0" rev-constraint-dynamic="4.0" callerrev="3.0"/>
+				<artifacts>
+					<artifact name="asm" type="jar" ext="jar" status="no" details="" size="46022" time="0" location="/home/stefano/.ivy2/cache/org.ow2.asm/asm/jars/asm-4.0.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/ow2/asm/asm/4.0/asm-4.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.google.guava" name="guava">
+			<revision name="11.0.1" status="release" pubdate="20120109193212" resolver="sbt-chain" artresolver="sbt-chain" homepage="" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="4">
+				<metadata-artifact status="no" details="" size="3835" time="0" location="/home/stefano/.ivy2/cache/com.google.guava/guava/ivy-11.0.1.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/com/google/guava/guava/11.0.1/guava-11.0.1.pom"/>
+				<caller organisation="com.google.inject" name="guice" conf="default, compile, runtime, master" rev="11.0.1" rev-constraint-default="11.0.1" rev-constraint-dynamic="11.0.1" callerrev="4.0-beta"/>
+				<artifacts>
+					<artifact name="guava" type="jar" ext="jar" status="no" details="" size="1649781" time="0" location="/home/stefano/.ivy2/cache/com.google.guava/guava/jars/guava-11.0.1.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/google/guava/guava/11.0.1/guava-11.0.1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="com.google.code.findbugs" name="jsr305">
+			<revision name="1.3.9" status="release" pubdate="20090825002822" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://findbugs.sourceforge.net/" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="5">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2393" time="0" location="/home/stefano/.ivy2/cache/com.google.code.findbugs/jsr305/ivy-1.3.9.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.pom"/>
+				<caller organisation="com.google.guava" name="guava" conf="compile, runtime" rev="1.3.9" rev-constraint-default="1.3.9" rev-constraint-dynamic="1.3.9" callerrev="11.0.1"/>
+				<artifacts>
+					<artifact name="jsr305" type="jar" ext="jar" status="no" details="" size="33015" time="0" location="/home/stefano/.ivy2/cache/com.google.code.findbugs/jsr305/jars/jsr305-1.3.9.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="aopalliance" name="aopalliance">
+			<revision name="1.0" status="release" pubdate="20070226234340" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://aopalliance.sourceforge.net" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="3">
+				<license name="Public Domain"/>
+				<metadata-artifact status="no" details="" size="2291" time="0" location="/home/stefano/.ivy2/cache/aopalliance/aopalliance/ivy-1.0.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/aopalliance/aopalliance/1.0/aopalliance-1.0.pom"/>
+				<caller organisation="com.google.inject" name="guice" conf="default, compile, runtime, master" rev="1.0" rev-constraint-default="1.0" rev-constraint-dynamic="1.0" callerrev="4.0-beta"/>
+				<artifacts>
+					<artifact name="aopalliance" type="jar" ext="jar" status="no" details="" size="4467" time="0" location="/home/stefano/.ivy2/cache/aopalliance/aopalliance/jars/aopalliance-1.0.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/aopalliance/aopalliance/1.0/aopalliance-1.0.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="javax.inject" name="javax.inject">
+			<revision name="1" status="release" pubdate="20091014013500" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://code.google.com/p/atinject/" downloaded="false" searched="false" default="false" conf="compile, master(*), runtime, compile(*), runtime(*), master" position="2">
+				<license name="The Apache Software License, Version 2.0" url="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+				<metadata-artifact status="no" details="" size="2380" time="0" location="/home/stefano/.ivy2/cache/javax.inject/javax.inject/ivy-1.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/javax/inject/javax.inject/1/javax.inject-1.pom"/>
+				<caller organisation="com.google.inject" name="guice" conf="default, compile, runtime, master" rev="1" rev-constraint-default="1" rev-constraint-dynamic="1" callerrev="4.0-beta"/>
+				<artifacts>
+					<artifact name="javax.inject" type="jar" ext="jar" status="no" details="" size="2497" time="0" location="/home/stefano/.ivy2/cache/javax.inject/javax.inject/jars/javax.inject-1.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/javax/inject/javax.inject/1/javax.inject-1.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+		<module organisation="org.scala-lang" name="scala-library">
+			<revision name="2.10.2" status="release" pubdate="20130606200543" resolver="sbt-chain" artresolver="sbt-chain" homepage="http://www.scala-lang.org/" downloaded="false" searched="false" default="false" conf="default(compile), default, compile, runtime, master" position="0">
+				<license name="BSD-like" url="http://www.scala-lang.org/downloads/license.html          "/>
+				<metadata-artifact status="no" details="" size="2487" time="0" location="/home/stefano/.ivy2/cache/org.scala-lang/scala-library/ivy-2.10.2.xml" searched="false" origin-is-local="false" origin-location="http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.2/scala-library-2.10.2.pom"/>
+				<caller organisation="de.stejack" name="connect4plus" conf="compile, runtime" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.2" callerrev="1.0-SNAPSHOT"/>
+				<artifacts>
+					<artifact name="scala-library" type="jar" ext="jar" status="no" details="" size="7121818" time="0" location="/home/stefano/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.10.2.jar">
+						<origin-location is-local="false" location="http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.10.2/scala-library-2.10.2.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>
