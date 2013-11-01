@@ -21,6 +21,6 @@ final class Connect4 {
     	controller.newGame();
         
     	controller.addObserver(injector.getInstance(SwingGUI.class));
-    	//controller.addObserver(injector.getInstance(TUI.class));
+    	controller.addObserver(injector.getInstance(TUI.class));
     }
 }
