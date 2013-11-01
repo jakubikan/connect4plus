@@ -1,7 +1,6 @@
 package connectfour.controller;
 
 import connectfour.model.GameField;
-import connectfour.model.Human;
 import connectfour.model.Player;
 
 public interface IController {
@@ -19,25 +18,15 @@ public interface IController {
     
     public String getPlayerNameOnTurn();
     
-    /**
-     * @param gameField
-     *            the gameField to set
-     */
     public void setGameField(final GameField gameField);
     
-    /**
-     * @return the gameField
-     */
     public GameField getGameField();
     
     public void undoStep();
     
-    /**
-	 * 
-	 */
     public void redoStep();
     
-    public void setPlayer(final Human p);
+    public void setPlayer(final Player p);
     
     public void setOpponend(final Player p);
     
@@ -48,18 +37,9 @@ public interface IController {
     
     public Player getPlayerAt(final int row, final int col);
     
-    /**
-     * @return
-     */
     public Player getOpponend();
     
-    /**
-     * @return
-     */
-    public Human getPlayer();
+    public Player getPlayer();
     
-    /**
-     * @param state
-     */
     public void useState(final GameField state);
 }

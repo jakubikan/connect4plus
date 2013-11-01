@@ -5,7 +5,6 @@ import javax.swing.undo.UndoManager;
 import com.google.inject.Singleton;
 
 import connectfour.model.GameField;
-import connectfour.model.Human;
 import connectfour.model.Player;
 import connectfour.util.observer.IObserverWithArguments;
 import connectfour.util.observer.ObservableWithArguments;
@@ -142,7 +141,7 @@ public final class GameController extends ObservableWithArguments implements IOb
     }
     
     @Override
-    public void setPlayer(final Human p) {
+    public void setPlayer(final Player p) {
         gameField.setPlayer(p);
         
     }
@@ -171,7 +170,7 @@ public final class GameController extends ObservableWithArguments implements IOb
     }
     
     @Override
-    public Human getPlayer() {
+    public Player getPlayer() {
         return gameField.getPlayer();
     }
     

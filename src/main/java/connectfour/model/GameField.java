@@ -13,7 +13,7 @@ public class GameField implements Cloneable {
 
 	private Player[][] gameField;
 
-	private Human player;
+	private Player player;
 	private Player opponend;
 	private Player playerOnTurn;
 	private int modCount = 0;
@@ -91,7 +91,7 @@ public class GameField implements Cloneable {
 		return playerOnTurn;
 	}
 
-	public void setPlayer(final Human p) {
+	public void setPlayer(final Player p) {
 		player = p;
 
 	}
@@ -105,7 +105,7 @@ public class GameField implements Cloneable {
 		return opponend;
 	}
 
-	public Human getPlayer() {
+	public Player getPlayer() {
 		return player;
 	}
 
