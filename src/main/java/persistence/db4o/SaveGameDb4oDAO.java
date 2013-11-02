@@ -1,5 +1,7 @@
 package persistence.db4o;
 
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 import persistence.ISaveGameDAO;
@@ -24,14 +26,21 @@ public class SaveGameDb4oDAO implements ISaveGameDAO {
 		saveGame.getPlayer1().setGameField(null);
 		saveGame.getPlayer2().setGameField(null);
 
-		if (saveGameExists(saveGame.getSaveGameName())) {
-			SaveGame sg = loadSaveGame(saveGame.getSaveGameName());
-			db.delete(sg);
-		}
+		deleteSaveGameIfExists(saveGame.getSaveGameName());
 
 		db.store(saveGame);
 	}
 
+	@Override
+	public boolean deleteSaveGameIfExists(final String saveGameName) {
+		if (saveGameExists(saveGameName)) {
+			SaveGame sg = loadSaveGame(saveGameName);
+			db.delete(sg);
+			return true;
+		}
+		return false;
+	}
+	
 	@Override
 	public boolean saveGameExists(final String saveGameName) {
 		return loadSaveGame(saveGameName) != null;
@@ -53,6 +62,19 @@ public class SaveGameDb4oDAO implements ISaveGameDAO {
 		return null;
 	}
 
+	@Override
+	public List<String> getAllSaveGames() {
+		Iterator<SaveGame> it = db.query(SaveGame.class).iterator();
+		List<String> allSaveGames = new LinkedList<String>();
+		
+		while(it.hasNext()) {
+			SaveGame sg = it.next();
+			allSaveGames.add(sg.getSaveGameName());
+		}
+		
+		return allSaveGames;
+	}
+	
 	@Override
 	public void closeDB() {
 		db.close();

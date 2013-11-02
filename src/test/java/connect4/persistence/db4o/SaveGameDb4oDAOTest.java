@@ -1,10 +1,9 @@
 package connect4.persistence.db4o;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -53,6 +52,7 @@ public class SaveGameDb4oDAOTest {
 		initGameField();
 		saveGameAlreadyExistsTest();
 		loadTest();
+		saveGameWillBeOverwrittenTest();
 	}
 	
 	private void initGameField() {
@@ -115,9 +115,48 @@ public class SaveGameDb4oDAOTest {
 		assertFalse(sgdb4o.saveGameExists("DummyName"));
 	}
 
+	private int countSaveGameName(String sgName) {
+		Iterator<String> it = sgdb4o.getAllSaveGames().iterator();
+		int i = 0;
+		
+		while(it.hasNext()) {
+			String name = it.next();
+			if (name.equals(sgName)) {
+				i++;
+			}
+		}
+		
+		return i;
+	}
+	
+	private String getUniqueName() {
+		return Long.toString(System.nanoTime());
+	}
+	
+	private void saveGameWillBeOverwrittenTest() {
+		// Save gameField and players
+		String sgName = getUniqueName();
+		SaveGame sg = new SaveGame(sgName, gameField, player, opponend);
+
+		// Before save
+		assertTrue(countSaveGameName(sgName) == 0);
+		
+		sgdb4o.saveGame(sg);
+		
+		// After save
+		assertTrue(countSaveGameName(sgName) == 1);
+
+		// After second save, the save game with the same name
+		// should be overwritte. So countSaveGame() should still
+		// return 1!
+		
+		sgdb4o.saveGame(sg);
+		assertTrue(countSaveGameName(sgName) == 1);
+	}
+	
 	private void loadTest() {
 		// Save gameField and players
-		String sgName = new Date().toString(); // Every run should have different name
+		String sgName = getUniqueName(); // Every run should have different name
 		SaveGame sg = new SaveGame(sgName, gameField, player, opponend);
 
 		sgdb4o.saveGame(sg);
