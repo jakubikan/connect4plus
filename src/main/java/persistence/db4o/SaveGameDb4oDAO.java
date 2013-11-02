@@ -1,9 +1,12 @@
 package persistence.db4o;
 
+import java.util.List;
+
 import persistence.ISaveGameDAO;
 
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
+import com.db4o.query.Predicate;
 
 import connectfour.model.SaveGame;
 
@@ -20,6 +23,19 @@ public class SaveGameDb4oDAO implements ISaveGameDAO {
 		saveGame.getPlayer1().setGameField(null);
 		saveGame.getPlayer2().setGameField(null);
 		db.store(saveGame);
+	}
+	
+	@Override
+	public boolean saveGameExists(final String saveGameName) {
+		List<SaveGame> listSaveGame = db.query(new Predicate<SaveGame>() {
+			private static final long serialVersionUID = 1L;
+
+			public boolean match(SaveGame sg) {
+				return sg.getSaveGameName().equals(saveGameName);
+			}
+		});
+		
+		return listSaveGame.size() > 0;
 	}
 
 	@Override
