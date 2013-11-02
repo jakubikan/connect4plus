@@ -6,6 +6,12 @@ public class SaveGame {
 	private Player player2;
 	private String saveGameName;
 	
+	/**
+	 * @param saveGameName Unique save game name, otherwise it will be overwritten!
+	 * @param gameField gameField to save
+	 * @param player1 player 1 to save
+	 * @param player2 player 2 to save
+	 */
 	public SaveGame(String saveGameName, GameField gameField, Player player1, Player player2) {
 		this.gameField = gameField;
 		this.player1 = player1;

@@ -20,14 +20,14 @@ public class GameFieldTest {
 	GameField gameField;
 	Player player;
 	Player opponend;
-	
+
 	private IObserverWithArguments obsersable;
 
 	@Before
 	public void setUp() throws Exception {
 		Injector injector = Guice.createInjector(new GameControllerModule());
 		this.obsersable = injector.getInstance(GameController.class);
-		
+
 		player = new Human();
 		player.setName("Hugo");
 		opponend = new Human();
@@ -72,35 +72,32 @@ public class GameFieldTest {
 
 	@Test
 	public void newGameFieldTest() {
-
-		int row;
-		row = gameField.dropCoin(0, opponend);
-		row = gameField.dropCoin(0, opponend);
-		row = gameField.dropCoin(0, opponend);
-		row = gameField.dropCoin(0, opponend);
+		gameField.dropCoin(0, opponend);
+		gameField.dropCoin(0, opponend);
+		gameField.dropCoin(0, opponend);
+		gameField.dropCoin(0, opponend);
 		gameField = new GameField(obsersable);
 		assertEquals(gameField.getPlayerAt(0, 0), null);
 	}
 
 	@Test
 	public void isWonTest() {
-		int row;
 		System.out.println("isWonTest");
-		row = gameField.dropCoin(0, opponend);
-		row = gameField.dropCoin(0, opponend);
-		row = gameField.dropCoin(0, opponend);
-		row = gameField.dropCoin(0, opponend);
+		gameField.dropCoin(0, opponend);
+		gameField.dropCoin(0, opponend);
+		gameField.dropCoin(0, opponend);
+		gameField.dropCoin(0, opponend);
 
 		assertEquals(gameField.getWinner(), opponend);
 
 		gameField = new GameField(obsersable);
 
-		row = gameField.dropCoin(0, opponend);
-		row = gameField.dropCoin(0, opponend);
-		row = gameField.dropCoin(0, player);
-		row = gameField.dropCoin(0, player);
-		row = gameField.dropCoin(0, opponend);
-		row = gameField.dropCoin(0, opponend);
+		gameField.dropCoin(0, opponend);
+		gameField.dropCoin(0, opponend);
+		gameField.dropCoin(0, player);
+		gameField.dropCoin(0, player);
+		gameField.dropCoin(0, opponend);
+		gameField.dropCoin(0, opponend);
 		assertEquals(gameField.getWinner(), null);
 
 		gameField = new GameField(obsersable);
@@ -108,17 +105,17 @@ public class GameFieldTest {
 		/*
 		 * o ox oxx oxxxoo
 		 */
-		row = gameField.dropCoin(0, opponend);
-		row = gameField.dropCoin(1, player);
-		row = gameField.dropCoin(1, opponend);
-		row = gameField.dropCoin(2, player);
-		row = gameField.dropCoin(3, opponend);
-		row = gameField.dropCoin(2, player);
-		row = gameField.dropCoin(2, opponend);
-		row = gameField.dropCoin(3, player);
-		row = gameField.dropCoin(4, opponend);
-		row = gameField.dropCoin(3, player);
-		row = gameField.dropCoin(3, opponend);
+		gameField.dropCoin(0, opponend);
+		gameField.dropCoin(1, player);
+		gameField.dropCoin(1, opponend);
+		gameField.dropCoin(2, player);
+		gameField.dropCoin(3, opponend);
+		gameField.dropCoin(2, player);
+		gameField.dropCoin(2, opponend);
+		gameField.dropCoin(3, player);
+		gameField.dropCoin(4, opponend);
+		gameField.dropCoin(3, player);
+		gameField.dropCoin(3, opponend);
 		assertEquals(gameField.getWinner(), opponend);
 
 		gameField = new GameField(obsersable);
@@ -126,17 +123,17 @@ public class GameFieldTest {
 		/*
 		 * x ox xox xoxox
 		 */
-		row = gameField.dropCoin(6, player);
-		row = gameField.dropCoin(5, opponend);
-		row = gameField.dropCoin(4, player);
-		row = gameField.dropCoin(3, opponend);
-		row = gameField.dropCoin(5, player);
-		row = gameField.dropCoin(4, opponend);
-		row = gameField.dropCoin(3, player);
-		row = gameField.dropCoin(3, opponend);
-		row = gameField.dropCoin(4, player);
-		row = gameField.dropCoin(2, opponend);
-		row = gameField.dropCoin(3, player);
+		gameField.dropCoin(6, player);
+		gameField.dropCoin(5, opponend);
+		gameField.dropCoin(4, player);
+		gameField.dropCoin(3, opponend);
+		gameField.dropCoin(5, player);
+		gameField.dropCoin(4, opponend);
+		gameField.dropCoin(3, player);
+		gameField.dropCoin(3, opponend);
+		gameField.dropCoin(4, player);
+		gameField.dropCoin(2, opponend);
+		gameField.dropCoin(3, player);
 		assertEquals(gameField.getWinner(), player);
 
 	}

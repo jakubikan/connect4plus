@@ -45,6 +45,7 @@ public class SaveGameDb4oDAOTest {
 		opponend = new Human();
 		gameField = new GameField(obsersable);
 		rows = new LinkedList<Integer>();
+		sgdb4o = new SaveGameDb4oDAO();
 	}
 
 	@Test
@@ -99,7 +100,6 @@ public class SaveGameDb4oDAOTest {
 		assertEquals(gameField.getPlayerAt(row, 1), opponend);
 		assertEquals(gameField.getPlayerAt(1, 1), opponend);
 		rows.add(row);
-
 	}
 
 	private void saveGameAlreadyExistsTest() {
@@ -107,7 +107,6 @@ public class SaveGameDb4oDAOTest {
 		String sgName = "Unit_Test";
 		SaveGame sg = new SaveGame(sgName, gameField, player, opponend);
 
-		sgdb4o = new SaveGameDb4oDAO();
 		sgdb4o.saveGame(sg);
 
 		// Test if the saveGame exists
@@ -118,51 +117,53 @@ public class SaveGameDb4oDAOTest {
 
 	private void loadTest() {
 		// Save gameField and players
-				String sgName = new Date().toString(); // Every run should have different name
-				SaveGame sg = new SaveGame(sgName, gameField, player, opponend);
+		String sgName = new Date().toString(); // Every run should have different name
+		SaveGame sg = new SaveGame(sgName, gameField, player, opponend);
 
-				// Load gameField and players
-				sg = sgdb4o.loadSaveGame();
+		sgdb4o.saveGame(sg);
 
-				gameField = sg.getGameField();
-				player = sg.getPlayer1();
-				opponend = sg.getPlayer2();
+		// Load gameField and players
+		sg = sgdb4o.loadSaveGame(sgName);
 
-				// Check, if the state has been loaded correctly!
-				Iterator<Integer> it = rows.iterator();
+		gameField = sg.getGameField();
+		player = sg.getPlayer1();
+		opponend = sg.getPlayer2();
 
-				int row = it.next();
-				assertEquals(0, row);
-				assertEquals(gameField.getPlayerAt(row, 3), player);
+		// Check, if the state has been loaded correctly!
+		Iterator<Integer> it = rows.iterator();
 
-				row = it.next();
-				assertEquals(gameField.getPlayerAt(row, 3), player);
-				assertEquals(1, row);
+		int row = it.next();
+		assertEquals(0, row);
+		assertEquals(gameField.getPlayerAt(row, 3), player);
 
-				row = it.next();
-				assertEquals(gameField.getPlayerAt(row, 1), opponend);
-				assertEquals(0, row);
+		row = it.next();
+		assertEquals(gameField.getPlayerAt(row, 3), player);
+		assertEquals(1, row);
 
-				row = it.next();
-				assertEquals(gameField.getPlayerAt(row, 1), opponend);
-				assertEquals(1, row);
+		row = it.next();
+		assertEquals(gameField.getPlayerAt(row, 1), opponend);
+		assertEquals(0, row);
 
-				row = it.next();
-				assertEquals(2, row);
-				assertEquals(gameField.getPlayerAt(row, 1), opponend);
+		row = it.next();
+		assertEquals(gameField.getPlayerAt(row, 1), opponend);
+		assertEquals(1, row);
 
-				row = it.next();
-				assertEquals(3, row);
-				assertEquals(gameField.getPlayerAt(row, 1), opponend);
+		row = it.next();
+		assertEquals(2, row);
+		assertEquals(gameField.getPlayerAt(row, 1), opponend);
 
-				row = it.next();
-				assertEquals(4, row);
-				assertEquals(gameField.getPlayerAt(row, 1), opponend);
+		row = it.next();
+		assertEquals(3, row);
+		assertEquals(gameField.getPlayerAt(row, 1), opponend);
 
-				row = it.next();
-				assertEquals(5, row);
-				assertEquals(gameField.getPlayerAt(row, 1), opponend);
-				assertEquals(gameField.getPlayerAt(1, 1), opponend);
+		row = it.next();
+		assertEquals(4, row);
+		assertEquals(gameField.getPlayerAt(row, 1), opponend);
+
+		row = it.next();
+		assertEquals(5, row);
+		assertEquals(gameField.getPlayerAt(row, 1), opponend);
+		assertEquals(gameField.getPlayerAt(1, 1), opponend);
 	}
 
 	@After
