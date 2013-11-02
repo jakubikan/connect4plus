@@ -1,4 +1,4 @@
-package persistence;
+package connectfour.persistence;
 
 import java.util.List;
 

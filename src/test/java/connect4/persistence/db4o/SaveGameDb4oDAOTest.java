@@ -12,9 +12,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import persistence.ISaveGameDAO;
-import persistence.db4o.SaveGameDb4oDAO;
-
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
@@ -24,6 +21,8 @@ import connectfour.model.GameField;
 import connectfour.model.Human;
 import connectfour.model.Player;
 import connectfour.model.SaveGame;
+import connectfour.persistence.ISaveGameDAO;
+import connectfour.persistence.db4o.SaveGameDb4oDAO;
 import connectfour.util.observer.IObserverWithArguments;
 
 public class SaveGameDb4oDAOTest {

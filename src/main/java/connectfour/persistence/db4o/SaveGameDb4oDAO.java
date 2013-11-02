@@ -1,16 +1,15 @@
-package persistence.db4o;
+package connectfour.persistence.db4o;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-
-import persistence.ISaveGameDAO;
 
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.db4o.query.Predicate;
 
 import connectfour.model.SaveGame;
+import connectfour.persistence.ISaveGameDAO;
 
 public class SaveGameDb4oDAO implements ISaveGameDAO {
 	private ObjectContainer db;
