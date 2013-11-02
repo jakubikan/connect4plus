@@ -14,7 +14,11 @@ public abstract class PlayerAbstract extends ObservableWithArguments implements 
     @Override
     public final void setGameField(final GameField gameField) {
         try {
-            this.gameField = gameField.clone();
+        	if (gameField != null) {
+        		this.gameField = gameField.clone();
+        	} else { // db4o needs to set the players gameField to null, in order not to save it. 
+        		this.gameField = null;
+        	}
         } catch (CloneNotSupportedException e) {}
     }
     

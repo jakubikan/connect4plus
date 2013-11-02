@@ -9,9 +9,17 @@ public class SaveGame {
 		this.gameField = gameField;
 		this.player1 = player1;
 		this.player2 = player2;
-		
-		// Local gamefield for evaluating gamestrategy shouldn't be saved!
-		this.player1.setGameField(null);
-		this.player2.setGameField(null);
+	}
+
+	public Player getPlayer2() {
+		return player2;
+	}
+
+	public Player getPlayer1() {
+		return player1;
+	}
+
+	public GameField getGameField() {
+		return gameField;
 	}
 }

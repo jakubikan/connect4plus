@@ -25,6 +25,7 @@ public class NewGameEvent extends EventAdapter {
     
     @Override
     public void mousePressed(final MouseEvent e) {
+    	System.out.println("hallo welt!");
     	controller.newGame();
         this.notifyObservers();
     }
