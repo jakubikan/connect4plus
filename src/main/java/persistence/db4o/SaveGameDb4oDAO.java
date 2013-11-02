@@ -26,4 +26,9 @@ public class SaveGameDb4oDAO implements ISaveGameDAO {
 	public SaveGame loadSaveGame() {
 		return db.query(SaveGame.class).next();
 	}
+	
+	@Override
+	public void closeDB() {
+		db.close();
+	}
 }
