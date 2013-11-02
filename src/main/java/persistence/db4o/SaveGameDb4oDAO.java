@@ -19,7 +19,7 @@ public class SaveGameDb4oDAO implements ISaveGameDAO {
 
 	@Override
 	public void saveGame(SaveGame saveGame) {
-		// Local gamefield for evaluating gamestrategy shouldn't be saved!
+		// Players gamefield shouldn't be saved!
 		saveGame.getPlayer1().setGameField(null);
 		saveGame.getPlayer2().setGameField(null);
 		db.store(saveGame);
