@@ -22,7 +22,7 @@ public final class GameController extends ObservableWithArguments implements IOb
     private GameField gameField;
     private boolean bGameHasStarted;
     
-    private final UndoManager undoManager = new UndoManager();
+    private UndoManager undoManager = new UndoManager();
     
     public GameController() {
         this.undoManager.discardAllEdits();
@@ -70,6 +70,15 @@ public final class GameController extends ObservableWithArguments implements IOb
     	this.setGameField(sg.getGameField());
     	this.setPlayer(sg.getPlayer1());
     	this.setOpponend(sg.getPlayer2());
+    	this.getGameField().setObserver(this);
+    	
+    	undoManager = new UndoManager();
+    	this.removeAllObservers();
+    	this.bGameHasStarted = true;
+    	this.addObserver(gameField.getOpponend());
+    	
+        this.notifyObservers();
+        this.notifyObservers(gameField);
     }
     
     @Override

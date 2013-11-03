@@ -18,7 +18,7 @@ public class GameField implements Cloneable {
 	private Player playerOnTurn;
 	private int modCount = 0;
 
-	private final IObserverWithArguments observer;
+	private IObserverWithArguments observer;
 
 	private Player playerWon;
 
@@ -38,6 +38,10 @@ public class GameField implements Cloneable {
 		initPlayerOnTurn();
 		opponend.setGameField(this);
 
+	}
+	
+	public void setObserver(final IObserverWithArguments observer) {
+		this.observer = observer;
 	}
 
 	private void initPlayerOnTurn() {
