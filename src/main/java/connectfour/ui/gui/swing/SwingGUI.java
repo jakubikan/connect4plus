@@ -98,7 +98,7 @@ public class SwingGUI extends JFrame implements UI, IObserver {
         
         lineAxisPanel.add(cellWrapper);
         lineAxisPanel.add(statusDisplay);
-        pageAxisPanel.add(new ToolBar(controller, this));
+        pageAxisPanel.add(new ToolBar(controller, this, this));
         pageAxisPanel.add(lineAxisPanel);
         
         contentPane.add(pageAxisPanel);

@@ -3,6 +3,7 @@ package connectfour.ui.gui.swing.events;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import connectfour.controller.IController;
 import connectfour.util.observer.IObserver;
 import connectfour.util.observer.Observable;
 
@@ -12,8 +13,8 @@ import connectfour.util.observer.Observable;
  */
 public abstract class EventAdapter extends Observable implements MouseListener {
     
-    public EventAdapter(final IObserver oberserver) {
-        this.addObserver(oberserver);
+    public EventAdapter(final IObserver observer) {
+        this.addObserver(observer);
     }
     
     @Override

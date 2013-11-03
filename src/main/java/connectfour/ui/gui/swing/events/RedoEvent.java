@@ -15,8 +15,8 @@ import connectfour.util.observer.IObserver;
 public class RedoEvent extends EventAdapter {
 	private final IController controller;
 	
-    public RedoEvent(final IController controller, final IObserver oberserver) {
-        super(oberserver);
+    public RedoEvent(final IController controller, final IObserver observer) {
+        super(observer);
         this.controller = controller;
     }
     

@@ -1,45 +1,57 @@
 package connectfour.controller;
 
+import java.util.List;
+
 import connectfour.model.GameField;
 import connectfour.model.Player;
+import connectfour.model.SaveGame;
 
 public interface IController {
-	public void newGame();
+	 void newGame();
 	
-	public String getWinner();
+	 String getWinner();
     
-    public boolean gameHasStarted();
+     boolean gameHasStarted();
     
-    public boolean dropCoinWithSuccessFeedback(final int col);
+     boolean dropCoinWithSuccessFeedback(final int col);
     
-    public Player getPlayerOnTurn();
+     Player getPlayerOnTurn();
     
-    public boolean userHasWon();
+     boolean userHasWon();
     
-    public String getPlayerNameOnTurn();
+     String getPlayerNameOnTurn();
     
-    public void setGameField(final GameField gameField);
+     void setGameField(final GameField gameField);
     
-    public GameField getGameField();
+     GameField getGameField();
     
-    public void undoStep();
+     void undoStep();
     
-    public void redoStep();
+     void redoStep();
     
-    public void setPlayer(final Player p);
+     void setPlayer(final Player p);
     
-    public void setOpponend(final Player p);
+     void setOpponend(final Player p);
     
     // Only for Support. This method sould not be used any more
     // DEPRECATED!!!!!
     // Since its bad to get an Array of Objects.
-    public Player[] getPlayers();
+     Player[] getPlayers();
     
-    public Player getPlayerAt(final int row, final int col);
+     Player getPlayerAt(final int row, final int col);
     
-    public Player getOpponend();
+     Player getOpponend();
     
-    public Player getPlayer();
+     Player getPlayer();
     
-    public void useState(final GameField state);
+     void useState(final GameField state);
+    
+     /**
+      * @param name Name must be unique, otherwise it will be overwritten.
+      */
+     void saveGame(String name);
+     
+     List<String> getAllSaveGameNames();
+     
+     SaveGame loadSaveGame(String saveGameName);
 }

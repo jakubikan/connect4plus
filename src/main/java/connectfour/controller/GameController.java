@@ -1,11 +1,18 @@
 package connectfour.controller;
 
+import java.util.List;
+
 import javax.swing.undo.UndoManager;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import com.google.inject.Singleton;
 
+import connectfour.GameControllerModule;
 import connectfour.model.GameField;
 import connectfour.model.Player;
+import connectfour.model.SaveGame;
+import connectfour.persistence.ISaveGameDAO;
 import connectfour.util.observer.IObserverWithArguments;
 import connectfour.util.observer.ObservableWithArguments;
 
@@ -13,7 +20,6 @@ import connectfour.util.observer.ObservableWithArguments;
 public final class GameController extends ObservableWithArguments implements IObserverWithArguments, IController {
     
     private GameField gameField;
-//    private static GameController instance;
     private boolean bGameHasStarted;
     
     private final UndoManager undoManager = new UndoManager();
@@ -31,6 +37,38 @@ public final class GameController extends ObservableWithArguments implements IOb
         this.addObserver(gameField.getOpponend());
         this.notifyObservers();
         this.notifyObservers(gameField);
+    }
+    
+    @Override
+    public void saveGame(String name) {
+    	SaveGame sg = new SaveGame(name, getGameField(), getPlayer(), getOpponend());
+    	
+    	Injector injector = Guice.createInjector(new GameControllerModule());
+    	ISaveGameDAO db = (ISaveGameDAO) injector.getBinding(ISaveGameDAO.class).getSource();
+    	db.saveGame(sg);
+    	db.closeDB();
+    }
+    
+    @Override
+    public List<String> getAllSaveGameNames() {
+    	Injector injector = Guice.createInjector(new GameControllerModule());
+    	ISaveGameDAO db = (ISaveGameDAO) injector.getBinding(ISaveGameDAO.class).getSource();
+    	
+    	List<String> allSaveGameNames = db.getAllSaveGames();
+    	db.closeDB();
+    	
+    	return allSaveGameNames;
+    }
+    
+    @Override
+    public SaveGame loadSaveGame(String saveGameName) {
+    	Injector injector = Guice.createInjector(new GameControllerModule());
+    	ISaveGameDAO db = (ISaveGameDAO) injector.getBinding(ISaveGameDAO.class).getSource();
+    	
+    	SaveGame sg = db.loadSaveGame(saveGameName);
+    	db.closeDB();
+    	
+    	return sg;
     }
     
     @Override

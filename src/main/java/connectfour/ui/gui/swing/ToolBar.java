@@ -1,14 +1,17 @@
 package connectfour.ui.gui.swing;
 
 import java.awt.Color;
+import java.awt.Frame;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
 import connectfour.controller.IController;
+import connectfour.ui.gui.swing.events.LoadSaveGameEvent;
 import connectfour.ui.gui.swing.events.NewGameEvent;
 import connectfour.ui.gui.swing.events.RedoEvent;
+import connectfour.ui.gui.swing.events.SaveEvent;
 import connectfour.ui.gui.swing.events.UndoEvent;
 import connectfour.util.observer.IObserver;
 
@@ -21,19 +24,23 @@ import connectfour.util.observer.IObserver;
 final class ToolBar extends JPanel {
     private final String undo = "previous";
     private final String redo = "next";
+    private final String save = "save";
+    private final String load = "load";
     private final String newGame = "new game";
     
     private final JToolBar toolBar = new JToolBar("Toolbar");
     private final IObserver observer;
     private final IController controller;
+	private Frame frame;
     
-    public ToolBar(final IController controller, final IObserver observer) {
+    public ToolBar(final IController controller, final IObserver observer, final Frame frame) {
         this.observer = observer;
         this.setBackground(Color.WHITE);
         this.toolBar.setBackground(Color.WHITE);
-        addButtons();
         this.add(toolBar);
         this.controller = controller;
+        this.frame = frame;
+        addButtons();
     }
     
     private void addButtons() {
@@ -49,6 +56,14 @@ final class ToolBar extends JPanel {
         
         button = makeNavigationButton(redo, "Redo", "Redo");
         button.addMouseListener(new RedoEvent(controller, observer));
+        toolBar.add(button);
+        
+        button = makeNavigationButton(save, "Save", "Save");
+        button.addMouseListener(new SaveEvent(this.frame, this.controller));
+        toolBar.add(button);
+        
+        button = makeNavigationButton(load, "Load", "Load");
+        button.addMouseListener(new LoadSaveGameEvent(this.frame, this.controller));
         toolBar.add(button);
     }
     
