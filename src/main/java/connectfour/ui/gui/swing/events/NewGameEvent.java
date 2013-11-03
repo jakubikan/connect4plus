@@ -15,8 +15,8 @@ import connectfour.util.observer.IObserver;
 public class NewGameEvent extends EventAdapter {
 	private final IController controller;
 	
-    public NewGameEvent(final IController controller, final IObserver oberserver) {
-        super(oberserver);
+    public NewGameEvent(final IController controller, final IObserver observer) {
+        super(observer);
         this.controller = controller; 
     }
     

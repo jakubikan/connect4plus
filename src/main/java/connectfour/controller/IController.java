@@ -4,7 +4,6 @@ import java.util.List;
 
 import connectfour.model.GameField;
 import connectfour.model.Player;
-import connectfour.model.SaveGame;
 
 public interface IController {
 	 void newGame();
@@ -53,5 +52,5 @@ public interface IController {
      
      List<String> getAllSaveGameNames();
      
-     SaveGame loadSaveGame(String saveGameName);
+     void loadSaveGame(String saveGameName);
 }

@@ -44,7 +44,7 @@ public final class GameController extends ObservableWithArguments implements IOb
     	SaveGame sg = new SaveGame(name, getGameField(), getPlayer(), getOpponend());
     	
     	Injector injector = Guice.createInjector(new GameControllerModule());
-    	ISaveGameDAO db = (ISaveGameDAO) injector.getBinding(ISaveGameDAO.class).getSource();
+    	ISaveGameDAO db = injector.getBinding(ISaveGameDAO.class).getProvider().get();
     	db.saveGame(sg);
     	db.closeDB();
     }
@@ -52,7 +52,7 @@ public final class GameController extends ObservableWithArguments implements IOb
     @Override
     public List<String> getAllSaveGameNames() {
     	Injector injector = Guice.createInjector(new GameControllerModule());
-    	ISaveGameDAO db = (ISaveGameDAO) injector.getBinding(ISaveGameDAO.class).getSource();
+    	ISaveGameDAO db = injector.getBinding(ISaveGameDAO.class).getProvider().get();
     	
     	List<String> allSaveGameNames = db.getAllSaveGames();
     	db.closeDB();
@@ -61,14 +61,15 @@ public final class GameController extends ObservableWithArguments implements IOb
     }
     
     @Override
-    public SaveGame loadSaveGame(String saveGameName) {
+    public void loadSaveGame(String saveGameName) {
     	Injector injector = Guice.createInjector(new GameControllerModule());
-    	ISaveGameDAO db = (ISaveGameDAO) injector.getBinding(ISaveGameDAO.class).getSource();
+    	ISaveGameDAO db = injector.getBinding(ISaveGameDAO.class).getProvider().get();
     	
     	SaveGame sg = db.loadSaveGame(saveGameName);
     	db.closeDB();
-    	
-    	return sg;
+    	this.setGameField(sg.getGameField());
+    	this.setPlayer(sg.getPlayer1());
+    	this.setOpponend(sg.getPlayer2());
     }
     
     @Override

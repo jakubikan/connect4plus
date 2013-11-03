@@ -31,7 +31,7 @@ final class ToolBar extends JPanel {
     private final JToolBar toolBar = new JToolBar("Toolbar");
     private final IObserver observer;
     private final IController controller;
-	private Frame frame;
+	private final Frame frame;
     
     public ToolBar(final IController controller, final IObserver observer, final Frame frame) {
         this.observer = observer;
@@ -63,7 +63,7 @@ final class ToolBar extends JPanel {
         toolBar.add(button);
         
         button = makeNavigationButton(load, "Load", "Load");
-        button.addMouseListener(new LoadSaveGameEvent(this.frame, this.controller));
+        button.addMouseListener(new LoadSaveGameEvent(this.frame, this.controller, observer));
         toolBar.add(button);
     }
     

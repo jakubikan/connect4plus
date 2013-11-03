@@ -1,18 +1,19 @@
 package connectfour.ui.gui.swing.events;
 
 import java.awt.Frame;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JOptionPane;
 
 import connectfour.controller.IController;
+import connectfour.util.observer.IObserver;
 
-public class LoadSaveGameEvent extends MouseAdapter {
+public class LoadSaveGameEvent extends EventAdapter {
 	private Frame frame;
 	final IController controller;
 
-	public LoadSaveGameEvent(final Frame container, final IController controller) {
+	public LoadSaveGameEvent(final Frame container, final IController controller, final IObserver observer) {
+		super(observer);
 		this.frame = container;
 		this.controller = controller;
 	}
@@ -30,6 +31,7 @@ public class LoadSaveGameEvent extends MouseAdapter {
 
 		if (selectedSaveGameName != null) {
 			this.controller.loadSaveGame(selectedSaveGameName);
+			this.notifyObservers();
 		}
 	}
 }
