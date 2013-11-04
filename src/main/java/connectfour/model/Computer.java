@@ -1,5 +1,6 @@
 package connectfour.model;
 
+import connectfour.controller.GameField;
 import connectfour.util.observer.IObserverWithArguments;
 
 public class Computer extends PlayerAbstract {
@@ -9,11 +10,7 @@ public class Computer extends PlayerAbstract {
 	private boolean firstMove = true;
 	private final int difficulty = 5;
 
-	@Override
-	public void surrender() {
-	}
-
-	@Override
+    @Override
 	public int dropCoin(final int column) {
 		setMove(column);
 		return getMove();

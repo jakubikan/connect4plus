@@ -1,15 +1,14 @@
 package connectfour.model;
 
+import connectfour.controller.IController;
+import connectfour.util.observer.IObserverWithArguments;
+
 public class Human extends PlayerAbstract {
     private int move = 0;
-    
-    @Override
-    public void surrender() {}
-    
+
     @Override
     public int dropCoin(final int column) {
-        setMove(column);
-        return getMove();
+        return column;
     }
     
     @Override
@@ -22,7 +21,7 @@ public class Human extends PlayerAbstract {
         move = column;
         
     }
-    
+
     @Override
-    public void update(Object arg) {}
+    public void update(Object arg) { }
 }

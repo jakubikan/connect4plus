@@ -6,7 +6,7 @@ import com.google.inject.Inject;
 
 import connectfour.controller.IController;
 import connectfour.model.Computer;
-import connectfour.model.GameField;
+import connectfour.controller.GameField;
 import connectfour.model.Player;
 import connectfour.ui.UI;
 import connectfour.util.observer.IObserver;
@@ -16,7 +16,6 @@ import connectfour.util.observer.IObserver;
  */
 
 public class TUI implements UI, IObserver {
-    private final String exit = "quit";
     private final String newline = System.getProperty("line.separator");
     private final IController controller;
     private Player players[];
@@ -51,7 +50,8 @@ public class TUI implements UI, IObserver {
         
         System.out.println("\n\n");
         scanner.close();
-        if (userInput.equals(this.exit)) {
+        String exit = "quit";
+        if (userInput.equals(exit)) {
             System.exit(0);
         }
         

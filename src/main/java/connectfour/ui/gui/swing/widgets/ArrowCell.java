@@ -21,16 +21,11 @@ public class ArrowCell extends JPanel {
     // x coordinates
     private final int arrowWidth = 10;
     private final int xMiddleLeft = 34;
-    private final int xLeft = xMiddleLeft - arrowWidth;
     private final int xMiddleRight = xMiddleLeft + arrowWidth;
-    private final int xRight = xMiddleRight + arrowWidth;
-    private final int xArrowPoint = xMiddleLeft + ((xMiddleRight - xMiddleLeft) / 2);
-    
+
     // y coordinates
     private final int arrowLength = 40;
     private final int yTop = 20;
-    private final int yMiddle = yTop + arrowLength / 2;
-    private final int yArrowPoint = yTop + arrowLength;
     private Polygon arrow = new Polygon();
     
     public ArrowCell(final int column) {
@@ -47,11 +42,16 @@ public class ArrowCell extends JPanel {
     
     private void createArrow() {
         arrow.addPoint(this.xMiddleLeft, this.yTop);
-        arrow.addPoint(this.xMiddleLeft, this.yMiddle);
-        arrow.addPoint(this.xLeft, this.yMiddle);
-        arrow.addPoint(this.xArrowPoint, this.yArrowPoint);
-        arrow.addPoint(this.xRight, this.yMiddle);
-        arrow.addPoint(this.xMiddleRight, this.yMiddle);
+        int yMiddle = yTop + arrowLength / 2;
+        arrow.addPoint(this.xMiddleLeft, yMiddle);
+        int xLeft = xMiddleLeft - arrowWidth;
+        arrow.addPoint(xLeft, yMiddle);
+        int yArrowPoint = yTop + arrowLength;
+        int xArrowPoint = xMiddleLeft + ((xMiddleRight - xMiddleLeft) / 2);
+        arrow.addPoint(xArrowPoint, yArrowPoint);
+        int xRight = xMiddleRight + arrowWidth;
+        arrow.addPoint(xRight, yMiddle);
+        arrow.addPoint(this.xMiddleRight, yMiddle);
         arrow.addPoint(this.xMiddleRight, this.yTop);
     }
     

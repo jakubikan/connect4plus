@@ -11,7 +11,7 @@ import com.google.inject.Injector;
 
 import connectfour.GameControllerModule;
 import connectfour.controller.GameController;
-import connectfour.model.GameField;
+import connectfour.controller.GameField;
 import connectfour.model.Human;
 import connectfour.model.Player;
 import connectfour.util.observer.IObserverWithArguments;
@@ -31,12 +31,12 @@ public class GameFieldTest {
 		player = new Human();
 		player.setName("Hugo");
 		opponend = new Human();
-		gameField = new GameField(obsersable);
+		gameField = new GameField(player, opponend);
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		gameField = new GameField(obsersable);
+		gameField = new GameField(player, opponend);
 	}
 
 	@Test
@@ -76,7 +76,7 @@ public class GameFieldTest {
 		gameField.dropCoin(0, opponend);
 		gameField.dropCoin(0, opponend);
 		gameField.dropCoin(0, opponend);
-		gameField = new GameField(obsersable);
+		gameField = new GameField(player, opponend);
 		assertEquals(gameField.getPlayerAt(0, 0), null);
 	}
 
@@ -90,7 +90,7 @@ public class GameFieldTest {
 
 		assertEquals(gameField.getWinner(), opponend);
 
-		gameField = new GameField(obsersable);
+		gameField = new GameField(player, opponend);
 
 		gameField.dropCoin(0, opponend);
 		gameField.dropCoin(0, opponend);
@@ -100,7 +100,7 @@ public class GameFieldTest {
 		gameField.dropCoin(0, opponend);
 		assertEquals(gameField.getWinner(), null);
 
-		gameField = new GameField(obsersable);
+		gameField = new GameField(player, opponend);
 
 		/*
 		 * o ox oxx oxxxoo
@@ -118,7 +118,7 @@ public class GameFieldTest {
 		gameField.dropCoin(3, opponend);
 		assertEquals(gameField.getWinner(), opponend);
 
-		gameField = new GameField(obsersable);
+		gameField = new GameField(player, opponend);
 
 		/*
 		 * x ox xox xoxox

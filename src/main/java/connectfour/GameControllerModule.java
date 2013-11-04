@@ -8,6 +8,8 @@ import connectfour.persistence.ISaveGameDAO;
 import connectfour.persistence.db4o.SaveGameDb4oDAO;
 import connectfour.util.observer.IObserverWithArguments;
 
+import javax.swing.undo.UndoManager;
+
 public class GameControllerModule extends AbstractModule {
 
 	@Override

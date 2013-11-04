@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Observable {
     
-    private List<IObserver> subscribers = new ArrayList<IObserver>(2);
+    private List<IObserver> subscribers = new ArrayList<>(2);
     
     public void addObserver(IObserver s) {
         subscribers.add(s);
@@ -17,12 +17,11 @@ public class Observable {
     }
     
     public void removeAllObservers() {
-        subscribers = new ArrayList<IObserver>();
+        subscribers = new ArrayList<>();
     }
     
     public void notifyObservers() {
-        for (Iterator<IObserver> iter = subscribers.iterator(); iter.hasNext();) {
-            IObserver observer = iter.next();
+        for (IObserver observer : subscribers) {
             observer.update();
         }
     }
