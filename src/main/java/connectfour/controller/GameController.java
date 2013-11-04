@@ -35,7 +35,10 @@ public final class GameController extends ObservableWithArguments implements IOb
     public void newGame() {
         this.bGameHasStarted = true;
         Player p1 = new Human();
+        p1.setName("Hugo");
         Player opponent = new Computer(this);
+        opponent.setName("Boesewicht");
+        undoManager.discardAllEdits();
         gameField = new GameField(p1, opponent);
         this.addObserver(gameField.getOpponent());
         this.notifyObservers();
@@ -44,7 +47,8 @@ public final class GameController extends ObservableWithArguments implements IOb
     
     @Override
     public void saveGame(String name) {
-    	SaveGame sg = new SaveGame(name, getGameField(), getPlayer(), getOpponend(), undoManager);
+        SaveGame sg = new SaveGame(name, getGameField(), getPlayer(), getOpponend());
+
     	saveGameDAO.saveGame(sg);
     }
     
@@ -61,8 +65,8 @@ public final class GameController extends ObservableWithArguments implements IOb
     	this.setGameField(sg.getGameField());
     	this.setPlayer(sg.getPlayer1());
     	this.setOpponend(sg.getPlayer2());
-        undoManager = sg.getUndoManager();
-    	
+        this.undoManager = new UndoManager();
+
     	this.removeAllObservers();
     	this.bGameHasStarted = true;
     	this.addObserver(gameField.getOpponent());
