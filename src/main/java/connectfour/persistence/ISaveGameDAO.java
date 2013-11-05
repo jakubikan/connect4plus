@@ -19,6 +19,7 @@ public interface ISaveGameDAO {
 	 */
 	boolean deleteSaveGameIfExists(String saveGameName);
 	
+	void openDB();
 	void closeDB();
 	boolean saveGameExists(String saveGameName);
 	List<String> getAllSaveGames();

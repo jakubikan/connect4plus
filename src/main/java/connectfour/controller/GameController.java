@@ -62,6 +62,9 @@ public final class GameController extends ObservableWithArguments implements IOb
     
     @Override
     public void loadSaveGame(String saveGameName) {
+    	undoManager = new UndoManager();
+    	this.undoManager.discardAllEdits();
+    	
     	Injector injector = Guice.createInjector(new GameControllerModule());
     	ISaveGameDAO db = injector.getBinding(ISaveGameDAO.class).getProvider().get();
     	
@@ -71,14 +74,14 @@ public final class GameController extends ObservableWithArguments implements IOb
     	this.setPlayer(sg.getPlayer1());
     	this.setOpponend(sg.getPlayer2());
     	this.getGameField().setObserver(this);
+    	sg.getPlayer2().setGameField(getGameField());
     	
-    	undoManager = new UndoManager();
     	this.removeAllObservers();
     	this.bGameHasStarted = true;
     	this.addObserver(gameField.getOpponend());
     	
-        this.notifyObservers();
-        this.notifyObservers(gameField);
+        //this.notifyObservers();
+        //this.notifyObservers(gameField);
     }
     
     @Override

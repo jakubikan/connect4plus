@@ -20,6 +20,12 @@ public class SaveGameDb4oDAO implements ISaveGameDAO {
 	}
 
 	@Override
+	public void openDB() {
+		db = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),
+				"savegame.data");
+	}
+	
+	@Override
 	public void saveGame(SaveGame saveGame) {
 		// Player's gamefield shouldn't be saved!
 		saveGame.getPlayer1().setGameField(null);
