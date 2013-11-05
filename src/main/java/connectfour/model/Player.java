@@ -1,6 +1,5 @@
 package connectfour.model;
 
-import connectfour.controller.GameField;
 import connectfour.util.observer.IObserverWithArguments;
 
 public interface Player extends IObserverWithArguments {

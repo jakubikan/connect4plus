@@ -8,7 +8,6 @@ import javax.swing.undo.CannotRedoException;
 import javax.swing.undo.CannotUndoException;
 
 import connectfour.controller.IController;
-import connectfour.controller.GameField;
 
 /**
  * @author jakub

@@ -9,7 +9,7 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Ignore;
 
-import connectfour.controller.GameField;
+import connectfour.model.GameField;
 import connectfour.model.Player;
 import connectfour.persistence.ISaveGameDAO;
 

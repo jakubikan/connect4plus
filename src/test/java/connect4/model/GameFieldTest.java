@@ -11,7 +11,7 @@ import com.google.inject.Injector;
 
 import connectfour.GameControllerModule;
 import connectfour.controller.GameController;
-import connectfour.controller.GameField;
+import connectfour.model.GameField;
 import connectfour.model.Human;
 import connectfour.model.Player;
 import connectfour.util.observer.IObserverWithArguments;

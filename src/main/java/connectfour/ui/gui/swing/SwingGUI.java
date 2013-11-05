@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import com.google.inject.Inject;
 
 import connectfour.controller.IController;
-import connectfour.controller.GameField;
+import connectfour.model.GameField;
 import connectfour.model.Player;
 import connectfour.ui.UI;
 import connectfour.ui.gui.swing.controller.ArrowManager;

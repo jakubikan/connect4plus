@@ -1,9 +1,5 @@
 package connectfour.model;
 
-import connectfour.controller.GameField;
-
-import javax.swing.undo.UndoManager;
-
 public class SaveGame {
 	private GameField gameField;
 	private Player player1;
