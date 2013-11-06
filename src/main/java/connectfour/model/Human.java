@@ -1,8 +1,5 @@
 package connectfour.model;
 
-import connectfour.controller.IController;
-import connectfour.util.observer.IObserverWithArguments;
-
 public class Human extends PlayerAbstract {
     private int move = 0;
 

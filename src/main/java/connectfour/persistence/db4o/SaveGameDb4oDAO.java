@@ -70,7 +70,7 @@ public class SaveGameDb4oDAO implements ISaveGameDAO {
 	@Override
 	public List<String> getAllSaveGames() {
 		Iterator<SaveGame> it = db.query(SaveGame.class).iterator();
-		List<String> allSaveGames = new LinkedList<>();
+		List<String> allSaveGames = new LinkedList<String>();
 		
 		while(it.hasNext()) {
 			SaveGame sg = it.next();

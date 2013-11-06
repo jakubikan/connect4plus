@@ -8,6 +8,8 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 import connectfour.model.Computer;
+import connectfour.model.GameField;
+import connectfour.model.GameFieldEdit;
 import connectfour.model.Human;
 import connectfour.model.Player;
 import connectfour.model.SaveGame;
