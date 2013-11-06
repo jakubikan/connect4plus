@@ -1,6 +1,5 @@
 package connectfour.model;
 
-import connectfour.controller.GameField;
 import connectfour.util.observer.ObservableWithArguments;
 
 public abstract class PlayerAbstract extends ObservableWithArguments implements Player {

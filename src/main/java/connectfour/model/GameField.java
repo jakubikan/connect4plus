@@ -1,7 +1,4 @@
-package connectfour.controller;
-
-import com.google.inject.Inject;
-import connectfour.model.Player;
+package connectfour.model;
 
 import java.util.Random;
 
