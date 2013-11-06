@@ -22,10 +22,7 @@ import connectfour.model.Player;
  */
 public class TUITest {
 
-	private Player player1;
-	private Player player2;
-
-	private IController controller;
+    private IController controller;
 
 	@Before
 	public void setUp() throws Exception {
@@ -33,8 +30,8 @@ public class TUITest {
 		Injector injector = Guice.createInjector(new GameControllerModule());
 		this.controller = injector.getInstance(GameController.class);
 
-		player1 = new Human();
-		player2 = new Human();
+        Player player1 = new Human();
+        Player player2 = new Human();
 
 		this.controller.newGame();
 		this.controller.setPlayer((Human) player1);

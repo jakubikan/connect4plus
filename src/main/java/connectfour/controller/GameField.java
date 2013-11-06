@@ -1,10 +1,9 @@
-package connectfour.model;
-
-import java.util.Random;
+package connectfour.controller;
 
 import com.google.inject.Inject;
+import connectfour.model.Player;
 
-import connectfour.util.observer.IObserverWithArguments;
+import java.util.Random;
 
 public class GameField implements Cloneable {
 
@@ -14,35 +13,26 @@ public class GameField implements Cloneable {
 	private Player[][] gameField;
 
 	private Player player;
-	private Player opponend;
+	private Player opponent;
 	private Player playerOnTurn;
 	private int modCount = 0;
 
-	private IObserverWithArguments observer;
 
 	private Player playerWon;
 
 	private boolean gameWon;
 
-	@Inject
-	public GameField(final IObserverWithArguments observer) {
+
+	public GameField(Player player, Player opponent) {
 		super();
 		gameField = new Player[DEFAULT_ROWS][DEFAULT_COLUMNS];
 		playerWon = null;
 		gameWon = false;
-		player = new Human();
-		player.setName("Hugo");
-		this.observer = observer;
-		opponend = new Computer(observer);
-		opponend.setName("Boesewicht");
+        this.player = player;
+        this.opponent = opponent;
 		initPlayerOnTurn();
-		opponend.setGameField(this);
-
 	}
 	
-	public void setObserver(final IObserverWithArguments observer) {
-		this.observer = observer;
-	}
 
 	private void initPlayerOnTurn() {
 		Random r = new Random();
@@ -50,14 +40,11 @@ public class GameField implements Cloneable {
 		if (rInt % 2 == 0) {
 			playerOnTurn = player;
 		} else {
-			playerOnTurn = opponend;
+			playerOnTurn = opponent;
 		}
 
 	}
 
-	public final IObserverWithArguments getObserver() {
-		return observer;
-	}
 
 	@Override
 	public String toString() {
@@ -69,7 +56,7 @@ public class GameField implements Cloneable {
 						&& actualPlayer.equals(player)) {
 					b.append("[o]");
 				} else if (actualPlayer != null
-						&& actualPlayer.equals(opponend)) {
+						&& actualPlayer.equals(opponent)) {
 					b.append("[x]");
 				} else {
 					b.append("[-]");
@@ -87,7 +74,7 @@ public class GameField implements Cloneable {
 	public Player[] getPlayers() {
 		Player[] p = new Player[2];
 		p[0] = player;
-		p[1] = opponend;
+		p[1] = opponent;
 		return p;
 	}
 
@@ -100,13 +87,13 @@ public class GameField implements Cloneable {
 
 	}
 
-	public void setOpponend(final Player p) {
-		opponend = p;
+	public void setOpponent(final Player p) {
+		opponent = p;
 
 	}
 
-	public Player getOpponend() {
-		return opponend;
+	public Player getOpponent() {
+		return opponent;
 	}
 
 	public Player getPlayer() {
@@ -124,9 +111,7 @@ public class GameField implements Cloneable {
 	private boolean removeLastLineIfFull() {
 		if (lastLineFull()) {
 
-			for (int i = 1; i < gameField.length; i++) {
-				gameField[i - 1] = gameField[i];
-			}
+            System.arraycopy(gameField, 1, gameField, 0, gameField.length - 1);
 			gameField[DEFAULT_ROWS - 1] = new Player[DEFAULT_COLUMNS];
 			return true;
 		}
@@ -264,16 +249,16 @@ public class GameField implements Cloneable {
 	}
 
 	public void changePlayerTurn() {
-		if (playerOnTurn.equals(opponend)) {
+		if (playerOnTurn.equals(opponent)) {
 			playerOnTurn = player;
 		} else if (playerOnTurn.equals(player)) {
-			playerOnTurn = opponend;
+			playerOnTurn = opponent;
 		}
 	}
 
 	public int evaluateScore() {
 
-		Player opponand = playerOnTurn.equals(player) ? opponend
+		Player opponand = playerOnTurn.equals(player) ? opponent
 				: player;
 		int plScore = evaluatePlayerScore(playerOnTurn);
 		int opScore = evaluatePlayerScore(opponand);
@@ -372,6 +357,8 @@ public class GameField implements Cloneable {
 		}
 
 		return gf;
+
 	}
+
 
 }

@@ -16,10 +16,8 @@ final class Connect4 {
     
     public static void main(String[] args) {
     	Injector injector = Guice.createInjector(new GameControllerModule());
-    	
     	GameController controller = injector.getInstance(GameController.class);
     	controller.newGame();
-        
     	controller.addObserver(injector.getInstance(SwingGUI.class));
     	controller.addObserver(injector.getInstance(TUI.class));
     }

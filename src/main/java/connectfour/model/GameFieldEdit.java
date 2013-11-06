@@ -1,13 +1,14 @@
 /**
  * 
  */
-package connectfour.controller;
+package connectfour.model;
 
 import javax.swing.undo.AbstractUndoableEdit;
 import javax.swing.undo.CannotRedoException;
 import javax.swing.undo.CannotUndoException;
 
-import connectfour.model.GameField;
+import connectfour.controller.IController;
+import connectfour.controller.GameField;
 
 /**
  * @author jakub
@@ -22,7 +23,7 @@ public class GameFieldEdit extends AbstractUndoableEdit {
     private final GameField newState;
     private final String name;
     private final IController controller;
-    
+
     public GameFieldEdit(final IController controller, final GameField previousState, final GameField newState, final String name) {
         this.previousState = previousState;
         this.newState = newState;

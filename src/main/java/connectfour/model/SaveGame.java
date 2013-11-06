@@ -1,11 +1,17 @@
 package connectfour.model;
 
+import connectfour.controller.GameField;
+
+import javax.swing.undo.UndoManager;
+
 public class SaveGame {
 	private GameField gameField;
 	private Player player1;
 	private Player player2;
 	private String saveGameName;
-	
+
+
+
 	/**
 	 * @param saveGameName Unique save game name, otherwise it will be overwritten!
 	 * @param gameField gameField to save

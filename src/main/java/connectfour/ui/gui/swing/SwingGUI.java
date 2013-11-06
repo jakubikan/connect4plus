@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import com.google.inject.Inject;
 
 import connectfour.controller.IController;
-import connectfour.model.GameField;
+import connectfour.controller.GameField;
 import connectfour.model.Player;
 import connectfour.ui.UI;
 import connectfour.ui.gui.swing.controller.ArrowManager;
@@ -33,7 +33,7 @@ public class SwingGUI extends JFrame implements UI, IObserver {
     // UI Stuff
     private final JPanel cellWrapper = new JPanel();
     private final GUICoin coinCells[][] = new GUICoin[GameField.DEFAULT_ROWS][GameField.DEFAULT_COLUMNS];
-    private final List<ArrowCell> listArrowCells = new ArrayList<ArrowCell>(
+    private final List<ArrowCell> listArrowCells = new ArrayList<>(
                                             GameField.DEFAULT_COLUMNS);
     private final StatusDisplay statusDisplay;
     

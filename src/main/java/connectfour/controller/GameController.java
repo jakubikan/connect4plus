@@ -4,12 +4,11 @@ import java.util.List;
 
 import javax.swing.undo.UndoManager;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
+import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
-import connectfour.GameControllerModule;
-import connectfour.model.GameField;
+import connectfour.model.Computer;
+import connectfour.model.Human;
 import connectfour.model.Player;
 import connectfour.model.SaveGame;
 import connectfour.persistence.ISaveGameDAO;
@@ -21,67 +20,62 @@ public final class GameController extends ObservableWithArguments implements IOb
     
     private GameField gameField;
     private boolean bGameHasStarted;
-    
+
     private UndoManager undoManager = new UndoManager();
+
+    @Inject
+    private ISaveGameDAO saveGameDAO;
     
     public GameController() {
         this.undoManager.discardAllEdits();
-        this.gameField = new GameField(this);
+        Player p1 = new Human();
+        Player opponent = new Computer(this);
+        this.gameField = new GameField(p1, opponent);
         this.bGameHasStarted = false;
     }
     
     @Override
     public void newGame() {
         this.bGameHasStarted = true;
-        gameField = new GameField(this);
-        this.addObserver(gameField.getOpponend());
+        Player p1 = new Human();
+        p1.setName("Hugo");
+        Player opponent = new Computer(this);
+        opponent.setName("Boesewicht");
+        undoManager.discardAllEdits();
+        gameField = new GameField(p1, opponent);
+        this.addObserver(gameField.getOpponent());
         this.notifyObservers();
         this.notifyObservers(gameField);
     }
     
     @Override
     public void saveGame(String name) {
-    	SaveGame sg = new SaveGame(name, getGameField(), getPlayer(), getOpponend());
-    	
-    	Injector injector = Guice.createInjector(new GameControllerModule());
-    	ISaveGameDAO db = injector.getBinding(ISaveGameDAO.class).getProvider().get();
-    	db.saveGame(sg);
-    	db.closeDB();
+        SaveGame sg = new SaveGame(name, getGameField(), getPlayer(), getOpponend());
+
+    	saveGameDAO.saveGame(sg);
     }
     
     @Override
     public List<String> getAllSaveGameNames() {
-    	Injector injector = Guice.createInjector(new GameControllerModule());
-    	ISaveGameDAO db = injector.getBinding(ISaveGameDAO.class).getProvider().get();
-    	
-    	List<String> allSaveGameNames = db.getAllSaveGames();
-    	db.closeDB();
-    	
+    	List<String> allSaveGameNames = saveGameDAO.getAllSaveGames();
+
     	return allSaveGameNames;
     }
     
     @Override
     public void loadSaveGame(String saveGameName) {
-    	undoManager = new UndoManager();
-    	this.undoManager.discardAllEdits();
-    	
-    	Injector injector = Guice.createInjector(new GameControllerModule());
-    	ISaveGameDAO db = injector.getBinding(ISaveGameDAO.class).getProvider().get();
-    	
-    	SaveGame sg = db.loadSaveGame(saveGameName);
-    	db.closeDB();
+    	SaveGame sg = saveGameDAO.loadSaveGame(saveGameName);
     	this.setGameField(sg.getGameField());
     	this.setPlayer(sg.getPlayer1());
     	this.setOpponend(sg.getPlayer2());
-    	this.getGameField().setObserver(this);
-    	sg.getPlayer2().setGameField(getGameField());
-    	
+        this.undoManager = new UndoManager();
+
     	this.removeAllObservers();
     	this.bGameHasStarted = true;
-    	this.addObserver(gameField.getOpponend());
-    	
-        //this.notifyObservers();
-        //this.notifyObservers(gameField);
+    	this.addObserver(gameField.getOpponent());
+
+        this.notifyObservers();
+        this.notifyObservers(gameField);
     }
     
     @Override
@@ -112,6 +106,7 @@ public final class GameController extends ObservableWithArguments implements IOb
                 } catch (CloneNotSupportedException e1) {}
                 
                 Player p = gameField.getPlayerOnTurn();
+
                 p.setGameField(gameField);
                 
                 int row = gameField.dropCoin(col);
@@ -127,12 +122,13 @@ public final class GameController extends ObservableWithArguments implements IOb
                 try {
                     newState = gameField.clone();
                 } catch (CloneNotSupportedException e) {}
-                
+
+
                 String undoInfo = String.format("Undoing %s Player Move", getPlayerOnTurn()
                                                         .getName());
                 GameFieldEdit edit = new GameFieldEdit(this, previousState, newState, undoInfo);
                 undoManager.addEdit(edit);
-                
+
                 this.notifyObservers();
                 this.notifyObservers(gameField);
             } catch (IllegalArgumentException e) {}
@@ -148,12 +144,9 @@ public final class GameController extends ObservableWithArguments implements IOb
     @Override
     public boolean userHasWon() {
         Player winner = gameField.getWinner();
-        
-        if (winner == null) {
-            return false;
-        }
-        
-        return true;
+
+        return winner != null;
+
     }
     
     @Override
@@ -178,7 +171,6 @@ public final class GameController extends ObservableWithArguments implements IOb
         if (undoManager.canUndo()) {
             undoManager.undo();
         } else {
-            return;
         }
     }
     
@@ -187,7 +179,6 @@ public final class GameController extends ObservableWithArguments implements IOb
         if (undoManager.canRedo()) {
             undoManager.redo();
         } else {
-            return;
         }
     }
     
@@ -199,7 +190,7 @@ public final class GameController extends ObservableWithArguments implements IOb
     
     @Override
     public void setOpponend(final Player p) {
-        gameField.setOpponend(p);
+        gameField.setOpponent(p);
     }
     
     // Only for Support. This method sould not be used any more
@@ -217,7 +208,7 @@ public final class GameController extends ObservableWithArguments implements IOb
     
     @Override
     public Player getOpponend() {
-        return gameField.getOpponend();
+        return gameField.getOpponent();
     }
     
     @Override
