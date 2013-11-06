@@ -12,7 +12,8 @@ resolvers += "db4omaverepositories" at "http://source.db4o.com/maven"
 libraryDependencies ++= Seq(
   "com.novocode" % "junit-interface" % "0.9" % "test",
   "com.google.inject" % "guice" % "4.0-beta",
-  "com.db4o" % "db4o-full-java5" % "8.0-SNAPSHOT"
+  "com.db4o" % "db4o-full-java5" % "8.0-SNAPSHOT",
+  "org.hibernate" % "hibernate-core" % "4.3.0.Beta5"
 )
 
 
