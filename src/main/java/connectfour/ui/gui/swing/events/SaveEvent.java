@@ -1,12 +1,11 @@
 package connectfour.ui.gui.swing.events;
 
-import java.awt.Frame;
+import connectfour.controller.IController;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-import javax.swing.JOptionPane;
-
-import connectfour.controller.IController;
 
 public class SaveEvent extends MouseAdapter {
 	private Frame frame;

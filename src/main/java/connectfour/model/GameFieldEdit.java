@@ -3,11 +3,11 @@
  */
 package connectfour.model;
 
+import connectfour.controller.IController;
+
 import javax.swing.undo.AbstractUndoableEdit;
 import javax.swing.undo.CannotRedoException;
 import javax.swing.undo.CannotUndoException;
-
-import connectfour.controller.IController;
 
 /**
  * @author jakub

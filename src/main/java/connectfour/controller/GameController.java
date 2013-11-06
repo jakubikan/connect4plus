@@ -1,21 +1,14 @@
 package connectfour.controller;
 
-import java.util.List;
-
-import javax.swing.undo.UndoManager;
-
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-
-import connectfour.model.Computer;
-import connectfour.model.GameField;
-import connectfour.model.GameFieldEdit;
-import connectfour.model.Human;
-import connectfour.model.Player;
-import connectfour.model.SaveGame;
+import connectfour.model.*;
 import connectfour.persistence.ISaveGameDAO;
 import connectfour.util.observer.IObserverWithArguments;
 import connectfour.util.observer.ObservableWithArguments;
+
+import javax.swing.undo.UndoManager;
+import java.util.List;
 
 @Singleton
 public final class GameController extends ObservableWithArguments implements IObserverWithArguments, IController {
@@ -59,9 +52,7 @@ public final class GameController extends ObservableWithArguments implements IOb
     
     @Override
     public List<String> getAllSaveGameNames() {
-    	List<String> allSaveGameNames = saveGameDAO.getAllSaveGames();
-
-    	return allSaveGameNames;
+    	return saveGameDAO.getAllSaveGames();
     }
     
     @Override
@@ -172,7 +163,6 @@ public final class GameController extends ObservableWithArguments implements IOb
     public void undoStep() {
         if (undoManager.canUndo()) {
             undoManager.undo();
-        } else {
         }
     }
     
@@ -180,14 +170,12 @@ public final class GameController extends ObservableWithArguments implements IOb
     public void redoStep() {
         if (undoManager.canRedo()) {
             undoManager.redo();
-        } else {
         }
     }
     
     @Override
     public void setPlayer(final Player p) {
         gameField.setPlayer(p);
-        
     }
     
     @Override

@@ -1,12 +1,11 @@
 package connectfour.ui.gui.swing.events;
 
-import java.awt.Frame;
-import java.awt.event.MouseEvent;
-
-import javax.swing.JOptionPane;
-
 import connectfour.controller.IController;
 import connectfour.util.observer.IObserver;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseEvent;
 
 public class LoadSaveGameEvent extends EventAdapter {
 	private Frame frame;

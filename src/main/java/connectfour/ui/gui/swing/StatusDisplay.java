@@ -1,11 +1,9 @@
 package connectfour.ui.gui.swing;
 
-import java.awt.Color;
-
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import connectfour.controller.IController;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author: Stefano Di Martino

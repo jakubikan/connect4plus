@@ -1,17 +1,13 @@
 package connectfour.ui.gui.swing.widgets;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-
-import javax.swing.JPanel;
-
 import connectfour.controller.IController;
 import connectfour.ui.gui.swing.events.GUICoinMouseListener;
 import connectfour.ui.gui.swing.events.MouseColumnObserver;
 import connectfour.util.observer.IObserver;
 import connectfour.util.observer.IObserverWithArguments;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author: Stefano Di Martino

@@ -1,9 +1,9 @@
 package connectfour.controller;
 
-import java.util.List;
-
 import connectfour.model.GameField;
 import connectfour.model.Player;
+
+import java.util.List;
 
 public interface IController {
 	 void newGame();

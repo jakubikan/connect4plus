@@ -1,19 +1,11 @@
 package connectfour.ui.gui.swing;
 
-import java.awt.Color;
-import java.awt.Frame;
-
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JToolBar;
-
 import connectfour.controller.IController;
-import connectfour.ui.gui.swing.events.LoadSaveGameEvent;
-import connectfour.ui.gui.swing.events.NewGameEvent;
-import connectfour.ui.gui.swing.events.RedoEvent;
-import connectfour.ui.gui.swing.events.SaveEvent;
-import connectfour.ui.gui.swing.events.UndoEvent;
+import connectfour.ui.gui.swing.events.*;
 import connectfour.util.observer.IObserver;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * @author: Stefano Di Martino

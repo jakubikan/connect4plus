@@ -1,8 +1,8 @@
 package connectfour.persistence;
 
-import java.util.List;
-
 import connectfour.model.SaveGame;
+
+import java.util.List;
 
 public interface ISaveGameDAO {
 	

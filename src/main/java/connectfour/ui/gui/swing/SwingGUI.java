@@ -1,19 +1,6 @@
 package connectfour.ui.gui.swing;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-
 import com.google.inject.Inject;
-
 import connectfour.controller.IController;
 import connectfour.model.GameField;
 import connectfour.model.Player;
@@ -22,6 +9,11 @@ import connectfour.ui.gui.swing.controller.ArrowManager;
 import connectfour.ui.gui.swing.widgets.ArrowCell;
 import connectfour.ui.gui.swing.widgets.GUICoin;
 import connectfour.util.observer.IObserver;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author: Stefano Di Martino

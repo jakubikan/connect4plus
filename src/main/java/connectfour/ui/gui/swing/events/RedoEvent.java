@@ -3,10 +3,10 @@
  */
 package connectfour.ui.gui.swing.events;
 
-import java.awt.event.MouseEvent;
-
 import connectfour.controller.IController;
 import connectfour.util.observer.IObserver;
+
+import java.awt.event.MouseEvent;
 
 /**
  * @author: Stefano Di Martino

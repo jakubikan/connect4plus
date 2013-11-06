@@ -1,15 +1,14 @@
 package connectfour.ui.tui;
 
-import java.util.Scanner;
-
 import com.google.inject.Inject;
-
 import connectfour.controller.IController;
 import connectfour.model.Computer;
 import connectfour.model.GameField;
 import connectfour.model.Player;
 import connectfour.ui.UI;
 import connectfour.util.observer.IObserver;
+
+import java.util.Scanner;
 
 /**
  * @author: Stefano Di Martino
