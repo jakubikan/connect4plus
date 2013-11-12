@@ -1,4 +1,4 @@
-package connect4.controller;
+package connectfour.controller;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
@@ -13,8 +13,6 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import connectfour.GameControllerModule;
-import connectfour.controller.GameController;
-import connectfour.controller.IController;
 import connectfour.model.Human;
 import connectfour.model.Player;
 

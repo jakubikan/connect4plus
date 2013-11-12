@@ -26,7 +26,7 @@ crossPaths := false
 pomExtra := 
   <build>
     <sourceDirectory>src/main/java/connectfour</sourceDirectory>
-    <testSourceDirectory>src/test/java/connect4</testSourceDirectory>
+    <testSourceDirectory>src/test/java/connectfour</testSourceDirectory>
   </build>
   
 

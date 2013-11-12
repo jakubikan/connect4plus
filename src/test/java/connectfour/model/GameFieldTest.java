@@ -1,4 +1,4 @@
-package connect4.model;
+package connectfour.model;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,9 +11,6 @@ import com.google.inject.Injector;
 
 import connectfour.GameControllerModule;
 import connectfour.controller.GameController;
-import connectfour.model.GameField;
-import connectfour.model.Human;
-import connectfour.model.Player;
 import connectfour.util.observer.IObserverWithArguments;
 
 public class GameFieldTest {

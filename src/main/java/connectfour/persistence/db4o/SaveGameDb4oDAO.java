@@ -13,18 +13,19 @@ import java.util.List;
 public class SaveGameDb4oDAO implements ISaveGameDAO {
 	private ObjectContainer db;
 
+    /**
+     * Opens the database by default.
+     */
 	public SaveGameDb4oDAO() {
-		db = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),
-				"savegame.data");
+		openDB();
 	}
 
-	@Override
-	public void openDB() {
-		db = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),
-				"savegame.data");
-	}
-	
-	@Override
+    @Override
+    public void openDB() {
+        db = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "savegame.data");
+    }
+
+    @Override
 	public void saveGame(SaveGame saveGame) {
 		// Player's gamefield shouldn't be saved!
 		saveGame.getPlayer1().setGameField(null);
@@ -69,7 +70,7 @@ public class SaveGameDb4oDAO implements ISaveGameDAO {
 	@Override
 	public List<String> getAllSaveGames() {
 		Iterator<SaveGame> it = db.query(SaveGame.class).iterator();
-		List<String> allSaveGames = new LinkedList<String>();
+		List<String> allSaveGames = new LinkedList<>();
 		
 		while(it.hasNext()) {
 			SaveGame sg = it.next();

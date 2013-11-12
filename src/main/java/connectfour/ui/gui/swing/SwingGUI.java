@@ -25,7 +25,7 @@ public class SwingGUI extends JFrame implements UI, IObserver {
     // UI Stuff
     private final JPanel cellWrapper = new JPanel();
     private final GUICoin coinCells[][] = new GUICoin[GameField.DEFAULT_ROWS][GameField.DEFAULT_COLUMNS];
-    private final List<ArrowCell> listArrowCells = new ArrayList<ArrowCell>(
+    private final List<ArrowCell> listArrowCells = new ArrayList<>(
                                             GameField.DEFAULT_COLUMNS);
     private final StatusDisplay statusDisplay;
     

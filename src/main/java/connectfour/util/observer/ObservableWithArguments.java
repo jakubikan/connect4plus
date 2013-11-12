@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ObservableWithArguments extends Observable {
     
-    private List<IObserverWithArguments> subscribersWithArguments = new ArrayList<IObserverWithArguments>(
+    private List<IObserverWithArguments> subscribersWithArguments = new ArrayList<>(
                                             2);
     
     public void addObserver(IObserverWithArguments s) {

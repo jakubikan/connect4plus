@@ -5,7 +5,8 @@ import connectfour.model.SaveGame;
 import java.util.List;
 
 public interface ISaveGameDAO {
-	
+    void openDB();
+
 	/**
 	 * @param saveGame If save game name already exists, it will be overwritten.
 	 */
@@ -18,8 +19,7 @@ public interface ISaveGameDAO {
 	 * @return true, if deletion was successful, false otherwise
 	 */
 	boolean deleteSaveGameIfExists(String saveGameName);
-	
-	void openDB();
+
 	void closeDB();
 	boolean saveGameExists(String saveGameName);
 	List<String> getAllSaveGames();

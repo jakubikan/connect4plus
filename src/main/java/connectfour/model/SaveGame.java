@@ -9,7 +9,7 @@ public class SaveGame {
 
 
 	/**
-	 * @param saveGameName Unique save game name, otherwise it will be overwritten!
+	 * @param saveGameName Unique savegame name, otherwise it will be overwritten!
 	 * @param gameField gameField to save
 	 * @param player1 player 1 to save
 	 * @param player2 player 2 to save

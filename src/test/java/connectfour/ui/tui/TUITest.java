@@ -1,7 +1,7 @@
 /**
  * 
  */
-package connect4.ui.tui;
+package connectfour.ui.tui;
 
 import static org.junit.Assert.assertTrue;
 
