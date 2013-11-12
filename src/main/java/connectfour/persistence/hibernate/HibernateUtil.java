@@ -17,7 +17,7 @@ public class HibernateUtil {
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         /*final AnnotationConfiguration cfg = new
                 AnnotationConfiguration();
-        cfg.configure();
+        cfg.configure("/hibernate.cfg.xml");
         sessionFactory = cfg.buildSessionFactory();  */
     }
 
