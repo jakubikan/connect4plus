@@ -2,6 +2,7 @@ package connectfour.persistence.hibernate;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
@@ -14,6 +15,10 @@ public class HibernateUtil {
         configuration.configure();
         serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
+        /*final AnnotationConfiguration cfg = new
+                AnnotationConfiguration();
+        cfg.configure();
+        sessionFactory = cfg.buildSessionFactory();  */
     }
 
     private HibernateUtil() {

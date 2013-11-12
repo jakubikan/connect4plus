@@ -10,7 +10,6 @@ import connectfour.model.Player;
 import connectfour.model.SaveGame;
 import connectfour.persistence.ISaveGameDAO;
 import connectfour.util.observer.IObserverWithArguments;
-import org.hibernate.SessionFactory;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +25,6 @@ import static org.junit.Assert.*;
  * Time: 16:07
  */
 public class HibernateUtilTest {
-    private SessionFactory sessionFactory;
     private GameField gameField;
     private Player player;
     private Player opponent;
@@ -39,7 +37,6 @@ public class HibernateUtilTest {
         Injector injector = Guice.createInjector(new GameControllerModule());
         this.observable = injector.getInstance(GameController.class);
 
-        this.sessionFactory = HibernateUtil.getInstance();
         player = new Human();
         player.setName("Hugo");
         opponent = new Human();

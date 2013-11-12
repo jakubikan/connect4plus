@@ -22,7 +22,7 @@ public class SaveGameDbHibernate implements ISaveGameDAO {
     /**
      * Opens the database by default.
      */
-    public void SaveGameDbHibernate() {
+    public SaveGameDbHibernate() {
         this.openDB();
     }
 
