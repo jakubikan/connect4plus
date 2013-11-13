@@ -101,7 +101,7 @@ public class SaveGameDbHibernate implements ISaveGameDAO {
         List<String> allSaveGames = new LinkedList<>();
 
         while(it.hasNext()) {
-            SaveGame sg = it.next();
+            SaveGameHibernate sg = it.next();
             allSaveGames.add(sg.getSaveGameName());
         }
 
