@@ -29,7 +29,30 @@ public class GameField implements Cloneable {
         this.opponent = opponent;
 		initPlayerOnTurn();
 	}
-	
+
+    public int getModCount() {
+        return modCount;
+    }
+
+    public boolean isGameWon() {
+        return gameWon;
+    }
+
+    public void setGameField(Player[][] gameField) {
+        this.gameField = gameField;
+    }
+
+    public void setGameIsWon(boolean gameIsWon) {
+        this.gameWon = gameIsWon;
+    }
+
+    public void setModCount(int modCount) {
+        this.modCount = modCount;
+    }
+
+    public void setPlayerOnTurn(Player player) {
+        this.playerOnTurn = player;
+    }
 
 	private void initPlayerOnTurn() {
 		Random r = new Random();

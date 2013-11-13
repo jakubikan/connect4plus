@@ -2,11 +2,11 @@ package connectfour.persistence.hibernate;
 
 import connectfour.model.GameField;
 import connectfour.model.Player;
-import connectfour.model.SaveGame;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author Stefano Di Martino
@@ -15,11 +15,10 @@ import java.io.Serializable;
 @Entity
 @Table(name="SaveGame")
 public class SaveGameHibernate implements Serializable {
-    private GameField gameField;
+    private GameFieldHibernate gameField;
     private Player player1;
     private Player player2;
     private String saveGameName;
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,11 +31,12 @@ public class SaveGameHibernate implements Serializable {
      * @param player2 player 2 to save
      */
     public SaveGameHibernate(String saveGameName, GameField gameField, Player player1, Player player2) {
-        this.gameField = gameField;
+        this.gameField = mapToGameFieldHibernate(gameField);
         this.player1 = player1;
         this.player2 = player2;
         this.saveGameName = saveGameName;
     }
+
 
     public String getSaveGameName() {
         return saveGameName;
@@ -51,6 +51,42 @@ public class SaveGameHibernate implements Serializable {
     }
 
     public GameField getGameField() {
+        return mapToGameField(gameField);
+    }
+
+    private GameFieldHibernate mapToGameFieldHibernate(GameField gf) {
+        try {
+            return new GameFieldHibernate(gf.getPlayer(), gf.getOpponent(), gf.getCopyOfGamefield(), gf.getPlayerOnTurn(),
+                    gf.getModCount(), gf.getWinner(), gf.isGameWon());
+
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    private GameField mapToGameField(GameFieldHibernate gf) {
+        GameField gameField = new GameField(getPlayer1(), getPlayer2());
+        gameField.setGameIsWon(gf.gameWon);
+        gameField.setModCount(gf.modCount);
+        gameField.setPlayerOnTurn(gf.playerOnTurn);
+        gameField.setGameField(mapToGameFieldsArray(gf.matrix));
+
+        return gameField;
+    }
+
+    private Player[][] mapToGameFieldsArray(List<MatrixRow> matrix) {
+        Player [][] gameField = new Player[GameField.DEFAULT_ROWS][GameField.DEFAULT_COLUMNS];
+
+        int i = 0;
+        int j = 0;
+
+        for (MatrixRow row : matrix) {
+            for (Player player: row.row) {
+                gameField[i][j++] = player;
+            }
+            i++;
+        }
         return gameField;
     }
 }
