@@ -4,6 +4,7 @@ import connectfour.model.GameField;
 import connectfour.model.Player;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,30 +16,30 @@ import java.util.List;
 
 @Entity
 @Table(name="GameField")
-public class GameFieldHibernate  {
+public class GameFieldHibernate  implements Serializable {
     @Id
     @GeneratedValue
     private long id;
 
-    public Player player;
-    public Player opponent;
-    public Player playerOnTurn;
+    public PlayerHibernate player;
+    public PlayerHibernate opponent;
+    public PlayerHibernate playerOnTurn;
     public int modCount = 0;
 
     @OneToMany(mappedBy="gameField")
     public List<MatrixRow> matrix;
 
-    public Player playerWon;
+    public PlayerHibernate playerWon;
 
     public boolean gameWon;
 
     public GameFieldHibernate(Player player, Player opponent, Player[][] gameField, Player playerOnTurn, int modCount, Player playerWon, boolean gameWon) {
-        this.player = player;
-        this.opponent = opponent;
+        this.player = HibernateUtil.convertToPlayerHibernate(player);
+        this.opponent = HibernateUtil.convertToPlayerHibernate(opponent);
         this.modCount = modCount;
-        this.playerWon = playerWon;
+        this.playerWon = HibernateUtil.convertToPlayerHibernate(playerWon);
         this.gameWon = gameWon;
-        this.playerOnTurn = playerOnTurn;
+        this.playerOnTurn = HibernateUtil.convertToPlayerHibernate(playerOnTurn);
 
         mapToHibernateScheme(gameField);
     }
@@ -47,10 +48,10 @@ public class GameFieldHibernate  {
         matrix = new LinkedList<>();
 
         for(int i = 0; i < GameField.DEFAULT_ROWS; i++) {
-            List<Player> row = new LinkedList<>();
+            List<PlayerHibernate> row = new LinkedList<>();
 
             for(int j = 0; j < GameField.DEFAULT_COLUMNS; j++) {
-                row.add(gameField[i][j]);
+                row.add(HibernateUtil.convertToPlayerHibernate(gameField[i][j]));
             }
 
             matrix.add(new MatrixRow(row));

@@ -23,10 +23,6 @@ public class Computer extends PlayerAbstract {
 
 	@Override
 	public int getMove() {
-		/*
-		 * Random r = new Random(); int random = r.nextInt() % 7; return random
-		 * < 0 ? -random : random;
-		 */
 		if (firstMove && getGameField().isEmpty()) {
 			firstMove = false;
 			return doNextColumn;

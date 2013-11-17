@@ -14,5 +14,7 @@
       <property name="show_sql">false</property>
       <mapping class="connectfour.persistence.hibernate.SaveGameHibernate" />
       <mapping class="connectfour.persistence.hibernate.GameFieldHibernate" />
+      <mapping class="connectfour.persistence.hibernate.MatrixRow" />
+      <mapping class="connectfour.persistence.hibernate.PlayerHibernate" />
    </session-factory>
 </hibernate-configuration>

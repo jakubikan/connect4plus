@@ -13,14 +13,12 @@ public interface Player extends IObserverWithArguments {
      * 
      * @param column
      *            the Column where to drop the Coin
-     * @param g
-     *            is the Instance of the Gamefield
      * @return
      */
     int dropCoin(int column);
     
     int getMove();
-    
+
     void setMove(int column);
     
     GameField getGameField();

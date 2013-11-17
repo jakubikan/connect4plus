@@ -1,14 +1,7 @@
 package connectfour.persistence.hibernate;
 
-import connectfour.model.Player;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-
-import java.util.Arrays;
-import java.util.LinkedList;
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -16,7 +9,9 @@ import java.util.List;
  * Date: 13.11.13
  * Time: 16:24
  */
-public class MatrixRow {
+@Entity
+@Table(name="MatrixRow")
+public class MatrixRow implements Serializable {
     @Id
     @GeneratedValue
     private long id;
@@ -25,9 +20,9 @@ public class MatrixRow {
     private GameFieldHibernate gameField;
 
     @ManyToMany
-    public List<Player> row;
+    public List<PlayerHibernate> row;
 
-    public MatrixRow(List<Player> row) {
+    public MatrixRow(List<PlayerHibernate> row) {
         this.row = row;
     }
 }

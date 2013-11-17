@@ -4,7 +4,6 @@ import connectfour.model.GameField;
 import connectfour.model.Player;
 
 import javax.persistence.*;
-
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,8 +15,8 @@ import java.util.List;
 @Table(name="SaveGame")
 public class SaveGameHibernate implements Serializable {
     private GameFieldHibernate gameField;
-    private Player player1;
-    private Player player2;
+    private PlayerHibernate player1;
+    private PlayerHibernate player2;
     private String saveGameName;
 
     @Id
@@ -32,8 +31,8 @@ public class SaveGameHibernate implements Serializable {
      */
     public SaveGameHibernate(String saveGameName, GameField gameField, Player player1, Player player2) {
         this.gameField = mapToGameFieldHibernate(gameField);
-        this.player1 = player1;
-        this.player2 = player2;
+        this.player1 = HibernateUtil.convertToPlayerHibernate(player1);
+        this.player2 = HibernateUtil.convertToPlayerHibernate(player2);
         this.saveGameName = saveGameName;
     }
 
@@ -43,11 +42,11 @@ public class SaveGameHibernate implements Serializable {
     }
 
     public Player getPlayer2() {
-        return player2;
+        return HibernateUtil.convertToStandardPlayer(player2);
     }
 
     public Player getPlayer1() {
-        return player1;
+        return HibernateUtil.convertToStandardPlayer(player1);
     }
 
     public GameField getGameField() {
@@ -69,7 +68,7 @@ public class SaveGameHibernate implements Serializable {
         GameField gameField = new GameField(getPlayer1(), getPlayer2());
         gameField.setGameIsWon(gf.gameWon);
         gameField.setModCount(gf.modCount);
-        gameField.setPlayerOnTurn(gf.playerOnTurn);
+        gameField.setPlayerOnTurn(HibernateUtil.convertToStandardPlayer(gf.playerOnTurn));
         gameField.setGameField(mapToGameFieldsArray(gf.matrix));
 
         return gameField;
@@ -82,13 +81,15 @@ public class SaveGameHibernate implements Serializable {
         int j = 0;
 
         for (MatrixRow row : matrix) {
-            for (Player player: row.row) {
-                gameField[i][j++] = player;
+            for (PlayerHibernate player: row.row) {
+                gameField[i][j++] = HibernateUtil.convertToStandardPlayer(player);
             }
             i++;
         }
         return gameField;
     }
+
+
 }
 
 /*
