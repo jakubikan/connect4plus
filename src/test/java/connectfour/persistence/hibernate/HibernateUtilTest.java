@@ -18,6 +18,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * User: Stefano Di Martino
@@ -29,7 +30,7 @@ public class HibernateUtilTest {
     private Player player;
     private Player opponent;
     private IObserverWithArguments observable;
-    private ISaveGameDAO sgdb4o;
+    private ISaveGameDAO db;
     private java.util.List<Integer> rows;
 
     @Before
@@ -42,7 +43,7 @@ public class HibernateUtilTest {
         opponent = new Human();
         gameField = new GameField(player, opponent);
         rows = new LinkedList<>();
-        sgdb4o = new SaveGameDbHibernate();
+        db = new SaveGameDbHibernate();
     }
 
     @Test
@@ -105,16 +106,16 @@ public class HibernateUtilTest {
         String sgName = "Unit_Test";
         SaveGame sg = new SaveGame(sgName, gameField, player, opponent);
 
-        sgdb4o.saveGame(sg);
+        db.saveGame(sg);
 
         // Test if the saveGame exists
-        assertTrue(sgdb4o.saveGameExists(sgName));
+        assertTrue(db.saveGameExists(sgName));
 
-        assertFalse(sgdb4o.saveGameExists("DummyName"));
+        assertFalse(db.saveGameExists("DummyName"));
     }
 
     private int countSaveGameName(String sgName) {
-        Iterator<String> it = sgdb4o.getAllSaveGames().iterator();
+        Iterator<String> it = db.getAllSaveGames().iterator();
         int i = 0;
 
         while(it.hasNext()) {
@@ -137,19 +138,19 @@ public class HibernateUtilTest {
         SaveGame sg = new SaveGame(sgName, gameField, player, opponent);
 
         // Before save
-        assertTrue(countSaveGameName(sgName) == 0);
+        assertEquals(countSaveGameName(sgName), 0);
 
-        sgdb4o.saveGame(sg);
+        db.saveGame(sg);
 
         // After save
-        assertTrue(countSaveGameName(sgName) == 1);
+        assertEquals(countSaveGameName(sgName), 1);
 
         // After second save, the save game with the same name
         // should be overwritten. So countSaveGame() should still
         // return 1!
 
-        sgdb4o.saveGame(sg);
-        assertTrue(countSaveGameName(sgName) == 1);
+        db.saveGame(sg);
+        assertEquals(countSaveGameName(sgName), 1);
     }
 
     private void loadTest() {
@@ -157,10 +158,10 @@ public class HibernateUtilTest {
         String sgName = getUniqueName(); // Every run should have different name
         SaveGame sg = new SaveGame(sgName, gameField, player, opponent);
 
-        sgdb4o.saveGame(sg);
+        db.saveGame(sg);
 
         // Load gameField and players
-        sg = sgdb4o.loadSaveGame(sgName);
+        sg = db.loadSaveGame(sgName);
 
         gameField = sg.getGameField();
         player = sg.getPlayer1();
@@ -171,40 +172,40 @@ public class HibernateUtilTest {
 
         int row = it.next();
         assertEquals(0, row);
-        assertEquals(gameField.getPlayerAt(row, 3), player);
+        assertEquals(gameField.getPlayerAt(row, 3).getName(), player.getName());
 
         row = it.next();
-        assertEquals(gameField.getPlayerAt(row, 3), player);
+        assertEquals(gameField.getPlayerAt(row, 3).getName(), player.getName());
         assertEquals(1, row);
 
         row = it.next();
-        assertEquals(gameField.getPlayerAt(row, 1), opponent);
+        assertEquals(gameField.getPlayerAt(row, 1).getName(), opponent.getName());
         assertEquals(0, row);
 
         row = it.next();
-        assertEquals(gameField.getPlayerAt(row, 1), opponent);
+        assertEquals(gameField.getPlayerAt(row, 1).getName(), opponent.getName());
         assertEquals(1, row);
 
         row = it.next();
         assertEquals(2, row);
-        assertEquals(gameField.getPlayerAt(row, 1), opponent);
+        assertEquals(gameField.getPlayerAt(row, 1).getName(), opponent.getName());
 
         row = it.next();
         assertEquals(3, row);
-        assertEquals(gameField.getPlayerAt(row, 1), opponent);
+        assertEquals(gameField.getPlayerAt(row, 1).getName(), opponent.getName());
 
         row = it.next();
         assertEquals(4, row);
-        assertEquals(gameField.getPlayerAt(row, 1), opponent);
+        assertEquals(gameField.getPlayerAt(row, 1).getName(), opponent.getName());
 
         row = it.next();
         assertEquals(5, row);
-        assertEquals(gameField.getPlayerAt(row, 1), opponent);
-        assertEquals(gameField.getPlayerAt(1, 1), opponent);
+        assertEquals(gameField.getPlayerAt(row, 1).getName(), opponent.getName());
+        assertEquals(gameField.getPlayerAt(1, 1).getName(), opponent.getName());
     }
 
     @After
     public void tearDown() throws Exception {
-        sgdb4o.closeDB();
+        db.closeDB();
     }
 }

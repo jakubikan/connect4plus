@@ -56,6 +56,8 @@ public class SaveGameDbHibernate implements ISaveGameDAO {
     public void saveGame(SaveGame saveGame) {
         SaveGameHibernate sgh = convertToHibernateSaveGame(saveGame);
 
+        deleteSaveGameIfExists(saveGame.getSaveGameName());
+
         session.beginTransaction();
         session.save(sgh);
         session.getTransaction().commit();
@@ -63,12 +65,22 @@ public class SaveGameDbHibernate implements ISaveGameDAO {
 
     @Override
     public SaveGame loadSaveGame(String saveGameName) {
+        SaveGameHibernate saveGameHibernate = loadSaveGameHibernate(saveGameName);
+
+        if (saveGameHibernate != null) {
+            return convertToStandardSaveGame(saveGameHibernate);
+        }
+
+        return null;
+    }
+
+    private SaveGameHibernate loadSaveGameHibernate(String saveGameName) {
         List<SaveGameHibernate> saveGameNames = session.createCriteria(SaveGameHibernate.class)
                 .add(Restrictions.like("saveGameName", saveGameName))
                 .list();
 
         if (saveGameNames.size() > 0) {
-            return convertToStandardSaveGame(saveGameNames.get(0));
+            return saveGameNames.get(0);
         }
 
         return null;
@@ -77,8 +89,11 @@ public class SaveGameDbHibernate implements ISaveGameDAO {
     @Override
     public boolean deleteSaveGameIfExists(String saveGameName) {
         if (saveGameExists(saveGameName)) {
-            SaveGame sg = loadSaveGame(saveGameName);
-            this.session.delete(convertToHibernateSaveGame(sg));
+            SaveGameHibernate sg = loadSaveGameHibernate(saveGameName);
+
+            session.beginTransaction();
+            session.delete(sg);
+            session.getTransaction().commit();
 
             return true;
         }
