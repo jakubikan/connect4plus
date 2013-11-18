@@ -26,6 +26,7 @@ public class GameFieldHibernate  implements Serializable {
     public PlayerHibernate playerOnTurn;
     public int modCount = 0;
 
+    @Column(columnDefinition = "LONGBLOB")
     @OneToMany(mappedBy="gameField")
     public List<MatrixRow> matrix;
 

@@ -32,7 +32,9 @@ public class HibernateUtil {
     }
 
     public static PlayerHibernate convertToPlayerHibernate(Player player) {
-        return new PlayerHibernate(player.getName(), player instanceof Computer);
+        String playerName = player != null? player.getName(): null;
+
+        return new PlayerHibernate(playerName, player instanceof Computer);
     }
 
     public static Player convertToStandardPlayer(PlayerHibernate playerHibernate) {

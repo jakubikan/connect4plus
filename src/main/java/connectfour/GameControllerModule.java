@@ -5,6 +5,8 @@ import connectfour.controller.GameController;
 import connectfour.controller.IController;
 import connectfour.persistence.ISaveGameDAO;
 import connectfour.persistence.db4o.SaveGameDb4oDAO;
+import connectfour.persistence.hibernate.SaveGameDbHibernate;
+import connectfour.persistence.hibernate.SaveGameHibernate;
 import connectfour.util.observer.IObserverWithArguments;
 
 public class GameControllerModule extends AbstractModule {
@@ -13,6 +15,7 @@ public class GameControllerModule extends AbstractModule {
     protected void configure() {
         bind(IController.class).to(GameController.class);
         bind(IObserverWithArguments.class).to(GameController.class);
-        bind(ISaveGameDAO.class).to(SaveGameDb4oDAO.class);
+        bind(ISaveGameDAO.class).to(SaveGameDbHibernate.class);
+        //bind(ISaveGameDAO.class).to(SaveGameDb4oDAO.class);
     }
 }

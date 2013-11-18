@@ -23,6 +23,11 @@ public class SaveGameHibernate implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer id;
 
+    // Hibernate needs default constructor!
+    public SaveGameHibernate() {
+
+    }
+
     /**
      * @param saveGameName Unique savegame name, otherwise it will be overwritten!
      * @param gameField gameField to save
@@ -78,9 +83,10 @@ public class SaveGameHibernate implements Serializable {
         Player [][] gameField = new Player[GameField.DEFAULT_ROWS][GameField.DEFAULT_COLUMNS];
 
         int i = 0;
-        int j = 0;
+
 
         for (MatrixRow row : matrix) {
+            int j = 0;
             for (PlayerHibernate player: row.row) {
                 gameField[i][j++] = HibernateUtil.convertToStandardPlayer(player);
             }
@@ -88,8 +94,6 @@ public class SaveGameHibernate implements Serializable {
         }
         return gameField;
     }
-
-
 }
 
 /*
