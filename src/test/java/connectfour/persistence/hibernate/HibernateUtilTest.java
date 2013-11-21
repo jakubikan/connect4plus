@@ -172,36 +172,36 @@ public class HibernateUtilTest {
 
         int row = it.next();
         assertEquals(0, row);
-        assertEquals(gameField.getPlayerAt(row, 3).getName(), player.getName());
+        assertEquals(gameField.getPlayerAt(row, 3), player);
 
         row = it.next();
-        assertEquals(gameField.getPlayerAt(row, 3).getName(), player.getName());
+        assertEquals(gameField.getPlayerAt(row, 3), player);
         assertEquals(1, row);
 
         row = it.next();
-        assertEquals(gameField.getPlayerAt(row, 1).getName(), opponent.getName());
+        assertEquals(gameField.getPlayerAt(row, 1), opponent);
         assertEquals(0, row);
 
         row = it.next();
-        assertEquals(gameField.getPlayerAt(row, 1).getName(), opponent.getName());
+        assertEquals(gameField.getPlayerAt(row, 1), opponent);
         assertEquals(1, row);
 
         row = it.next();
         assertEquals(2, row);
-        assertEquals(gameField.getPlayerAt(row, 1).getName(), opponent.getName());
+        assertEquals(gameField.getPlayerAt(row, 1), opponent);
 
         row = it.next();
         assertEquals(3, row);
-        assertEquals(gameField.getPlayerAt(row, 1).getName(), opponent.getName());
+        assertEquals(gameField.getPlayerAt(row, 1), opponent);
 
         row = it.next();
         assertEquals(4, row);
-        assertEquals(gameField.getPlayerAt(row, 1).getName(), opponent.getName());
+        assertEquals(gameField.getPlayerAt(row, 1), opponent);
 
         row = it.next();
         assertEquals(5, row);
-        assertEquals(gameField.getPlayerAt(row, 1).getName(), opponent.getName());
-        assertEquals(gameField.getPlayerAt(1, 1).getName(), opponent.getName());
+        assertEquals(gameField.getPlayerAt(row, 1), opponent);
+        assertEquals(gameField.getPlayerAt(1, 1), opponent);
     }
 
     @After

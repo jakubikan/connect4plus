@@ -20,19 +20,21 @@ public class SaveGameCouchDbDAO implements ISaveGameDAO {
     private CouchDbConnector db = null;
 
     public SaveGameCouchDbDAO() {
-        HttpClient client = null;
-        try {
-            client = new StdHttpClient.Builder().url("http://lenny2.in.htwg-konstanz.de:5984").build();
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        CouchDbInstance dbInstance = new StdCouchDbInstance(client);
-        db = dbInstance.createConnector("connect4_db", true);
+        openDB();
     }
 
     @Override
     public void openDB() {
+        HttpClient client = null;
+
+        try {
+            client = new StdHttpClient.Builder().url("http://lenny2.in.htwg-konstanz.de:5984").build();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        CouchDbInstance dbInstance = new StdCouchDbInstance(client);
+        db = dbInstance.createConnector("connect4_db", true);
     }
 
     @Override

@@ -31,7 +31,7 @@ final class StatusDisplay extends JPanel {
     }
     
     private void setPlayersColor() {
-        if (controller.getPlayerOnTurn() == controller.getPlayers()[0]) { // Player 1
+        if (controller.getPlayerOnTurn().equals(controller.getPlayers()[0])) { // Player 1
             status.setForeground(Color.RED);
         } else {
             status.setForeground(Color.BLUE);

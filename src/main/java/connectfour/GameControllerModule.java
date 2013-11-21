@@ -15,7 +15,7 @@ public class GameControllerModule extends AbstractModule {
     protected void configure() {
         bind(IController.class).to(GameController.class);
         bind(IObserverWithArguments.class).to(GameController.class);
-        bind(ISaveGameDAO.class).to(SaveGameDbHibernate.class);
-        //bind(ISaveGameDAO.class).to(SaveGameDb4oDAO.class);
+        //bind(ISaveGameDAO.class).to(SaveGameDbHibernate.class);
+        bind(ISaveGameDAO.class).to(SaveGameDb4oDAO.class);
     }
 }

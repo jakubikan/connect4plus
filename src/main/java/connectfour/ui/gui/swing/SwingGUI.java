@@ -115,9 +115,9 @@ public class SwingGUI extends JFrame implements UI, IObserver {
                 
                 if (player == null) {
                     coinCells[currentRow][currentColumn].setColor(Color.WHITE);
-                } else if (player == players[0]) {
+                } else if (player.equals(players[0])) {
                     coinCells[currentRow][currentColumn].setColor(Color.RED);
-                } else if (player == players[1]) {
+                } else if (player.equals(players[1])) {
                     coinCells[currentRow][currentColumn].setColor(Color.YELLOW);
                 } else {
                     JOptionPane.showMessageDialog(this,

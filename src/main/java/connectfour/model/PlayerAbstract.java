@@ -32,4 +32,17 @@ public abstract class PlayerAbstract extends ObservableWithArguments implements 
     public void setName(final String string) {
         name = string;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+
+        if (super.equals(obj)) {
+            return true;
+        }
+
+        return obj instanceof Player && getName().equals(((Player) obj).getName());
+    }
 }

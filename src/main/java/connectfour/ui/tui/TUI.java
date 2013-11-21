@@ -103,9 +103,9 @@ public class TUI implements UI, IObserver {
                 
                 if (player == null) {
                     playingField.append(empty);
-                } else if (player == players[0]) {
+                } else if (player.equals(players[0])) {
                     playingField.append(coin1);
-                } else if (player == players[1]) {
+                } else if (player.equals(players[1])) {
                     playingField.append(coin2);
                 } else {
                     playingField.append("FEHLER!");

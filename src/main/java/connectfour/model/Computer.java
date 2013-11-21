@@ -64,7 +64,7 @@ public class Computer extends PlayerAbstract {
 			if (zugWert > ermittelt) {
 				ermittelt = zugWert;
 				if (restTiefe >= deepSearch
-						|| (newState.getWinner() == this && restTiefe >= deepSearch)) {
+						|| (newState.getWinner().equals(this) && restTiefe >= deepSearch)) {
 					doNextColumn = i;
 				}
 			}
@@ -78,7 +78,7 @@ public class Computer extends PlayerAbstract {
 		int zugWert;
 		for (int i = 0; i < GameField.DEFAULT_COLUMNS; i++) {
 			GameField previousState = saveState();
-			if (getGameField().getPlayerOnTurn() == this) {
+			if (getGameField().getPlayerOnTurn().equals(this)) {
 				getGameField().changePlayerTurn();
 			}
 			if (getGameField().dropCoin(i) >= GameField.DEFAULT_ROWS) {
@@ -118,7 +118,7 @@ public class Computer extends PlayerAbstract {
 	public void update(final Object arg) {
 		GameField gameField = (GameField) arg;
 		this.setGameField(gameField);
-		if (gameField.getPlayerOnTurn() == this) {
+		if (gameField.getPlayerOnTurn().equals(this)) {
 			int columnToDrop = this.getMove();
 			this.notifyObservers(columnToDrop);
 		}

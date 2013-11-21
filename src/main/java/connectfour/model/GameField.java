@@ -215,10 +215,11 @@ public class GameField implements Cloneable {
 	private boolean checkLeftRigthDiagonal(final Player playerToCheck) {
 		for (int row = DEFAULT_ROWS - 1; row >= 3; row--) {
 			for (int col = 0; col < DEFAULT_COLUMNS - 3; col++) {
-				if (gameField[row][col] == playerToCheck
-						&& gameField[row][col] == gameField[row - 1][col + 1]
-						&& gameField[row][col] == gameField[row - 2][col + 2]
-						&& gameField[row][col] == gameField[row - 3][col + 3]) {
+				if (gameField[row][col] != null
+                        && gameField[row][col].equals(playerToCheck)
+						&& gameField[row][col].equals(gameField[row - 1][col + 1])
+						&& gameField[row][col].equals(gameField[row - 2][col + 2])
+						&& gameField[row][col].equals(gameField[row - 3][col + 3])) {
 					return true;
 				}
 			}
@@ -229,10 +230,11 @@ public class GameField implements Cloneable {
 	private boolean checkLeftRightDiagonal(final Player playerToCheck) {
 		for (int row = 0; row < DEFAULT_ROWS - 3; row++) {
 			for (int col = 0; col < DEFAULT_COLUMNS - 3; col++) {
-				if (gameField[row][col] == playerToCheck
-						&& gameField[row][col] == gameField[row + 1][col + 1]
-						&& gameField[row][col] == gameField[row + 2][col + 2]
-						&& gameField[row][col] == gameField[row + 3][col + 3]) {
+				if (gameField[row][col] != null
+                        && gameField[row][col].equals(playerToCheck)
+						&& gameField[row][col].equals(gameField[row + 1][col + 1])
+						&& gameField[row][col].equals(gameField[row + 2][col + 2])
+						&& gameField[row][col].equals(gameField[row + 3][col + 3])) {
 					return true;
 				}
 			}
@@ -243,10 +245,11 @@ public class GameField implements Cloneable {
 	private boolean checkVertical(final Player playerToCheck) {
 		for (int col = 0; col < DEFAULT_COLUMNS; col++) {
 			for (int row = 0; row < DEFAULT_ROWS - 3; row++) {
-				if (gameField[row][col] == playerToCheck
-						&& gameField[row][col] == gameField[row + 1][col]
-						&& gameField[row][col] == gameField[row + 2][col]
-						&& gameField[row][col] == gameField[row + 3][col]) {
+				if (gameField[row][col] != null
+                        && gameField[row][col].equals(playerToCheck)
+						&& gameField[row][col].equals(gameField[row + 1][col])
+						&& gameField[row][col].equals(gameField[row + 2][col])
+						&& gameField[row][col].equals(gameField[row + 3][col])) {
 					return true;
 				}
 			}
@@ -257,10 +260,11 @@ public class GameField implements Cloneable {
 	private boolean checkHorizontal(final Player playerToCheck) {
 		for (int row = 0; row < DEFAULT_ROWS; row++) {
 			for (int col = 0; col < DEFAULT_COLUMNS - 3; col++) {
-				if (gameField[row][col] == playerToCheck
-						&& gameField[row][col] == gameField[row][col + 1]
-						&& gameField[row][col] == gameField[row][col + 2]
-						&& gameField[row][col] == gameField[row][col + 3]) {
+				if (gameField[row][col] != null
+                        && gameField[row][col].equals(playerToCheck)
+						&& gameField[row][col].equals(gameField[row][col + 1])
+						&& gameField[row][col].equals(gameField[row][col + 2])
+						&& gameField[row][col].equals(gameField[row][col + 3])) {
 					return true;
 				}
 			}
@@ -293,8 +297,8 @@ public class GameField implements Cloneable {
 		for (int row = 0; row < DEFAULT_ROWS; row++) {
 			count = 0;
 			for (int col = 0; col < DEFAULT_COLUMNS - 1; col++) {
-				if (gameField[row][col] == playerToCheck
-						&& gameField[row][col] == gameField[row][col + 1]) {
+				if (gameField[row][col].equals(playerToCheck)
+						&& gameField[row][col].equals(gameField[row][col + 1])) {
 					count++;
 				}
 			}
@@ -309,8 +313,8 @@ public class GameField implements Cloneable {
 		for (int col = 0; col < DEFAULT_COLUMNS; col++) {
 			count = 0;
 			for (int row = 0; row < DEFAULT_ROWS - 1; row++) {
-				if (gameField[row][col] == playerToCheck
-						&& gameField[row][col] == gameField[row + 1][col]) {
+				if (gameField[row][col].equals(playerToCheck)
+						&& gameField[row][col].equals(gameField[row + 1][col])) {
 					count++;
 				}
 			}
@@ -324,8 +328,8 @@ public class GameField implements Cloneable {
 		for (int row = 0; row < DEFAULT_ROWS - 1; row++) {
 			count = 0;
 			for (int col = 0; col < DEFAULT_COLUMNS - 1; col++) {
-				if (gameField[row][col] == playerToCheck
-						&& gameField[row][col] == gameField[row + 1][col + 1]) {
+				if (gameField[row][col].equals(playerToCheck)
+						&& gameField[row][col].equals(gameField[row + 1][col + 1])) {
 					count++;
 				}
 			}
@@ -339,8 +343,8 @@ public class GameField implements Cloneable {
 		for (int row = 0; row < DEFAULT_ROWS - 1; row++) {
 			count = 0;
 			for (int col = 0; col < DEFAULT_COLUMNS - 1; col++) {
-				if (gameField[row][col] == playerToCheck
-						&& gameField[row][col] == gameField[row + 1][col + 1]) {
+				if (gameField[row][col].equals(playerToCheck)
+						&& gameField[row][col].equals(gameField[row + 1][col + 1])) {
 					count++;
 				}
 			}

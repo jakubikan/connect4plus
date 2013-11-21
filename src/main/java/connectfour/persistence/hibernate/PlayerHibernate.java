@@ -20,8 +20,8 @@ public class PlayerHibernate implements Serializable {
     public String name;
     public boolean isComputer;
 
-    public PlayerHibernate(String name, boolean instanceOf) {
+    public PlayerHibernate(String name, boolean isComputer) {
         this.name = name;
-        this.isComputer = instanceOf;
+        this.isComputer = isComputer;
     }
 }
