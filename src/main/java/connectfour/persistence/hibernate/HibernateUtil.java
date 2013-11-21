@@ -40,11 +40,9 @@ public class HibernateUtil {
     public static Player convertToStandardPlayer(PlayerHibernate playerHibernate) {
         Player player;
         if (playerHibernate.isComputer) {
-            player = new Computer(null);
-            player.setName(playerHibernate.name);
+            player = new Computer(null, playerHibernate.name);
         } else {
-            player = new Human();
-            player.setName(playerHibernate.name);
+            player = new Human(playerHibernate.name);
         }
         return player;
     }

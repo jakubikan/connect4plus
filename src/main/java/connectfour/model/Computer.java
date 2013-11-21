@@ -15,8 +15,8 @@ public class Computer extends PlayerAbstract {
 		return getMove();
 	}
 
-	public Computer(final IObserverWithArguments controllerObserver) {
-		super();
+	public Computer(final IObserverWithArguments controllerObserver, String playerName) {
+		super(playerName);
 		this.addObserver(controllerObserver);
 		deepSearch = difficulty;
 	}

@@ -30,8 +30,8 @@ public class TUITest {
 		Injector injector = Guice.createInjector(new GameControllerModule());
 		this.controller = injector.getInstance(GameController.class);
 
-        Player player1 = new Human();
-        Player player2 = new Human();
+        Player player1 = new Human("Hugo");
+        Player player2 = new Human("Boss");
 
 		this.controller.newGame();
 		this.controller.setPlayer((Human) player1);

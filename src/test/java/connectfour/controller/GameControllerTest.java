@@ -17,17 +17,14 @@ import connectfour.model.Human;
 import connectfour.model.Player;
 
 public class GameControllerTest {
-	private final Human player1 = new Human();
-	private final Player player2 = new Human();
+	private final Human player1 = new Human("Hugo");
+	private final Player player2 = new Human("Boss");
 	
 	private IController gc;
 	
 	@Before
 	public void setUp() throws Exception {
 		Injector injector = Guice.createInjector(new GameControllerModule());
-
-        player1.setName("Hugo");
-        player2.setName("Boss");
 
     	gc = injector.getInstance(GameController.class);
     	

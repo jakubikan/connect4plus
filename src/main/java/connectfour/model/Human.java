@@ -3,6 +3,10 @@ package connectfour.model;
 public class Human extends PlayerAbstract {
     private int move = 0;
 
+    public Human(String playerName) {
+        super(playerName);
+    }
+
     @Override
     public int dropCoin(final int column) {
         return column;

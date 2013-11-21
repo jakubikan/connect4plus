@@ -35,12 +35,10 @@ public class HibernateUtilTest {
 
     @Before
     public void setUp() throws Exception {
-        Injector injector = Guice.createInjector(new GameControllerModule());
-        this.observable = injector.getInstance(GameController.class);
+        this.observable = new GameController();
 
-        player = new Human();
-        player.setName("Hugo");
-        opponent = new Human();
+        player = new Human("Hugo");
+        opponent = new Human("Boss");
         gameField = new GameField(player, opponent);
         rows = new LinkedList<>();
         db = new SaveGameDbHibernate();

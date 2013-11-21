@@ -5,7 +5,11 @@ import connectfour.util.observer.ObservableWithArguments;
 public abstract class PlayerAbstract extends ObservableWithArguments implements Player {
     private String name;
     private GameField gameField;
-    
+
+    public PlayerAbstract(String name) {
+        this.name = name;
+    }
+
     @Override
     public GameField getGameField() {
         return this.gameField;
@@ -25,7 +29,6 @@ public abstract class PlayerAbstract extends ObservableWithArguments implements 
     @Override
     public String getName() {
         return name;
-        
     }
     
     @Override

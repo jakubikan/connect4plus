@@ -25,9 +25,8 @@ public class GameFieldTest {
 		Injector injector = Guice.createInjector(new GameControllerModule());
 		this.obsersable = injector.getInstance(GameController.class);
 
-		player = new Human();
-		player.setName("Hugo");
-		opponent = new Human();
+		player = new Human("Hugo");
+		opponent = new Human("Boss");
 		gameField = new GameField(player, opponent);
 	}
 
