@@ -25,6 +25,10 @@ public class GameControllerTest {
 	@Before
 	public void setUp() throws Exception {
 		Injector injector = Guice.createInjector(new GameControllerModule());
+
+        player1.setName("Hugo");
+        player2.setName("Boss");
+
     	gc = injector.getInstance(GameController.class);
     	
 		gc.newGame();

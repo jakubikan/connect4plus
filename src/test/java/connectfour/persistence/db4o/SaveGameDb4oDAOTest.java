@@ -30,8 +30,9 @@ public class SaveGameDb4oDAOTest {
 
     @Before
     public void setUp() throws Exception {
-        Injector injector = Guice.createInjector(new GameControllerModule());
-        this.observable = injector.getInstance(GameController.class);
+        //Injector injector = Guice.createInjector(new GameControllerModule());
+        //this.observable = injector.getInstance(GameController.class);
+        this.observable = new GameController();
 
         player = new Human();
         player.setName("Hugo");

@@ -12,7 +12,6 @@ import java.util.List;
 
 @Singleton
 public final class GameController extends ObservableWithArguments implements IObserverWithArguments, IController {
-    
     private GameField gameField;
     private boolean bGameHasStarted;
 
