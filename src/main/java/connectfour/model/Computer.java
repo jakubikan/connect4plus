@@ -64,7 +64,7 @@ public class Computer extends PlayerAbstract {
 			if (zugWert > ermittelt) {
 				ermittelt = zugWert;
 				if (restTiefe >= deepSearch
-						|| (newState.getWinner().equals(this) && restTiefe >= deepSearch)) {
+						|| (newState.getWinner() != null && newState.getWinner().equals(this) && restTiefe >= deepSearch)) {
 					doNextColumn = i;
 				}
 			}
