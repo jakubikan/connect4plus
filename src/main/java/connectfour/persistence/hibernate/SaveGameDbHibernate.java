@@ -113,7 +113,7 @@ public class SaveGameDbHibernate implements ISaveGameDAO {
     @Override
     public List<String> getAllSaveGames() {
         Iterator<SaveGameHibernate> it = session.createCriteria(SaveGameHibernate.class).list().iterator();
-        List<String> allSaveGames = new LinkedList<>();
+        List<String> allSaveGames = new LinkedList<String>();
 
         while(it.hasNext()) {
             SaveGameHibernate sg = it.next();
