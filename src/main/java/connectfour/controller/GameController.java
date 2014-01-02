@@ -2,9 +2,12 @@ package connectfour.controller;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.google.inject.name.Named;
 import connectfour.model.*;
 import connectfour.persistence.ISaveGameDAO;
+import connectfour.util.observer.IObserver;
 import connectfour.util.observer.IObserverWithArguments;
+import connectfour.util.observer.Observable;
 import connectfour.util.observer.ObservableWithArguments;
 
 import javax.swing.undo.UndoManager;
@@ -14,6 +17,13 @@ import java.util.List;
 public final class GameController extends ObservableWithArguments implements IObserverWithArguments, IController {
     private GameField gameField;
     private boolean bGameHasStarted;
+
+    @Inject
+    @Named("gui")
+    private IObserver gui;
+    @Inject
+    @Named("tui")
+    private IObserver tui;
 
     private UndoManager undoManager = new UndoManager();
 
@@ -63,6 +73,8 @@ public final class GameController extends ObservableWithArguments implements IOb
     	this.removeAllObservers();
     	this.bGameHasStarted = true;
     	this.addObserver(gameField.getOpponent());
+        this.addObserver(tui);
+        this.addObserver(gui);
 
         this.notifyObservers();
         this.notifyObservers(gameField);
@@ -121,7 +133,10 @@ public final class GameController extends ObservableWithArguments implements IOb
 
                 this.notifyObservers();
                 this.notifyObservers(gameField);
-            } catch (IllegalArgumentException e) {}
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+
+            }
         }
         return success;
     }
