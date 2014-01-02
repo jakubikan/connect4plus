@@ -17,8 +17,14 @@ public class SaveGameDb4oDAO implements ISaveGameDAO {
      * Opens the database by default.
      */
 	public SaveGameDb4oDAO() {
-		openDB();
-	}
+        try {
+            openDB();
+        } catch (Exception e) {
+            System.out.println("Database closed restoring!!");
+            closeDB();
+            openDB();
+        }
+    }
 
     @Override
     public void openDB() {
@@ -38,8 +44,8 @@ public class SaveGameDb4oDAO implements ISaveGameDAO {
 
 	@Override
 	public boolean deleteSaveGameIfExists(final String saveGameName) {
-		if (saveGameExists(saveGameName)) {
-			SaveGame sg = loadSaveGame(saveGameName);
+        SaveGame sg = loadSaveGame(saveGameName);
+        if (sg != null) {
 			db.delete(sg);
 			return true;
 		}
@@ -53,7 +59,7 @@ public class SaveGameDb4oDAO implements ISaveGameDAO {
 
 	@Override
 	public SaveGame loadSaveGame(final String saveGameName) {
-		List<SaveGame> listSaveGame = db.query(new Predicate<SaveGame>() {
+		List<SaveGame> listISaveGame = db.query(new Predicate<SaveGame>() {
 			private static final long serialVersionUID = 1L;
 
 			public boolean match(SaveGame sg) {
@@ -61,8 +67,8 @@ public class SaveGameDb4oDAO implements ISaveGameDAO {
 			}
 		});
 
-		if (listSaveGame.size() > 0) {
-			return listSaveGame.get(0);
+		if (listISaveGame.size() > 0) {
+			return listISaveGame.get(0);
 		}
 		return null;
 	}
@@ -70,7 +76,7 @@ public class SaveGameDb4oDAO implements ISaveGameDAO {
 	@Override
 	public List<String> getAllSaveGames() {
 		Iterator<SaveGame> it = db.query(SaveGame.class).iterator();
-		List<String> allSaveGames = new LinkedList<>();
+		List<String> allSaveGames = new LinkedList<String>();
 		
 		while(it.hasNext()) {
 			SaveGame sg = it.next();
