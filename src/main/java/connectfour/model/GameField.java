@@ -121,8 +121,7 @@ public class GameField implements Cloneable {
 	}
 
 	public int dropCoin(final int column) {
-		int row = 0;
-		row = dropCoin(column, playerOnTurn);
+		int row = dropCoin(column, playerOnTurn);
 
 		modCount++;
 		return row;
@@ -388,5 +387,32 @@ public class GameField implements Cloneable {
 
 	}
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        GameField gameField = (GameField) o;
+
+        if (gameWon != gameField.gameWon) return false;
+        if (modCount != gameField.modCount) return false;
+        if (opponent != null ? !opponent.equals(gameField.opponent) : gameField.opponent != null) return false;
+        if (player != null ? !player.equals(gameField.player) : gameField.player != null) return false;
+        if (playerOnTurn != null ? !playerOnTurn.equals(gameField.playerOnTurn) : gameField.playerOnTurn != null)
+            return false;
+        if (playerWon != null ? !playerWon.equals(gameField.playerWon) : gameField.playerWon != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = player != null ? player.hashCode() : 0;
+        result = 31 * result + (opponent != null ? opponent.hashCode() : 0);
+        result = 31 * result + (playerOnTurn != null ? playerOnTurn.hashCode() : 0);
+        result = 31 * result + modCount;
+        result = 31 * result + (playerWon != null ? playerWon.hashCode() : 0);
+        result = 31 * result + (gameWon ? 1 : 0);
+        return result;
+    }
 }
