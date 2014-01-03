@@ -14,11 +14,14 @@ import org.ektorp.impl.StdCouchDbInstance;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Created by Jakub Werner on 01/02/14.
  */
 public class SaveGameCouchDbDAO implements ISaveGameDAO {
+
+    private static final Logger log = Logger.getLogger(SaveGameCouchDbDAO.class.getName());
 
     private CouchDbConnector db = null;
     @Inject
@@ -30,13 +33,13 @@ public class SaveGameCouchDbDAO implements ISaveGameDAO {
     }
 
     @Override
-    public void openDB() {
+    public final void openDB() {
         HttpClient client = null;
 
         try {
             client = new StdHttpClient.Builder().url("http://lenny2.in.htwg-konstanz.de:5984").build();
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            log.info(e.getMessage());
         }
 
         CouchDbInstance dbInstance = new StdCouchDbInstance(client);
@@ -61,7 +64,9 @@ public class SaveGameCouchDbDAO implements ISaveGameDAO {
            SaveGameCouchDb p = rows.get(0);
            return CouchDbUtil.convertSaveGame(p, (IObserverWithArguments) controller);
         }
-        else return null;
+        else {
+            return null;
+        }
     }
 
     @Override

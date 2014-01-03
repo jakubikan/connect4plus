@@ -34,7 +34,7 @@ public class TUITest {
         Player player2 = new Human("Boss");
 
 		this.controller.newGame();
-		this.controller.setPlayer((Human) player1);
+		this.controller.setPlayer(player1);
 		this.controller.setOpponend(player2);
 	}
 

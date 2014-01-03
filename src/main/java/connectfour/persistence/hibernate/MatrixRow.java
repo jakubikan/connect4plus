@@ -16,6 +16,7 @@ public class MatrixRow implements Serializable {
     @GeneratedValue
     private long id;
 
+
     @ManyToOne
     private GameFieldHibernate gameField;
 
@@ -33,5 +34,21 @@ public class MatrixRow implements Serializable {
 
     public void setRow(List<PlayerHibernate> row) {
         this.row = row;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public GameFieldHibernate getGameField() {
+        return gameField;
+    }
+
+    public void setGameField(GameFieldHibernate gameField) {
+        this.gameField = gameField;
     }
 }

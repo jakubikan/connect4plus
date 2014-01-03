@@ -7,10 +7,15 @@ import connectfour.model.Player;
 import org.ektorp.support.CouchDbDocument;
 import org.ektorp.support.TypeDiscriminator;
 
+import java.util.logging.Logger;
+
 /**
  * Created by Jakub Werner on 01/02/14.
  */
 public class SaveGameCouchDb extends CouchDbDocument {
+
+    private static final Logger log = Logger.getLogger(SaveGameCouchDb.class.getName());
+
     @TypeDiscriminator
     private String id;
 
@@ -28,7 +33,7 @@ public class SaveGameCouchDb extends CouchDbDocument {
         try {
             gameFieldCouchdb = CouchDbUtil.convertGameField(gameField);
         } catch (Exception e) {
-            e.printStackTrace();
+            log.info(e.getMessage());
         }
         this.player = CouchDbUtil.convertPlayer(player1);
         this.opponent = CouchDbUtil.convertPlayer(player2);
@@ -61,5 +66,11 @@ public class SaveGameCouchDb extends CouchDbDocument {
     }
 
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 }

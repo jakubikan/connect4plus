@@ -31,6 +31,8 @@ crossPaths := false
 
 jacoco.settings
 
+parallelExecution in jacoco.Config := false
+
 
 
 

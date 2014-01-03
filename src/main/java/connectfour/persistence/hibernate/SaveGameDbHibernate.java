@@ -29,29 +29,26 @@ public class SaveGameDbHibernate implements ISaveGameDAO {
     }
 
     @Override
-    public void openDB() {
+    public final void openDB() {
         this.sessionFactory = HibernateUtil.getInstance();
         this.session = this.sessionFactory.openSession();
     }
 
     private SaveGameHibernate convertToHibernateSaveGame(SaveGame saveGame) {
-        SaveGameHibernate sgh = new SaveGameHibernate(
+        return new SaveGameHibernate(
                         saveGame.getSaveGameName(),
                         saveGame.getGameField(),
                         saveGame.getPlayer1(),
                         saveGame.getPlayer2());
 
-        return sgh;
     }
 
     private SaveGame convertToStandardSaveGame(SaveGameHibernate saveGame) {
-        SaveGame sg = new SaveGame(
+        return new SaveGame(
                 saveGame.getSaveGameName(),
                 saveGame.getGameField(),
                 saveGame.getPlayer1(),
                 saveGame.getPlayer2());
-
-        return sg;
     }
 
     @Override

@@ -2,7 +2,6 @@ package connectfour.persistence.couchdb;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import connectfour.model.GameField;
 import connectfour.model.Player;
 import org.ektorp.support.CouchDbDocument;
 import org.ektorp.support.TypeDiscriminator;
@@ -36,14 +35,15 @@ public class GameFieldCouchDb extends CouchDbDocument {
         this.opponentCouchDb = CouchDbUtil.convertPlayer(opponent);
         this.modCount = modCount;
 
-        if (player == playerOnTurn) {
+        if (player.equals(playerOnTurn)) {
             this.playerOnTurnCouchDb = playerCouchDb;
-        } else if (opponent == playerOnTurn) {
+        } else if (opponent.equals(playerOnTurn)) {
             this.playerOnTurnCouchDb = opponentCouchDb;
         } else {
             throw new IllegalStateException("Neither player nor oppent is on turn!");
         }
 
+        this.playerWon = CouchDbUtil.convertPlayer(playerWon);
         this.gameWon = gameWon;
         this.playerOnTurnCouchDb = CouchDbUtil.convertPlayer(playerOnTurn);
         gameFieldCouchDb = CouchDbUtil.convertGameFieldMatrix(gameField, player, opponent, playerCouchDb, opponentCouchDb);
@@ -59,7 +59,7 @@ public class GameFieldCouchDb extends CouchDbDocument {
         this.playerCouchDb = player;
         this.opponentCouchDb = opponent;
         System.arraycopy(gameField,0,gameFieldCouchDb,0, gameField.length);
-        this.playerOnTurnCouchDb = playerCouchDb;
+        this.playerOnTurnCouchDb = playerOnTurn;
         this.modCount = modCount;
         this.playerWon = playerWon;
         this.gameWon = gameWon;

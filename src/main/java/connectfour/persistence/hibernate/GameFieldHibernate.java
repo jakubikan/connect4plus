@@ -117,4 +117,13 @@ public class GameFieldHibernate  implements Serializable {
     public void setGameWon(boolean gameWon) {
         this.gameWon = gameWon;
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
 }

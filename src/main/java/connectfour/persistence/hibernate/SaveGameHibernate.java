@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * @author Stefano Di Martino
@@ -16,8 +17,11 @@ import java.util.List;
 @Table(name="SaveGame")
 public class SaveGameHibernate implements Serializable {
 
+    private static final Logger log = Logger.getLogger(SaveGameHibernate.class.getName());
+
     @Column(columnDefinition = "BLOB")
     private GameFieldHibernate gameField;
+
     private PlayerHibernate player1;
     private PlayerHibernate player2;
     private String saveGameName;
@@ -67,23 +71,23 @@ public class SaveGameHibernate implements Serializable {
                     gf.getModCount(), gf.getWinner(), gf.isGameWon());
 
         } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
+            log.info(e.getMessage());
         }
         return null;
     }
 
     private GameField mapToGameField(GameFieldHibernate gf) {
-        GameField gameField = new GameField(getPlayer1(), getPlayer2());
-        gameField.setGameIsWon(gf.isGameWon());
-        gameField.setModCount(gf.getModCount());
-        gameField.setPlayerOnTurn(HibernateUtil.convertToStandardPlayer(gf.getPlayerOnTurn()));
-        gameField.setGameField(mapToGameFieldsArray(new LinkedList<MatrixRow>(gf.getMatrix())));
+        GameField gameField1 = new GameField(getPlayer1(), getPlayer2());
+        gameField1.setGameIsWon(gf.isGameWon());
+        gameField1.setModCount(gf.getModCount());
+        gameField1.setPlayerOnTurn(HibernateUtil.convertToStandardPlayer(gf.getPlayerOnTurn()));
+        gameField1.setGameField(mapToGameFieldsArray(new LinkedList<MatrixRow>(gf.getMatrix())));
 
-        return gameField;
+        return gameField1;
     }
 
     private Player[][] mapToGameFieldsArray(List<MatrixRow> matrix) {
-        Player [][] gameField = new Player[GameField.DEFAULT_ROWS][GameField.DEFAULT_COLUMNS];
+        Player [][] players = new Player[GameField.DEFAULT_ROWS][GameField.DEFAULT_COLUMNS];
 
         int i = 0;
 
@@ -91,45 +95,11 @@ public class SaveGameHibernate implements Serializable {
         for (MatrixRow row : matrix) {
             int j = 0;
             for (PlayerHibernate player: row.getRow()) {
-                gameField[i][j++] = HibernateUtil.convertToStandardPlayer(player);
+                players[i][j++] = HibernateUtil.convertToStandardPlayer(player);
             }
             i++;
         }
-        return gameField;
+        return players;
     }
 }
 
-/*
-@Entity
-@Table(name="SaveGame")
-public class SaveGameHibernate extends SaveGame implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public Integer id;
-
-    public SaveGameHibernate(String saveGameName, GameField gameField, Player player1, Player player2) {
-        super(saveGameName, gameField, player1, player2);
-    }
-
-    @Override
-    public String getSaveGameName() {
-        return super.getSaveGameName();
-    }
-
-    @Override
-    public Player getPlayer2() {
-        return super.getPlayer2();
-    }
-
-    @Override
-    public Player getPlayer1() {
-        return super.getPlayer1();
-    }
-
-    @Override
-    public GameField getGameField() {
-        return super.getGameField();
-    }
-
-}     */

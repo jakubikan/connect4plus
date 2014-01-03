@@ -7,14 +7,18 @@ import connectfour.model.*;
 import connectfour.persistence.ISaveGameDAO;
 import connectfour.util.observer.IObserver;
 import connectfour.util.observer.IObserverWithArguments;
-import connectfour.util.observer.Observable;
 import connectfour.util.observer.ObservableWithArguments;
 
 import javax.swing.undo.UndoManager;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Singleton
 public final class GameController extends ObservableWithArguments implements IObserverWithArguments, IController {
+
+
+    private static final Logger log = Logger.getLogger(GameController.class.getName());
+
     private GameField gameField;
     private boolean bGameHasStarted;
 
@@ -145,7 +149,7 @@ public final class GameController extends ObservableWithArguments implements IOb
                 this.notifyObservers();
                 this.notifyObservers(gameField);
             } catch (IllegalArgumentException e) {
-                e.printStackTrace();
+                log.info(e.getMessage());
 
             }
         }

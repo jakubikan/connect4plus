@@ -5,10 +5,9 @@ import connectfour.model.Human;
 import connectfour.model.Player;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.service.ServiceRegistry;
 
 
-public class HibernateUtil {
+public final class HibernateUtil {
     private static final SessionFactory sessionFactory;
 
     static {

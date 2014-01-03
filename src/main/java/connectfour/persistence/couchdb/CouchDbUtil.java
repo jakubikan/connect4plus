@@ -53,9 +53,7 @@ public class CouchDbUtil {
     }
 
     public static GameFieldCouchDb convertGameField(GameField gameField) throws CloneNotSupportedException {
-        GameFieldCouchDb gf = new GameFieldCouchDb(gameField.getPlayer(), gameField.getOpponent(), gameField.getCopyOfGamefield(), gameField.getPlayerOnTurn(), gameField.getModCount(), gameField.getWinner(), gameField.isGameWon());
-        return gf;
-
+        return new GameFieldCouchDb(gameField.getPlayer(), gameField.getOpponent(), gameField.getCopyOfGamefield(), gameField.getPlayerOnTurn(), gameField.getModCount(), gameField.getWinner(), gameField.isGameWon());
     }
 
 

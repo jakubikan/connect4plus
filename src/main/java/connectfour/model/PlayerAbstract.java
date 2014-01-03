@@ -43,9 +43,8 @@ public abstract class PlayerAbstract extends ObservableWithArguments implements 
 
         PlayerAbstract that = (PlayerAbstract) o;
 
-        if (name != null ? !name.equals(that.name) : that.name != null) {return false;}
+        return !(name != null ? !name.equals(that.name) : that.name != null);
 
-        return true;
     }
 
     @Override

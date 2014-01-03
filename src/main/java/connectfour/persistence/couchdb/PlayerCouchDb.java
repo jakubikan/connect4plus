@@ -1,9 +1,6 @@
 package connectfour.persistence.couchdb;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import connectfour.model.GameField;
-import connectfour.model.Player;
-import connectfour.util.observer.IObserverWithArguments;
 import org.ektorp.support.CouchDbDocument;
 import org.ektorp.support.TypeDiscriminator;
 
@@ -46,9 +43,8 @@ public class PlayerCouchDb extends CouchDbDocument {
 
         if (isComputer != that.isComputer) {return false;}
         if (id != null ? !id.equals(that.id) : that.id != null) {return false;}
-        if (name != null ? !name.equals(that.name) : that.name != null) {return false;}
+        return !(name != null ? !name.equals(that.name) : that.name != null);
 
-        return true;
     }
 
     @Override

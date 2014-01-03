@@ -1,28 +1,26 @@
 package connectfour.controller;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Created by jakub on 1/2/14.
  */
 public class HighScoreController {
     private static final String HIGHSCORE_URL = "http://localhost:9000/addHighscoreJson";
+
     private DefaultHttpClient client;
 
+    private static final Logger log = Logger.getLogger(HighScoreController.class.getName());
 
     public HighScoreController() {
     }
@@ -48,15 +46,13 @@ public class HighScoreController {
             String output;
             System.out.println("Output from Server .... \n");
             while ((output = br.readLine()) != null) {
-                System.out.println(output);
+                log.info(output);
             }
 
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (ClientProtocolException e) {
-            e.printStackTrace();
+        } catch (UnsupportedEncodingException | ClientProtocolException e) {
+            log.info(e.getMessage());
         } catch (IOException e) {
-            e.printStackTrace();
+            log.info(e.getMessage());
         }
         finally {
             client.getConnectionManager().shutdown();

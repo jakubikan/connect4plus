@@ -11,10 +11,12 @@ import connectfour.persistence.ISaveGameDAO;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Singleton
 public class SaveGameDb4oDAO implements ISaveGameDAO {
 	private ObjectContainer db;
+    private static final Logger log = Logger.getLogger(SaveGameDb4oDAO.class.getName());
 
     /**
      * Opens the database by default.
@@ -24,10 +26,11 @@ public class SaveGameDb4oDAO implements ISaveGameDAO {
     }
 
     @Override
-    public void openDB() {
+    public final void openDB() {
         try {
             db = Db4oEmbedded.openFile("savegame.data");
         } catch (DatabaseFileLockedException e) {
+            log.info(e.getMessage());
             throw new DatabaseFileLockedException("Database Locked");
 
         }

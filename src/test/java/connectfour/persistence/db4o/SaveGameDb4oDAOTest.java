@@ -1,9 +1,7 @@
 package connectfour.persistence.db4o;
 
 import com.google.inject.Guice;
-import com.google.inject.Inject;
 import com.google.inject.Injector;
-import com.google.inject.name.Named;
 import connectfour.controller.GameController;
 import connectfour.model.GameField;
 import connectfour.model.Human;
@@ -11,7 +9,6 @@ import connectfour.model.Player;
 import connectfour.model.SaveGame;
 import connectfour.persistence.ISaveGameDAO;
 import connectfour.util.observer.IObserverWithArguments;
-import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

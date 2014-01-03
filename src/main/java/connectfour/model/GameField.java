@@ -392,16 +392,15 @@ public class GameField implements Cloneable {
         if (this == o) { return true; }
         if (o == null || getClass() != o.getClass()) { return false; }
 
-        GameField gameField = (GameField) o;
+        GameField gameField1 = (GameField) o;
 
-        if (gameWon != gameField.gameWon) { return false; }
-        if (modCount != gameField.modCount) { return false; }
-        if (opponent != null ? !opponent.equals(gameField.opponent) : gameField.opponent != null) { return false; }
-        if (player != null ? !player.equals(gameField.player) : gameField.player != null) { return false; }
-        if (playerOnTurn != null ? !playerOnTurn.equals(gameField.playerOnTurn) : gameField.playerOnTurn != null) { return false; }
-        if (playerWon != null ? !playerWon.equals(gameField.playerWon) : gameField.playerWon != null) { return false; }
+        if (gameWon != gameField1.gameWon) { return false; }
+        if (modCount != gameField1.modCount) { return false; }
+        if (opponent != null ? !opponent.equals(gameField1.opponent) : gameField1.opponent != null) { return false; }
+        if (player != null ? !player.equals(gameField1.player) : gameField1.player != null) { return false; }
+        if (playerOnTurn != null ? !playerOnTurn.equals(gameField1.playerOnTurn) : gameField1.playerOnTurn != null) { return false; }
+        return !(playerWon != null ? !playerWon.equals(gameField1.playerWon) : gameField1.playerWon != null);
 
-        return true;
     }
 
     @Override
