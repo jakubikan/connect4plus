@@ -5,6 +5,7 @@ import connectfour.model.Player;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -14,6 +15,8 @@ import java.util.List;
 @Entity
 @Table(name="SaveGame")
 public class SaveGameHibernate implements Serializable {
+
+    @Column(columnDefinition = "BLOB")
     private GameFieldHibernate gameField;
     private PlayerHibernate player1;
     private PlayerHibernate player2;
@@ -74,7 +77,7 @@ public class SaveGameHibernate implements Serializable {
         gameField.setGameIsWon(gf.isGameWon());
         gameField.setModCount(gf.getModCount());
         gameField.setPlayerOnTurn(HibernateUtil.convertToStandardPlayer(gf.getPlayerOnTurn()));
-        gameField.setGameField(mapToGameFieldsArray(gf.getMatrix()));
+        gameField.setGameField(mapToGameFieldsArray(new LinkedList<MatrixRow>(gf.getMatrix())));
 
         return gameField;
     }
