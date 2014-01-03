@@ -39,7 +39,7 @@ public class GameField implements Cloneable {
     }
 
     public void setGameField(Player[][] gameField) {
-        this.gameField = gameField;
+        System.arraycopy(gameField,0,this.gameField,0,gameField.length);
     }
 
     public void setGameIsWon(boolean gameIsWon) {
@@ -389,18 +389,31 @@ public class GameField implements Cloneable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        GameField gameField = (GameField) o;
-
-        if (gameWon != gameField.gameWon) return false;
-        if (modCount != gameField.modCount) return false;
-        if (opponent != null ? !opponent.equals(gameField.opponent) : gameField.opponent != null) return false;
-        if (player != null ? !player.equals(gameField.player) : gameField.player != null) return false;
-        if (playerOnTurn != null ? !playerOnTurn.equals(gameField.playerOnTurn) : gameField.playerOnTurn != null)
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
             return false;
-        if (playerWon != null ? !playerWon.equals(gameField.playerWon) : gameField.playerWon != null) return false;
+        }
+        GameField gameField = (GameField) o;
+        if (gameWon != gameField.gameWon) {
+            return false;
+        }
+        if (modCount != gameField.modCount) {
+            return false;
+        }
+        if (opponent != null ? !opponent.equals(gameField.opponent) : gameField.opponent != null) {
+            return false;
+        }
+        if (player != null ? !player.equals(gameField.player) : gameField.player != null) {
+            return false;
+        }
+        if (playerOnTurn != null ? !playerOnTurn.equals(gameField.playerOnTurn) : gameField.playerOnTurn != null) {
+            return false;
+        }
+        if (playerWon != null ? !playerWon.equals(gameField.playerWon) : gameField.playerWon != null) {
+            return false;
+        }
 
         return true;
     }
