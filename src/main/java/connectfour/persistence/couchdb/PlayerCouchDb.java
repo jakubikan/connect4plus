@@ -12,7 +12,7 @@ import org.ektorp.support.TypeDiscriminator;
  */
 public class PlayerCouchDb extends CouchDbDocument {
     @TypeDiscriminator
-    public String id;
+    private String id;
 
     @JsonProperty("name")
     private String name;

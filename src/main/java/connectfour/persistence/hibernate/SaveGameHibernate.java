@@ -71,10 +71,10 @@ public class SaveGameHibernate implements Serializable {
 
     private GameField mapToGameField(GameFieldHibernate gf) {
         GameField gameField = new GameField(getPlayer1(), getPlayer2());
-        gameField.setGameIsWon(gf.gameWon);
-        gameField.setModCount(gf.modCount);
-        gameField.setPlayerOnTurn(HibernateUtil.convertToStandardPlayer(gf.playerOnTurn));
-        gameField.setGameField(mapToGameFieldsArray(gf.matrix));
+        gameField.setGameIsWon(gf.isGameWon());
+        gameField.setModCount(gf.getModCount());
+        gameField.setPlayerOnTurn(HibernateUtil.convertToStandardPlayer(gf.getPlayerOnTurn()));
+        gameField.setGameField(mapToGameFieldsArray(gf.getMatrix()));
 
         return gameField;
     }
@@ -87,7 +87,7 @@ public class SaveGameHibernate implements Serializable {
 
         for (MatrixRow row : matrix) {
             int j = 0;
-            for (PlayerHibernate player: row.row) {
+            for (PlayerHibernate player: row.getRow()) {
                 gameField[i][j++] = HibernateUtil.convertToStandardPlayer(player);
             }
             i++;

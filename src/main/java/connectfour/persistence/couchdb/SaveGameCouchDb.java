@@ -12,7 +12,7 @@ import org.ektorp.support.TypeDiscriminator;
  */
 public class SaveGameCouchDb extends CouchDbDocument {
     @TypeDiscriminator
-    public String id;
+    private String id;
 
     @JsonProperty("save_game_name")
     private String saveGameName;

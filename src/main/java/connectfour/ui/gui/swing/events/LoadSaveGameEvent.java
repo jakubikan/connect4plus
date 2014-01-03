@@ -9,7 +9,7 @@ import java.awt.event.MouseEvent;
 
 public class LoadSaveGameEvent extends EventAdapter {
 	private Frame frame;
-	final IController controller;
+	private final IController controller;
 
 	public LoadSaveGameEvent(final Frame container,
 			final IController controller, final IObserver observer) {

@@ -13,7 +13,7 @@ import org.ektorp.support.TypeDiscriminator;
 public class GameFieldCouchDb extends CouchDbDocument {
 
     @TypeDiscriminator
-    public String id;
+    private String id;
     @JsonProperty("game_field")
     private PlayerCouchDb[][] gameFieldCouchDb;
     @JsonProperty("player")

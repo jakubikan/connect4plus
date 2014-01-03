@@ -19,10 +19,19 @@ public class MatrixRow implements Serializable {
     @ManyToOne
     private GameFieldHibernate gameField;
 
+
     @ManyToMany
-    public List<PlayerHibernate> row;
+    private List<PlayerHibernate> row;
 
     public MatrixRow(List<PlayerHibernate> row) {
+        this.row = row;
+    }
+
+    public List<PlayerHibernate> getRow() {
+        return row;
+    }
+
+    public void setRow(List<PlayerHibernate> row) {
         this.row = row;
     }
 }

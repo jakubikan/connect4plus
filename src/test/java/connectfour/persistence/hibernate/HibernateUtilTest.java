@@ -9,6 +9,7 @@ import connectfour.persistence.ISaveGameDAO;
 import connectfour.util.observer.IObserverWithArguments;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Iterator;
@@ -22,6 +23,7 @@ import static org.junit.Assert.assertEquals;
  * Date: 12.11.13
  * Time: 16:07
  */
+@Ignore
 public class HibernateUtilTest {
     private GameField gameField;
     private Player player;
