@@ -58,7 +58,7 @@ public class GameFieldCouchDb extends CouchDbDocument {
                             @JsonProperty("game_won") boolean gameWon) {
         this.playerCouchDb = player;
         this.opponentCouchDb = opponent;
-        this.gameFieldCouchDb = gameField;
+        System.arraycopy(gameField,0,gameFieldCouchDb,0, gameField.length);
         this.playerOnTurnCouchDb = playerCouchDb;
         this.modCount = modCount;
         this.playerWon = playerWon;
