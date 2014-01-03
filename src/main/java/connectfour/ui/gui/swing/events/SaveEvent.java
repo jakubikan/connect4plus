@@ -22,7 +22,8 @@ public class SaveEvent extends MouseAdapter {
 		String saveGameName = JOptionPane.showInputDialog(frame, message,
 				"Enter Savegame Name", JOptionPane.OK_CANCEL_OPTION);
 		
-		if (saveGameName != null)
+		if (saveGameName != null) {
 			this.controller.saveGame(saveGameName);
+        }
 	}
 }

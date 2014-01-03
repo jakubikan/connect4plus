@@ -103,7 +103,7 @@ public class GameFieldCouchDb extends CouchDbDocument {
     }
 
     public void setGameField(PlayerCouchDb[][] gameField) {
-        this.gameFieldCouchDb = gameField;
+        System.arraycopy(gameField,0,gameFieldCouchDb,0,gameField.length);
     }
 
     public void setGameIsWon(boolean gameIsWon) {
