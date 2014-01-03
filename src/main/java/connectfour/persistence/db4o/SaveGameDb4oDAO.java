@@ -2,7 +2,9 @@ package connectfour.persistence.db4o;
 
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
+import com.db4o.ext.DatabaseFileLockedException;
 import com.db4o.query.Predicate;
+import com.google.inject.Singleton;
 import connectfour.model.SaveGame;
 import connectfour.persistence.ISaveGameDAO;
 
@@ -10,6 +12,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+@Singleton
 public class SaveGameDb4oDAO implements ISaveGameDAO {
 	private ObjectContainer db;
 
@@ -17,18 +20,18 @@ public class SaveGameDb4oDAO implements ISaveGameDAO {
      * Opens the database by default.
      */
 	public SaveGameDb4oDAO() {
-        try {
             openDB();
-        } catch (Exception e) {
-            System.out.println("Database closed restoring!!");
-            closeDB();
-            openDB();
-        }
     }
 
     @Override
     public void openDB() {
-        db = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "savegame.data");
+        try {
+            db = Db4oEmbedded.openFile("savegame.data");
+        } catch (DatabaseFileLockedException e) {
+            throw new DatabaseFileLockedException("Database Locked");
+
+        }
+
     }
 
     @Override
