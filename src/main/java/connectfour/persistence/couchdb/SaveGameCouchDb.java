@@ -32,8 +32,8 @@ public class SaveGameCouchDb extends CouchDbDocument {
     public SaveGameCouchDb( String saveGameName, GameField gameField,  Player player1,  Player player2) {
         try {
             gameFieldCouchdb = CouchDbUtil.convertGameField(gameField);
-        } catch (Exception e) {
-            log.info(e.getMessage());
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
         }
         this.player = CouchDbUtil.convertPlayer(player1);
         this.opponent = CouchDbUtil.convertPlayer(player2);

@@ -71,7 +71,6 @@ public final class GameController extends ObservableWithArguments implements IOb
     	this.setOpponend(sg.getPlayer2());
         this.undoManager = new UndoManager();
 
-    	this.removeAllObservers();
     	this.bGameHasStarted = true;
     	this.addObserver(gameField.getOpponent());
 

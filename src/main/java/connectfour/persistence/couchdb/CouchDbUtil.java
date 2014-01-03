@@ -9,21 +9,25 @@ import connectfour.util.observer.IObserverWithArguments;
 public class CouchDbUtil {
 
     public static PlayerCouchDb convertPlayer(Player player) {
-        if (player instanceof Computer) {
-            return new PlayerCouchDb(player.getName(), true);
-        } else {
-            return new PlayerCouchDb(player.getName(), false);
+        if(player !=null) {
+            if (player instanceof Computer) {
+                return new PlayerCouchDb(player.getName(), true);
+            } else {
+                return new PlayerCouchDb(player.getName(), false);
+            }
         }
+        return null;
     }
 
     public static Player convertPlayer(PlayerCouchDb player, IObserverWithArguments observerWithArguments) {
-        if (player.isComputer()) {
-            return new Computer(observerWithArguments, player.getName());
-        } else {
-            return new Human(player.getName());
+        if (player != null) {
+            if (player.isComputer()) {
+                return new Computer(observerWithArguments, player.getName());
+            } else {
+                return new Human(player.getName());
+            }
         }
-
-
+        return null;
     }
 
     public static SaveGame convertSaveGame(SaveGameCouchDb saveGameCouchDb, IObserverWithArguments controller) {

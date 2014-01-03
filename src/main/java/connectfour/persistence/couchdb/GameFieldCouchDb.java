@@ -43,6 +43,7 @@ public class GameFieldCouchDb extends CouchDbDocument {
             throw new IllegalStateException("Neither player nor oppent is on turn!");
         }
 
+
         this.playerWon = CouchDbUtil.convertPlayer(playerWon);
         this.gameWon = gameWon;
         this.playerOnTurnCouchDb = CouchDbUtil.convertPlayer(playerOnTurn);
@@ -58,7 +59,7 @@ public class GameFieldCouchDb extends CouchDbDocument {
                             @JsonProperty("game_won") boolean gameWon) {
         this.playerCouchDb = player;
         this.opponentCouchDb = opponent;
-        gameFieldCouchDb  = gameField;
+        this.gameFieldCouchDb  = gameField;
         this.playerOnTurnCouchDb = playerOnTurn;
         this.modCount = modCount;
         this.playerWon = playerWon;
@@ -103,7 +104,7 @@ public class GameFieldCouchDb extends CouchDbDocument {
     }
 
     public void setGameField(PlayerCouchDb[][] gameField) {
-        System.arraycopy(gameField,0,gameFieldCouchDb,0,gameField.length);
+        this.gameFieldCouchDb = gameField;
     }
 
     public void setGameIsWon(boolean gameIsWon) {
