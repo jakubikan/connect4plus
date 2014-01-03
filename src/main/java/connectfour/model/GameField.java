@@ -356,7 +356,7 @@ public class GameField implements Cloneable {
 	}
 
 
-	private int evaluatePlayerScore(final Player playerToCheck) {
+	public int evaluatePlayerScore(final Player playerToCheck) {
 
 		int counters[] = new int[10];
 

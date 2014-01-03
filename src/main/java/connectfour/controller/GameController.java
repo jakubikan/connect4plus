@@ -25,6 +25,9 @@ public final class GameController extends ObservableWithArguments implements IOb
     @Named("tui")
     private IObserver tui;
 
+    @Inject
+    private HighScoreController scoreController;
+
     private UndoManager undoManager = new UndoManager();
 
     @Inject
@@ -98,7 +101,8 @@ public final class GameController extends ObservableWithArguments implements IOb
     @Override
     public boolean dropCoinWithSuccessFeedback(final int col) {
         boolean success = true;
-        
+
+
         if (!userHasWon()) {
             try {
                 GameField previousState = null;
@@ -126,6 +130,13 @@ public final class GameController extends ObservableWithArguments implements IOb
                 } catch (CloneNotSupportedException e) {}
 
 
+                // Sending highscore if previouse state has not won, and newState haswon
+                // this fixes that multiple submitions will be done on sending highscores.
+                if (!previousState.isGameWon() && newState.isGameWon()){
+                    scoreController.sendHighScore("connect4plus",getWinner(), getGameField().evaluatePlayerScore(getGameField().getWinner()));
+                }
+
+
                 String undoInfo = String.format("Undoing %s Player Move", getPlayerOnTurn()
                                                         .getName());
                 GameFieldEdit edit = new GameFieldEdit(this, previousState, newState, undoInfo);
@@ -138,6 +149,7 @@ public final class GameController extends ObservableWithArguments implements IOb
 
             }
         }
+
         return success;
     }
     
