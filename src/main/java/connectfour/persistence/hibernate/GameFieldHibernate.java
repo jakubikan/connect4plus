@@ -49,7 +49,7 @@ public class GameFieldHibernate  implements Serializable {
     }
 
     private void mapToHibernateScheme(Player[][] gameField) {
-        matrix = new LinkedHashSet<>();
+        matrix = new LinkedHashSet<MatrixRow>();
 
         for(int i = 0; i < GameField.DEFAULT_ROWS; i++) {
             List<PlayerHibernate> row = new LinkedList<PlayerHibernate>();

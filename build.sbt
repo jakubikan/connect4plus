@@ -1,3 +1,5 @@
+import de.johoop.jacoco4sbt._
+import JacocoPlugin._
 // group ID
 organization := "de.stejack"
 
@@ -26,6 +28,9 @@ libraryDependencies ++= Seq(
 
 // disable using the Scala version in output paths and artifacts
 crossPaths := false
+
+jacoco.settings
+
 
 
 
