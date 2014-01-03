@@ -35,8 +35,6 @@ public class LoadSaveGameEvent extends EventAdapter {
 
 		if (selectedSaveGameName != null) {
 			this.controller.loadSaveGame(selectedSaveGameName);
-            ObservableWithArguments ob = (ObservableWithArguments) controller;
-            ob.addObserver(observer);
 			this.notifyObservers();
 		}
 	}
