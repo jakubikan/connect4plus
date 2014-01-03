@@ -5,8 +5,10 @@ import connectfour.model.Player;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * User: Stefano Di Martino
@@ -28,9 +30,8 @@ public class GameFieldHibernate  implements Serializable {
     private PlayerHibernate playerOnTurn;
     private int modCount = 0;
 
-    @Column(columnDefinition = "LONGBLOB")
     @OneToMany(mappedBy="gameField")
-    private List<MatrixRow> matrix;
+    private Set<MatrixRow> matrix;
 
     private PlayerHibernate playerWon;
 
@@ -48,7 +49,7 @@ public class GameFieldHibernate  implements Serializable {
     }
 
     private void mapToHibernateScheme(Player[][] gameField) {
-        matrix = new LinkedList<MatrixRow>();
+        matrix = new LinkedHashSet<>();
 
         for(int i = 0; i < GameField.DEFAULT_ROWS; i++) {
             List<PlayerHibernate> row = new LinkedList<PlayerHibernate>();
@@ -93,11 +94,11 @@ public class GameFieldHibernate  implements Serializable {
         this.modCount = modCount;
     }
 
-    public List<MatrixRow> getMatrix() {
+    public Set<MatrixRow> getMatrix() {
         return matrix;
     }
 
-    public void setMatrix(List<MatrixRow> matrix) {
+    public void setMatrix(Set<MatrixRow> matrix) {
         this.matrix = matrix;
     }
 
