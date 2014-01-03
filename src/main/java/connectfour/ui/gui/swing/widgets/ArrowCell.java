@@ -10,17 +10,23 @@ import java.awt.*;
 
 @SuppressWarnings("serial")
 public class ArrowCell extends JPanel {
+    public static final int ARROW_WIDTH = 10;
+    public static final int X_MIDDLE_LEFT = 34;
+    public static final int ARROW_LENGTH = 40;
+    public static final int Y_TOP = 20;
+
+
     private final int column;
     private boolean drawArrow;
     
     // x coordinates
-    private final int arrowWidth = 10;
-    private final int xMiddleLeft = 34;
+    private final int arrowWidth = ARROW_WIDTH;
+    private final int xMiddleLeft = X_MIDDLE_LEFT;
     private final int xMiddleRight = xMiddleLeft + arrowWidth;
 
     // y coordinates
-    private final int arrowLength = 40;
-    private final int yTop = 20;
+    private final int arrowLength = ARROW_LENGTH;
+    private final int yTop = Y_TOP;
     private Polygon arrow = new Polygon();
     
     public ArrowCell(final int column) {

@@ -4,7 +4,9 @@ import connectfour.util.observer.IObserverWithArguments;
 
 public class Computer extends PlayerAbstract {
 
-	private int doNextColumn = 3;
+    public static final int IF_WINNER_TURN_VALUE = +1000000;
+    public static final int IF_LOOSER_TURN_VALUE = -1000000;
+    private int doNextColumn = 3;
 	private final int deepSearch;
 	private boolean firstMove = true;
 	private final int difficulty = 5;
@@ -59,7 +61,7 @@ public class Computer extends PlayerAbstract {
 			GameField newState = saveState();
 			setGameField(previousState);
 			if (newState.getWinner() != null) {
-				zugWert = +1000000;
+				zugWert = IF_WINNER_TURN_VALUE;
 			}
 			if (zugWert > ermittelt) {
 				ermittelt = zugWert;
@@ -94,7 +96,7 @@ public class Computer extends PlayerAbstract {
 			}
 
 			if (newState.getWinner() != null) {
-				zugWert = -1000000;
+				zugWert = IF_LOOSER_TURN_VALUE;
 			}
 			setGameField(previousState);
 			if (zugWert < ermittelt) {

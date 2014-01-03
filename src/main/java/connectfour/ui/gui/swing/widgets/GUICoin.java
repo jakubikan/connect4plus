@@ -16,6 +16,9 @@ import java.awt.*;
 
 @SuppressWarnings("serial")
 public class GUICoin extends JPanel implements IObserver {
+    public static final int RADIUS = 40;
+    public static final int X_POSITION = 18;
+    public static final int Y_POSITION = 20;
     private final int column;
     private Color color;
     private final IController controller;
@@ -47,8 +50,8 @@ public class GUICoin extends JPanel implements IObserver {
         
         // Activate Anti-Aliasing!
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        int radius = 40;
-        g2.fillOval(18, 20, radius, radius);
+        int radius = RADIUS;
+        g2.fillOval(X_POSITION, Y_POSITION, radius, radius);
     }
     
     public int getColumn() {

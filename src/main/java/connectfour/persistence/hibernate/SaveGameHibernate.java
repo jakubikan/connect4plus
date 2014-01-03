@@ -28,7 +28,7 @@ public class SaveGameHibernate implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public Integer id;
+    private Integer id;
 
     // Hibernate needs default constructor!
     public SaveGameHibernate() {
