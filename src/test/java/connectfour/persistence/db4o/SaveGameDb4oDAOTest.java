@@ -1,5 +1,9 @@
 package connectfour.persistence.db4o;
 
+import com.google.inject.Guice;
+import com.google.inject.Inject;
+import com.google.inject.Injector;
+import com.google.inject.name.Named;
 import connectfour.controller.GameController;
 import connectfour.model.GameField;
 import connectfour.model.Human;
@@ -7,6 +11,7 @@ import connectfour.model.Player;
 import connectfour.model.SaveGame;
 import connectfour.persistence.ISaveGameDAO;
 import connectfour.util.observer.IObserverWithArguments;
+import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,29 +27,30 @@ public class SaveGameDb4oDAOTest {
     private Player player;
     private Player opponent;
     private IObserverWithArguments observable;
+
     private ISaveGameDAO sgdb4o;
     private List<Integer> rows;
 
+    private Injector injector;
+
     @Before
     public void setUp() throws Exception {
-        this.observable = new GameController();
+        injector = Guice.createInjector(new Db4oGuiceConfiguration());
+        sgdb4o = injector.getInstance(SaveGameDb4oDAO.class);
+        observable = injector.getInstance(GameController.class);
+
+
 
         player = new Human("Hugo");
         opponent = new Human("Boss");
         gameField = new GameField(player, opponent);
         rows = new LinkedList<Integer>();
-        sgdb4o = new SaveGameDb4oDAO();
-    }
 
-    @Test
-    public void allTests() {
         initGameField();
-        saveGameAlreadyExistsTest();
-        loadTest();
-        saveGameWillBeOverwrittenTest();
     }
 
-    private void initGameField() {
+
+    public void initGameField() {
         int row;
 
         // Evaluate for correctness and later save and load the game again and
@@ -91,7 +97,8 @@ public class SaveGameDb4oDAOTest {
         rows.add(row);
     }
 
-    private void saveGameAlreadyExistsTest() {
+    @Test
+    public void saveGameAlreadyExistsTest() {
         // Save gameField and players
         String sgName = "Unit_Test";
         SaveGame sg = new SaveGame(sgName, gameField, player, opponent);
@@ -104,7 +111,7 @@ public class SaveGameDb4oDAOTest {
         assertFalse(sgdb4o.saveGameExists("DummyName"));
     }
 
-    private int countSaveGameName(String sgName) {
+    public int countSaveGameName(String sgName) {
         Iterator<String> it = sgdb4o.getAllSaveGames().iterator();
         int i = 0;
 
@@ -118,11 +125,12 @@ public class SaveGameDb4oDAOTest {
         return i;
     }
 
-    private String getUniqueName() {
+    public String getUniqueName() {
         return Long.toString(System.nanoTime());
     }
 
-    private void saveGameWillBeOverwrittenTest() {
+    @Test
+    public void saveGameWillBeOverwrittenTest() {
         // Save gameField and players
         String sgName = getUniqueName();
         SaveGame sg = new SaveGame(sgName, gameField, player, opponent);
@@ -143,7 +151,8 @@ public class SaveGameDb4oDAOTest {
         assertTrue(countSaveGameName(sgName) == 1);
     }
 
-    private void loadTest() {
+    @Test
+    public void loadTest() {
         // Save gameField and players
         String sgName = getUniqueName(); // Every run should have different name
         SaveGame sg = new SaveGame(sgName, gameField, player, opponent);
