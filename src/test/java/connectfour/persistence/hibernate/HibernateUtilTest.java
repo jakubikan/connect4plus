@@ -1,5 +1,7 @@
 package connectfour.persistence.hibernate;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import connectfour.controller.GameController;
 import connectfour.model.GameField;
 import connectfour.model.Human;
@@ -9,7 +11,6 @@ import connectfour.persistence.ISaveGameDAO;
 import connectfour.util.observer.IObserverWithArguments;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.Iterator;
@@ -23,33 +24,30 @@ import static org.junit.Assert.assertEquals;
  * Date: 12.11.13
  * Time: 16:07
  */
-@Ignore
 public class HibernateUtilTest {
     private GameField gameField;
     private Player player;
     private Player opponent;
     private IObserverWithArguments observable;
+
     private ISaveGameDAO db;
     private java.util.List<Integer> rows;
+    private Injector injector;
 
     @Before
     public void setUp() throws Exception {
-        this.observable = new GameController();
-
         player = new Human("Hugo");
         opponent = new Human("Boss");
         gameField = new GameField(player, opponent);
         rows = new LinkedList<Integer>();
-        db = new SaveGameDbHibernate();
+        injector = Guice.createInjector(new HibernateGuiceConfiguration());
+        db =  injector.getInstance(SaveGameDbHibernate.class);
+        observable = injector.getInstance(GameController.class);
+
+        initGameField();
     }
 
-    @Test
-    public void allTests() {
-        initGameField();
-        saveGameAlreadyExistsTest();
-        loadTest();
-        saveGameWillBeOverwrittenTest();
-    }
+
 
     private void initGameField() {
         int row;
@@ -98,7 +96,8 @@ public class HibernateUtilTest {
         rows.add(row);
     }
 
-    private void saveGameAlreadyExistsTest() {
+    @Test
+    public void saveGameAlreadyExistsTest() {
         // Save gameField and players
         String sgName = "Unit_Test";
         SaveGame sg = new SaveGame(sgName, gameField, player, opponent);
@@ -129,7 +128,8 @@ public class HibernateUtilTest {
         return Long.toString(System.nanoTime());
     }
 
-    private void saveGameWillBeOverwrittenTest() {
+    @Test
+    public void saveGameWillBeOverwrittenTest() {
         // Save gameField and players
         String sgName = getUniqueName();
         SaveGame sg = new SaveGame(sgName, gameField, player, opponent);
@@ -150,7 +150,8 @@ public class HibernateUtilTest {
         assertEquals(countSaveGameName(sgName), 1);
     }
 
-    private void loadTest() {
+    @Test
+    public void loadTest() {
         // Save gameField and players
         String sgName = getUniqueName(); // Every run should have different name
         SaveGame sg = new SaveGame(sgName, gameField, player, opponent);
