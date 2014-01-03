@@ -1,5 +1,6 @@
 package connectfour.persistence.hibernate;
 
+import com.google.inject.Singleton;
 import connectfour.model.SaveGame;
 import connectfour.persistence.ISaveGameDAO;
 import org.hibernate.Session;
@@ -15,6 +16,7 @@ import java.util.List;
  * Date: 12.11.13
  * Time: 17:13
  */
+@Singleton
 public class SaveGameDbHibernate implements ISaveGameDAO {
     private SessionFactory sessionFactory;
     private Session session;
