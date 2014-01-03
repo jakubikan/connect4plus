@@ -18,6 +18,7 @@ import java.util.logging.Logger;
 public class SaveGameHibernate implements Serializable {
 
     private static final Logger log = Logger.getLogger(SaveGameHibernate.class.getName());
+    private static final long serialVersionUID = 2584203323009771108L;
 
     @Column(columnDefinition = "BLOB")
     private GameFieldHibernate gameField;
