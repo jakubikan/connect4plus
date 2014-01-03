@@ -4,6 +4,7 @@ import com.google.inject.AbstractModule;
 import com.google.inject.name.Named;
 import com.google.inject.name.Names;
 import connectfour.controller.GameController;
+import connectfour.controller.HighScoreController;
 import connectfour.controller.IController;
 import connectfour.persistence.ISaveGameDAO;
 import connectfour.persistence.couchdb.SaveGameCouchDbDAO;
