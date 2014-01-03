@@ -107,7 +107,19 @@ public class GameField implements Cloneable {
 
 	}
 
-	public void setOpponent(final Player p) {
+    public Player getPlayerWon() {
+        return playerWon;
+    }
+
+    public void setPlayerWon(Player playerWon) {
+        this.playerWon = playerWon;
+    }
+
+    public void setGameWon(boolean gameWon) {
+        this.gameWon = gameWon;
+    }
+
+    public void setOpponent(final Player p) {
 		opponent = p;
 
 	}

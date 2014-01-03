@@ -22,12 +22,6 @@ public final class GameController extends ObservableWithArguments implements IOb
     private GameField gameField;
     private boolean bGameHasStarted;
 
-    @Inject
-    @Named("gui")
-    private IObserver gui;
-    @Inject
-    @Named("tui")
-    private IObserver tui;
 
     @Inject
     private HighScoreController scoreController;
@@ -80,8 +74,6 @@ public final class GameController extends ObservableWithArguments implements IOb
     	this.removeAllObservers();
     	this.bGameHasStarted = true;
     	this.addObserver(gameField.getOpponent());
-        this.addObserver(tui);
-        this.addObserver(gui);
 
         this.notifyObservers();
         this.notifyObservers(gameField);

@@ -2,6 +2,8 @@ package connectfour.ui.gui.swing.events;
 
 import connectfour.controller.IController;
 import connectfour.util.observer.IObserver;
+import connectfour.util.observer.IObserverWithArguments;
+import connectfour.util.observer.ObservableWithArguments;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,12 +12,14 @@ import java.awt.event.MouseEvent;
 public class LoadSaveGameEvent extends EventAdapter {
 	private Frame frame;
 	private final IController controller;
+    private final IObserver observer;
 
 	public LoadSaveGameEvent(final Frame container,
 			final IController controller, final IObserver observer) {
 		super(observer);
 		this.frame = container;
 		this.controller = controller;
+        this.observer = observer;
 	}
 
 	@Override
@@ -31,6 +35,8 @@ public class LoadSaveGameEvent extends EventAdapter {
 
 		if (selectedSaveGameName != null) {
 			this.controller.loadSaveGame(selectedSaveGameName);
+            ObservableWithArguments ob = (ObservableWithArguments) controller;
+            ob.addObserver(observer);
 			this.notifyObservers();
 		}
 	}

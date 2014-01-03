@@ -43,6 +43,7 @@ public class CouchDbUtil {
         GameField gf = new GameField(player, opponent);
         gf.setGameField(convertGameFieldMatrix(gameFieldCouchDb.getGameFieldCouchDb(), player, opponent, playerCouchDb, opponentCouchDb));
         gf.setGameIsWon(gameFieldCouchDb.isGameWon());
+        gf.setPlayerWon(convertPlayer(gameFieldCouchDb.getPlayerWon(),observerWithArguments));
 
         if (gameFieldCouchDb.getPlayerOnTurnCouchDb() == playerCouchDb) {
             gf.setPlayerOnTurn(player);
