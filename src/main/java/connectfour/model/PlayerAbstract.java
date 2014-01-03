@@ -37,15 +37,19 @@ public abstract class PlayerAbstract extends ObservableWithArguments implements 
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
-        if (super.equals(obj)) {
-            return true;
-        }
+        PlayerAbstract that = (PlayerAbstract) o;
 
-        return obj instanceof Player && getName().equals(((Player) obj).getName());
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return name != null ? name.hashCode() : 0;
     }
 }

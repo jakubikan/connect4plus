@@ -2,9 +2,12 @@ package connectfour.controller;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
+import com.google.inject.name.Named;
 import connectfour.model.*;
 import connectfour.persistence.ISaveGameDAO;
+import connectfour.util.observer.IObserver;
 import connectfour.util.observer.IObserverWithArguments;
+import connectfour.util.observer.Observable;
 import connectfour.util.observer.ObservableWithArguments;
 
 import javax.swing.undo.UndoManager;
@@ -14,6 +17,16 @@ import java.util.List;
 public final class GameController extends ObservableWithArguments implements IObserverWithArguments, IController {
     private GameField gameField;
     private boolean bGameHasStarted;
+
+    @Inject
+    @Named("gui")
+    private IObserver gui;
+    @Inject
+    @Named("tui")
+    private IObserver tui;
+
+    @Inject
+    private HighScoreController scoreController;
 
     private UndoManager undoManager = new UndoManager();
 
@@ -63,6 +76,8 @@ public final class GameController extends ObservableWithArguments implements IOb
     	this.removeAllObservers();
     	this.bGameHasStarted = true;
     	this.addObserver(gameField.getOpponent());
+        this.addObserver(tui);
+        this.addObserver(gui);
 
         this.notifyObservers();
         this.notifyObservers(gameField);
@@ -86,7 +101,8 @@ public final class GameController extends ObservableWithArguments implements IOb
     @Override
     public boolean dropCoinWithSuccessFeedback(final int col) {
         boolean success = true;
-        
+
+
         if (!userHasWon()) {
             try {
                 GameField previousState = null;
@@ -114,6 +130,13 @@ public final class GameController extends ObservableWithArguments implements IOb
                 } catch (CloneNotSupportedException e) {}
 
 
+                // Sending highscore if previouse state has not won, and newState haswon
+                // this fixes that multiple submitions will be done on sending highscores.
+                if (!previousState.isGameWon() && newState.isGameWon()){
+                    scoreController.sendHighScore("connect4plus",getWinner(), getGameField().evaluatePlayerScore(getGameField().getWinner()));
+                }
+
+
                 String undoInfo = String.format("Undoing %s Player Move", getPlayerOnTurn()
                                                         .getName());
                 GameFieldEdit edit = new GameFieldEdit(this, previousState, newState, undoInfo);
@@ -121,8 +144,12 @@ public final class GameController extends ObservableWithArguments implements IOb
 
                 this.notifyObservers();
                 this.notifyObservers(gameField);
-            } catch (IllegalArgumentException e) {}
+            } catch (IllegalArgumentException e) {
+                e.printStackTrace();
+
+            }
         }
+
         return success;
     }
     

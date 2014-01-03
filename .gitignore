@@ -7,3 +7,4 @@ savegame.data
 target/
 .idea/
 .idea_modules/
+*.iml

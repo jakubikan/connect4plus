@@ -1,8 +1,5 @@
 package connectfour.persistence.hibernate;
 
-import com.google.inject.Guice;
-import com.google.inject.Injector;
-import connectfour.GameControllerModule;
 import connectfour.controller.GameController;
 import connectfour.model.GameField;
 import connectfour.model.Human;
@@ -40,7 +37,7 @@ public class HibernateUtilTest {
         player = new Human("Hugo");
         opponent = new Human("Boss");
         gameField = new GameField(player, opponent);
-        rows = new LinkedList<>();
+        rows = new LinkedList<Integer>();
         db = new SaveGameDbHibernate();
     }
 

@@ -1,39 +1,39 @@
 package connectfour.persistence.couchdb;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import connectfour.model.GameField;
 import connectfour.model.Player;
 import org.ektorp.support.CouchDbDocument;
 import org.ektorp.support.TypeDiscriminator;
 
 /**
- * User: Stefano Di Martino
- * Date: 20.11.13
- * Time: 13:36
+ * Created by Jakub Werner on 01/02/14.
  */
 public class GameFieldCouchDb extends CouchDbDocument {
 
     @TypeDiscriminator
     public String id;
-
+    @JsonProperty("game_field")
     private PlayerCouchDb[][] gameFieldCouchDb;
-
+    @JsonProperty("player")
     private PlayerCouchDb playerCouchDb;
+    @JsonProperty("opponent")
     private PlayerCouchDb opponentCouchDb;
+    @JsonProperty("player_on_turn")
     private PlayerCouchDb playerOnTurnCouchDb;
+    @JsonProperty("player_won")
     private PlayerCouchDb playerWon;
+    @JsonProperty("mod_count")
     private int modCount = 0;
-
-    private Player player;
-    private Player opponent;
-    private Player playerOnTurn;
-
-
+    @JsonProperty("game_won")
     private boolean gameWon;
 
 
+    @JsonIgnore
     public GameFieldCouchDb(Player player, Player opponent, Player[][] gameField, Player playerOnTurn, int modCount, Player playerWon, boolean gameWon) {
-        this.playerCouchDb = CouchDbUtil.convertToPlayerCouchDb(player);
-        this.opponentCouchDb = CouchDbUtil.convertToPlayerCouchDb(opponent);
+        this.playerCouchDb = CouchDbUtil.convertPlayer(player);
+        this.opponentCouchDb = CouchDbUtil.convertPlayer(opponent);
         this.modCount = modCount;
 
         if (player == playerOnTurn) {
@@ -45,35 +45,57 @@ public class GameFieldCouchDb extends CouchDbDocument {
         }
 
         this.gameWon = gameWon;
-        this.playerOnTurnCouchDb = CouchDbUtil.convertToPlayerCouchDb(playerOnTurn);
-
-        this.player = player;
-        this.opponent = opponent;
-        this.playerOnTurn = playerOnTurn;
-
-        convertToGameFieldCouchDb(gameField);
+        this.playerOnTurnCouchDb = CouchDbUtil.convertPlayer(playerOnTurn);
+        gameFieldCouchDb = CouchDbUtil.convertGameFieldMatrix(gameField, player, opponent, playerCouchDb, opponentCouchDb);
     }
 
-    private void convertToGameFieldCouchDb(Player[][] gameField) {
-        for (int i = 0; i < GameField.DEFAULT_ROWS; i++) {
-            for (int j = 0; j < GameField.DEFAULT_COLUMNS; j++) {
+    public GameFieldCouchDb(@JsonProperty("player") PlayerCouchDb player,
+                            @JsonProperty("opponent") PlayerCouchDb opponent,
+                            @JsonProperty("game_field") PlayerCouchDb[][] gameField,
+                            @JsonProperty("player_on_turn") PlayerCouchDb playerOnTurn,
+                            @JsonProperty("mod_count") int modCount,
+                            @JsonProperty("player_won") PlayerCouchDb playerWon,
+                            @JsonProperty("game_won") boolean gameWon) {
+        this.playerCouchDb = player;
+        this.opponentCouchDb = opponent;
+        this.gameFieldCouchDb = gameField;
+        this.playerOnTurnCouchDb = playerCouchDb;
+        this.modCount = modCount;
+        this.playerWon = playerWon;
+        this.gameWon = gameWon;
 
-                if (player == gameField[i][j]) {
-                    gameFieldCouchDb[i][j] = playerCouchDb;
-                } else if (opponent == gameField[i][j]) {
-                    gameFieldCouchDb[i][j] = opponentCouchDb;
-                } else if (gameField[i][j] == null) {
-                    gameFieldCouchDb[i][j] = null;
-                } else {
-                    throw new IllegalStateException("Can't convert GameField to GameFieldCouchDb!");
-                }
+    }
 
-            }
-        }
+    public PlayerCouchDb[][] getGameFieldCouchDb() {
+        return gameFieldCouchDb;
+    }
+
+    public PlayerCouchDb getPlayerCouchDb() {
+        return playerCouchDb;
+    }
+
+    public PlayerCouchDb getOpponentCouchDb() {
+        return opponentCouchDb;
+    }
+
+    public PlayerCouchDb getPlayerOnTurnCouchDb() {
+        return playerOnTurnCouchDb;
+    }
+
+    public void setPlayerOnTurnCouchDb(PlayerCouchDb player) {
+        this.playerOnTurnCouchDb = player;
+    }
+
+    public PlayerCouchDb getPlayerWon() {
+        return playerWon;
     }
 
     public int getModCount() {
         return modCount;
+    }
+
+    public void setModCount(int modCount) {
+        this.modCount = modCount;
     }
 
     public boolean isGameWon() {
@@ -86,13 +108,5 @@ public class GameFieldCouchDb extends CouchDbDocument {
 
     public void setGameIsWon(boolean gameIsWon) {
         this.gameWon = gameIsWon;
-    }
-
-    public void setModCount(int modCount) {
-        this.modCount = modCount;
-    }
-
-    public void setPlayerOnTurnCouchDb(PlayerCouchDb player) {
-        this.playerOnTurnCouchDb = player;
     }
 }

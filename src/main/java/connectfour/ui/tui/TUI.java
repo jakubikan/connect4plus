@@ -1,6 +1,7 @@
 package connectfour.ui.tui;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import connectfour.controller.IController;
 import connectfour.model.Computer;
 import connectfour.model.GameField;
@@ -14,6 +15,7 @@ import java.util.Scanner;
  * @author: Stefano Di Martino
  */
 
+@Singleton
 public class TUI implements UI, IObserver {
     private final String newline = System.getProperty("line.separator");
     private final IController controller;
