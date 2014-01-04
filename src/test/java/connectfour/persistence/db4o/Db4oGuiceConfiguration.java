@@ -19,7 +19,5 @@ public class Db4oGuiceConfiguration extends AbstractModule{
         bind(IController.class).to(GameController.class);
         bind(IObserverWithArguments.class).to(GameController.class);
         bind(ISaveGameDAO.class).to(SaveGameDb4oDAO.class);
-        bind(IObserver.class).annotatedWith(Names.named("tui")).to(TUI.class);
-        bind(IObserver.class).annotatedWith(Names.named("gui")).to(SwingGUI.class);
     }
 }
