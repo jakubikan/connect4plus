@@ -53,9 +53,14 @@ public final class GameController extends ObservableWithArguments implements IOb
     
     @Override
     public void saveGame(String name) {
-        SaveGame sg = new SaveGame(name, getGameField(), getPlayer(), getOpponend());
+        SaveGame sg = null;
+        try {
+            sg = new SaveGame(name, getGameField().clone(), getPlayer(), getOpponend());
+        } catch (CloneNotSupportedException e) {
+            log.info("clone not supported in saveGame");
+        }
 
-    	saveGameDAO.saveGame(sg);
+        saveGameDAO.saveGame(sg);
     }
     
     @Override
