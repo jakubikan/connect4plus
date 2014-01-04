@@ -7,7 +7,8 @@ import java.util.List;
 
 public interface IController {
 	 void newGame();
-	
+     void newGame(Player player, Player opponent);
+
 	 String getWinner();
     
      boolean gameHasStarted();

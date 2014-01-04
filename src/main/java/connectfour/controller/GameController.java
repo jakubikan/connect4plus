@@ -50,7 +50,20 @@ public final class GameController extends ObservableWithArguments implements IOb
         this.notifyObservers();
         this.notifyObservers(gameField);
     }
-    
+
+    @Override
+    public void newGame(Player player, Player opponent) {
+        this.bGameHasStarted = true;
+        undoManager.discardAllEdits();
+        gameField = new GameField(player, opponent);
+        // in Player vs player there is no undo
+        undoManager.die();
+        this.notifyObservers();
+        this.notifyObservers(gameField);
+
+    }
+
+
     @Override
     public void saveGame(String name) {
         SaveGame sg = null;
