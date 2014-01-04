@@ -19,7 +19,7 @@ resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/release
 libraryDependencies ++= Seq(
   "com.novocode" % "junit-interface" % "0.9" % "test",
   "com.google.inject" % "guice" % "4.0-beta",
-  "com.db4o" % "db4o-full-java5" % "8.0-SNAPSHOT",
+  "com.db4o" % "db4o-full-java5" % "8.1-SNAPSHOT",
   "org.hibernate" % "hibernate-core" % "4.2.+",
   "mysql" % "mysql-connector-java" % "5.1.+",
   "org.ektorp" % "org.ektorp" % "1.4.1"
