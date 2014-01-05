@@ -22,10 +22,8 @@ public class GameControllerModule extends AbstractModule {
         bind(ISaveGameDAO.class).annotatedWith(Names.named("hibernate")).to(SaveGameDbHibernate.class);
         bind(ISaveGameDAO.class).annotatedWith(Names.named("db4o")).to(SaveGameDb4oDAO.class);
         bind(ISaveGameDAO.class).annotatedWith(Names.named("couchdb")).to(SaveGameCouchDbDAO.class);
-//        bind(ISaveGameDAO.class).to(SaveGameDbHibernate.class);
-        bind(ISaveGameDAO.class).to(SaveGameCouchDbDAO.class);
-        //bind(ISaveGameDAO.class).to(SaveGameDb4oDAO.class);
-        bind(IObserver.class).annotatedWith(Names.named("tui")).to(TUI.class);
-        bind(IObserver.class).annotatedWith(Names.named("gui")).to(SwingGUI.class);
+        //bind(ISaveGameDAO.class).to(SaveGameDbHibernate.class);
+        //bind(ISaveGameDAO.class).to(SaveGameCouchDbDAO.class);
+        bind(ISaveGameDAO.class).to(SaveGameDb4oDAO.class);
     }
 }

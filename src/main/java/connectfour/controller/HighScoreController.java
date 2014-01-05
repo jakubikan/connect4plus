@@ -49,9 +49,13 @@ public class HighScoreController {
                 log.info(output);
             }
 
-        } catch (UnsupportedEncodingException | ClientProtocolException e) {
+        } catch (UnsupportedEncodingException e) {
             log.info(e.getMessage());
-        } catch (IOException e) {
+        } catch( ClientProtocolException e) {
+            log.info(e.getMessage());
+        }
+
+        catch (IOException e) {
             log.info(e.getMessage());
         }
         finally {
