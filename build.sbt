@@ -25,8 +25,8 @@ libraryDependencies ++= Seq(
   "org.ektorp" % "org.ektorp" % "1.4.1"
 )
 
-javacOptions ++= Seq("-source", "1.6")
 
+javacOptions ++= Seq("-source", "1.6", "-target", "1.6")
 
 // disable using the Scala version in output paths and artifacts
 crossPaths := false
