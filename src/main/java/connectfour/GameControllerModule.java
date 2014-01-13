@@ -8,6 +8,8 @@ import connectfour.persistence.ISaveGameDAO;
 import connectfour.persistence.couchdb.SaveGameCouchDbDAO;
 import connectfour.persistence.db4o.SaveGameDb4oDAO;
 import connectfour.persistence.hibernate.SaveGameDbHibernate;
+import connectfour.solver.MiddleSolver;
+import connectfour.solver.SolverPlugin;
 import connectfour.ui.gui.swing.SwingGUI;
 import connectfour.ui.tui.TUI;
 import connectfour.util.observer.IObserver;
@@ -25,5 +27,6 @@ public class GameControllerModule extends AbstractModule {
         //bind(ISaveGameDAO.class).to(SaveGameDbHibernate.class);
         //bind(ISaveGameDAO.class).to(SaveGameCouchDbDAO.class);
         bind(ISaveGameDAO.class).to(SaveGameDb4oDAO.class);
+        bind(SolverPlugin.class).to(MiddleSolver.class);
     }
 }

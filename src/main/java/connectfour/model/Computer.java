@@ -1,15 +1,18 @@
 package connectfour.model;
 
+import com.google.inject.Guice;
+import com.google.inject.Inject;
+import com.google.inject.Injector;
+import connectfour.GameControllerModule;
+import connectfour.solver.SolverPlugin;
 import connectfour.util.observer.IObserverWithArguments;
 
 public class Computer extends PlayerAbstract {
-
     public static final int IF_WINNER_TURN_VALUE = +1000000;
     public static final int IF_LOOSER_TURN_VALUE = -1000000;
-    private int doNextColumn = 3;
-	private final int deepSearch;
-	private boolean firstMove = true;
-	private final int difficulty = 5;
+
+    @Inject
+    private SolverPlugin solver;
 
     @Override
 	public int dropCoin(final int column) {
@@ -20,18 +23,13 @@ public class Computer extends PlayerAbstract {
 	public Computer(final IObserverWithArguments controllerObserver, String playerName) {
 		super(playerName);
 		this.addObserver(controllerObserver);
-		deepSearch = difficulty;
+        final Injector injector = Guice.createInjector(new GameControllerModule());
+        solver = injector.getInstance(SolverPlugin.class);
 	}
 
 	@Override
 	public int getMove() {
-		if (firstMove && getGameField().isEmpty()) {
-			firstMove = false;
-			return doNextColumn;
-		}
-		maxWert(difficulty);
-		return doNextColumn;
-
+		return solver.solve(this, getGameField());
 	}
 
 	@Override
@@ -39,74 +37,7 @@ public class Computer extends PlayerAbstract {
 
 	}
 
-	private int maxWert(final int restTiefe) {
-		int ermittelt = -Integer.MAX_VALUE;
-		int zugWert;
-		for (int i = 0; i < GameField.DEFAULT_COLUMNS; i++) {
-			GameField previousState = saveState();
-			if (getGameField().getPlayerOnTurn() != this) {
-				getGameField().changePlayerTurn();
-			}
-
-			if (getGameField().dropCoin(i) >= GameField.DEFAULT_ROWS) {
-				setGameField(previousState);
-				continue;
-			}
-
-			if (restTiefe <= 1) {
-				zugWert = getGameField().evaluateScore();
-			} else {
-				zugWert = minWert(restTiefe - 1);
-			}
-			GameField newState = saveState();
-			setGameField(previousState);
-			if (newState.getWinner() != null) {
-				zugWert = IF_WINNER_TURN_VALUE;
-			}
-			if (zugWert > ermittelt) {
-				ermittelt = zugWert;
-				if (restTiefe >= deepSearch
-						|| (newState.getWinner() != null && newState.getWinner().equals(this) && restTiefe >= deepSearch)) {
-					doNextColumn = i;
-				}
-			}
-
-		}
-		return ermittelt;
-	}
-
-	private int minWert(final int restTiefe) {
-		int ermittelt = Integer.MAX_VALUE;
-		int zugWert;
-		for (int i = 0; i < GameField.DEFAULT_COLUMNS; i++) {
-			GameField previousState = saveState();
-			if (getGameField().getPlayerOnTurn().equals(this)) {
-				getGameField().changePlayerTurn();
-			}
-			if (getGameField().dropCoin(i) >= GameField.DEFAULT_ROWS) {
-				setGameField(previousState);
-				continue;
-
-			}
-			GameField newState = saveState();
-			if (restTiefe <= 1) {
-				zugWert = getGameField().evaluateScore();
-			} else {
-				zugWert = maxWert(restTiefe - 1);
-			}
-
-			if (newState.getWinner() != null) {
-				zugWert = IF_LOOSER_TURN_VALUE;
-			}
-			setGameField(previousState);
-			if (zugWert < ermittelt) {
-				ermittelt = zugWert;
-			}
-		}
-		return ermittelt;
-	}
-
-	private GameField saveState() {
+	public GameField saveState() {
 		GameField state = null;
 		try {
 			state = getGameField().clone();
