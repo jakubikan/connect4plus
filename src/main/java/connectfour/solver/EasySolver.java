@@ -13,7 +13,7 @@ public class EasySolver implements SolverPlugin {
     private int doNextColumn = 3;
     private final int deepSearch;
     private boolean firstMove = true;
-    private final int difficulty = 5;
+    private final int difficulty = 3;
 
     private Computer computer;
 
@@ -39,7 +39,7 @@ public class EasySolver implements SolverPlugin {
         int drawValue;
 
         for (int i = 0; i < GameField.DEFAULT_COLUMNS; i++) {
-            GameField previousState = saveState();
+            GameField previousState = computer.saveState();
             if (computer.getGameField().getPlayerOnTurn() != this) {
                 computer.getGameField().changePlayerTurn();
             }
@@ -54,7 +54,7 @@ public class EasySolver implements SolverPlugin {
             } else {
                 drawValue = minValue(restTiefe - 1);
             }
-            GameField newState = saveState();
+            GameField newState = computer.saveState();
             computer.setGameField(previousState);
             if (newState.getWinner() != null) {
                 drawValue = Computer.IF_WINNER_TURN_VALUE;
@@ -76,7 +76,7 @@ public class EasySolver implements SolverPlugin {
         int drawValue;
 
         for (int i = 0; i < GameField.DEFAULT_COLUMNS; i++) {
-            GameField previousState = saveState();
+            GameField previousState = computer.saveState();
             if (computer.getGameField().getPlayerOnTurn().equals(this)) {
                 computer.getGameField().changePlayerTurn();
             }
@@ -85,7 +85,7 @@ public class EasySolver implements SolverPlugin {
                 continue;
 
             }
-            GameField newState = saveState();
+            GameField newState = computer.saveState();
             if (restTiefe <= 1) {
                 drawValue = computer.getGameField().evaluateScore();
             } else {
@@ -101,15 +101,5 @@ public class EasySolver implements SolverPlugin {
             }
         }
         return computed;
-    }
-
-    private GameField saveState() {
-        GameField state = null;
-        try {
-            state = computer.getGameField().clone();
-        } catch (CloneNotSupportedException e1) {
-        }
-        return state;
-
     }
 }
