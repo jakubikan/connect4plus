@@ -9,5 +9,5 @@ import connectfour.model.GameField;
  * Time: 20:26
  */
 public interface SolverPlugin {
-    int solve(Computer computer, GameField gameField);
+    int solve(Computer computer);
 }

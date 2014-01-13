@@ -29,7 +29,7 @@ public class Computer extends PlayerAbstract {
 
 	@Override
 	public int getMove() {
-		return solver.solve(this, getGameField());
+		return solver.solve(this);
 	}
 
 	@Override
