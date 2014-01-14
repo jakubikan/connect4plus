@@ -40,7 +40,6 @@ pomExtra :=
   <build>
     <sourceDirectory>src/main/java/connectfour</sourceDirectory>
     <testSourceDirectory>src/test/java/connectfour</testSourceDirectory>
-
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
