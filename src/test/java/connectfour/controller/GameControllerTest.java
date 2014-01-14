@@ -24,7 +24,7 @@ public class GameControllerTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		Injector injector = Guice.createInjector(new GameControllerModule());
+		Injector injector = Guice.createInjector(new GameControllerModuleTest());
 
     	gc = injector.getInstance(GameController.class);
     	
