@@ -26,7 +26,7 @@ libraryDependencies ++= Seq(
 )
 
 
-javacOptions ++= Seq("-source", "1.6", "-target", "1.6")
+javacOptions in (Compile, compile) ++= Seq("-source", "1.6", "-target", "1.6")
 
 // disable using the Scala version in output paths and artifacts
 crossPaths := false
