@@ -1,5 +1,3 @@
-import de.johoop.jacoco4sbt._
-import JacocoPlugin._
 // group ID
 organization := "de.stejack"
 
@@ -33,18 +31,8 @@ javacOptions ++= Seq("-source", "1.6", "-target", "1.6")
 // disable using the Scala version in output paths and artifacts
 crossPaths := false
 
-jacoco.settings
-
-parallelExecution in jacoco.Config := false
 
 
-
-
-sonarProperties := sonarProperties.value ++Map(
-  "sonar.projectName" -> "connect4plus",
-  "sonar.host.url" -> "http://lenny2.in.htwg-konstanz.de:9000",
-  "sonar.jdbc.url" -> "jdbc:h2:tcp://lenny2.in.htwg-konstanz.de/sonar"
-)
 
 
 // setup entry points for sonar code analyzer
