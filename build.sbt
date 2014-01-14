@@ -40,8 +40,8 @@ crossPaths := false
 // setup entry points for sonar code analyzer
 pomExtra := 
   <build>
-    <sourceDirectory>src/main/java/connectfour</sourceDirectory>
-    <testSourceDirectory>src/test/java/connectfour</testSourceDirectory>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
