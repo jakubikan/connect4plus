@@ -3,7 +3,7 @@
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-   <session-factory>
+    <session-factory>
     <property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>
     <property name="hibernate.connection.url">jdbc:hsqldb:mem:testdb;shutdown=false</property>
     <property name="hibernate.connection.username">sa</property><!-- default username -->
@@ -18,5 +18,5 @@
     <mapping class="connectfour.persistence.hibernate.GameFieldHibernate" />
     <mapping class="connectfour.persistence.hibernate.MatrixRow" />
     <mapping class="connectfour.persistence.hibernate.PlayerHibernate" />
-   </session-factory>
+    </session-factory>
 </hibernate-configuration>
