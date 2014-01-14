@@ -22,7 +22,9 @@ libraryDependencies ++= Seq(
   "com.db4o" % "db4o-full-java5" % "8.1-SNAPSHOT",
   "org.hibernate" % "hibernate-core" % "4.2.8.Final",
   "mysql" % "mysql-connector-java" % "5.1.9",
-  "org.ektorp" % "org.ektorp" % "1.4.1"
+  "org.ektorp" % "org.ektorp" % "1.4.1",
+  "com.h2database" % "h2" % "1.3.174",
+  "org.hsqldb" % "hsqldb" % "2.3.1"
 )
 
 

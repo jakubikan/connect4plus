@@ -4,17 +4,19 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
    <session-factory>
-      <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-      <property name="connection.url">jdbc:mysql://localhost:3306/connectfour?createDatabaseIfNotExist=true</property>
-      <property name="connection.username">root</property>
-      <property name="connection.password">muhkuh123</property>
-      <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-      <property name="current_session_context_class">thread</property>
-      <property name="hibernate.hbm2ddl.auto">update</property>
-      <property name="show_sql">true</property>
-      <mapping class="connectfour.persistence.hibernate.SaveGameHibernate" />
-      <mapping class="connectfour.persistence.hibernate.GameFieldHibernate" />
-      <mapping class="connectfour.persistence.hibernate.MatrixRow" />
-      <mapping class="connectfour.persistence.hibernate.PlayerHibernate" />
+    <property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>
+    <property name="hibernate.connection.url">jdbc:hsqldb:mem:testdb;shutdown=false</property>
+    <property name="hibernate.connection.username">sa</property><!-- default username -->
+    <property name="hibernate.connection.password"/><!-- default password -->
+    <property name="hibernate.connection.pool_size">10</property>
+    <property name="hibernate.connection.autocommit">true</property>
+    <property name="hibernate.hbm2ddl.auto">create-drop</property><!-- creates the tables from the entites automatically -->
+    <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
+
+    <property name="show_sql">true</property>
+    <mapping class="connectfour.persistence.hibernate.SaveGameHibernate" />
+    <mapping class="connectfour.persistence.hibernate.GameFieldHibernate" />
+    <mapping class="connectfour.persistence.hibernate.MatrixRow" />
+    <mapping class="connectfour.persistence.hibernate.PlayerHibernate" />
    </session-factory>
 </hibernate-configuration>
