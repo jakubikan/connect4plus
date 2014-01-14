@@ -4,7 +4,6 @@ import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import connectfour.GameControllerModule;
-import connectfour.solver.SolverPlugin;
 import connectfour.util.observer.IObserverWithArguments;
 
 public class Computer extends PlayerAbstract {
@@ -23,7 +22,7 @@ public class Computer extends PlayerAbstract {
 	public Computer(final IObserverWithArguments controllerObserver, String playerName) {
 		super(playerName);
 		this.addObserver(controllerObserver);
-        final Injector injector = Guice.createInjector(new GameControllerModule());
+        final Injector injector = Guice.createInjector(new SolverModule());
         solver = injector.getInstance(SolverPlugin.class);
 	}
 
