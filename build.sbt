@@ -33,6 +33,7 @@ javacOptions in (Compile, compile) ++= Seq("-source", "1.6", "-target", "1.6")
 // disable using the Scala version in output paths and artifacts
 crossPaths := false
 
+publishArtifact in Test := true
 
 
 
@@ -53,6 +54,11 @@ pomExtra :=
         </configuration>
       </plugin>
     </plugins>
+    <testResources>
+      <testResource>
+        <directory>src/test/</directory>
+      </testResource>
+    </testResources>
   </build>
   
 

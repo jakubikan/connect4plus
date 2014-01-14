@@ -24,6 +24,11 @@
                 </configuration>
             </plugin>
         </plugins>
+        <testResources>
+            <testResource>
+                <directory>src/test/</directory>
+            </testResource>
+        </testResources>
     </build>
     <dependencies>
         <dependency>
