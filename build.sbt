@@ -14,6 +14,8 @@ resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repos
 
 resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
 
+resolvers += "Scala sbt" at "http://repo.scala-sbt.org/scalasbt/plugins-releases"
+
 
 // general project dependencies
 libraryDependencies ++= Seq(
