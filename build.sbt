@@ -20,8 +20,8 @@ libraryDependencies ++= Seq(
   "com.novocode" % "junit-interface" % "0.9" % "test",
   "com.google.inject" % "guice" % "4.0-beta",
   "com.db4o" % "db4o-full-java5" % "8.1-SNAPSHOT",
-  "org.hibernate" % "hibernate-core" % "4.2.+",
-  "mysql" % "mysql-connector-java" % "5.1.+",
+  "org.hibernate" % "hibernate-core" % "4.2.8.Final",
+  "mysql" % "mysql-connector-java" % "5.1.9",
   "org.ektorp" % "org.ektorp" % "1.4.1"
 )
 
@@ -38,8 +38,8 @@ crossPaths := false
 // setup entry points for sonar code analyzer
 pomExtra := 
   <build>
-    <sourceDirectory>src/main/java/connectfour</sourceDirectory>
-    <testSourceDirectory>src/test/java/connectfour</testSourceDirectory>
+    <sourceDirectory>src/main/java</sourceDirectory>
+    <testSourceDirectory>src/test/java</testSourceDirectory>
   </build>
   
 
