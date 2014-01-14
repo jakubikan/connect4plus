@@ -1,4 +1,4 @@
-package connectfour.solver;
+package connectfour.model;
 
 import connectfour.model.Computer;
 import connectfour.model.GameField;

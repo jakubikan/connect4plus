@@ -1,7 +1,4 @@
-package connectfour.solver;
-
-import connectfour.model.Computer;
-import connectfour.model.GameField;
+package connectfour.model;
 
 /**
  * User: Stefano Di Martino
@@ -9,15 +6,15 @@ import connectfour.model.GameField;
  * Time: 20:28
  */
 
-public class EasySolver implements SolverPlugin {
+public class MiddleSolver implements SolverPlugin {
     private int doNextColumn = 3;
     private final int deepSearch;
     private boolean firstMove = true;
-    private final int difficulty = 3;
+    private final int difficulty = 5;
 
     private Computer computer;
 
-    public EasySolver() {
+    public MiddleSolver() {
         deepSearch = difficulty;
     }
 
