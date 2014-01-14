@@ -1,5 +1,3 @@
-import de.johoop.jacoco4sbt._
-import JacocoPlugin._
 // group ID
 organization := "de.stejack"
 
@@ -14,35 +12,27 @@ resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repos
 
 resolvers += "Typesafe repository" at "http://repo.typesafe.com/typesafe/releases/"
 
+resolvers += "Scala sbt" at "http://repo.scala-sbt.org/scalasbt/plugins-releases"
+
 
 // general project dependencies
 libraryDependencies ++= Seq(
   "com.novocode" % "junit-interface" % "0.9" % "test",
   "com.google.inject" % "guice" % "4.0-beta",
   "com.db4o" % "db4o-full-java5" % "8.1-SNAPSHOT",
-  "org.hibernate" % "hibernate-core" % "4.2.+",
-  "mysql" % "mysql-connector-java" % "5.1.+",
+  "org.hibernate" % "hibernate-core" % "4.2.8.Final",
+  "mysql" % "mysql-connector-java" % "5.1.9",
   "org.ektorp" % "org.ektorp" % "1.4.1"
 )
 
 
-javacOptions ++= Seq("-source", "1.6", "-target", "1.6")
+javacOptions in (Compile, compile) ++= Seq("-source", "1.6", "-target", "1.6")
 
 // disable using the Scala version in output paths and artifacts
 crossPaths := false
 
-jacoco.settings
-
-parallelExecution in jacoco.Config := false
 
 
-
-
-sonarProperties := sonarProperties.value ++Map(
-  "sonar.projectName" -> "connect4plus",
-  "sonar.host.url" -> "http://lenny2.in.htwg-konstanz.de:9000",
-  "sonar.jdbc.url" -> "jdbc:h2:tcp://lenny2.in.htwg-konstanz.de/sonar"
-)
 
 
 // setup entry points for sonar code analyzer
@@ -50,6 +40,17 @@ pomExtra :=
   <build>
     <sourceDirectory>src/main/java/connectfour</sourceDirectory>
     <testSourceDirectory>src/test/java/connectfour</testSourceDirectory>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <fork>true</fork>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
   
 
