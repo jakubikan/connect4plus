@@ -21,7 +21,8 @@ public class GameControllerModuleTest extends AbstractModule {
         bind(ISaveGameDAO.class).annotatedWith(Names.named("couchdb")).to(SaveGameCouchDbDAO.class);
         //bind(ISaveGameDAO.class).to(SaveGameDbHibernate.class);
         //bind(ISaveGameDAO.class).to(SaveGameCouchDbDAO.class);
-        bind(ISaveGameDAO.class).to(SaveGameDbHibernate.class);
+        bind(ISaveGameDAO.class).to(SaveGameDb4oDAO.class);
+        bind(IHighScoreController.class).to(HighScoreController.class);
         bind(SolverPlugin.class).to(MiddleSolver.class);
     }
 }
