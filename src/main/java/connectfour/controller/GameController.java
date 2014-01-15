@@ -2,10 +2,8 @@ package connectfour.controller;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import com.google.inject.name.Named;
 import connectfour.model.*;
 import connectfour.persistence.ISaveGameDAO;
-import connectfour.util.observer.IObserver;
 import connectfour.util.observer.IObserverWithArguments;
 import connectfour.util.observer.ObservableWithArguments;
 
@@ -24,7 +22,7 @@ public final class GameController extends ObservableWithArguments implements IOb
 
 
     @Inject
-    private HighScoreController scoreController;
+    private IHighScoreController scoreController;
 
     private UndoManager undoManager = new UndoManager();
 

@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 /**
  * Created by jakub on 1/2/14.
  */
-public class HighScoreController {
+public class HighScoreController implements IHighScoreController {
     private static final String HIGHSCORE_URL = "http://localhost:9000/addHighscoreJson";
 
     private DefaultHttpClient client;
@@ -25,6 +25,7 @@ public class HighScoreController {
     public HighScoreController() {
     }
 
+    @Override
     public void sendHighScore(String gameName, String playerName, int highScore) {
         client =  new DefaultHttpClient();
         HttpPost post = new HttpPost(HIGHSCORE_URL);

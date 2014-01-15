@@ -3,7 +3,9 @@ package connectfour;
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
 import connectfour.controller.GameController;
+import connectfour.controller.HighScoreController;
 import connectfour.controller.IController;
+import connectfour.controller.IHighScoreController;
 import connectfour.persistence.ISaveGameDAO;
 import connectfour.persistence.couchdb.SaveGameCouchDbDAO;
 import connectfour.persistence.db4o.SaveGameDb4oDAO;
@@ -24,6 +26,7 @@ public class GameControllerModule extends AbstractModule {
         //bind(ISaveGameDAO.class).to(SaveGameDbHibernate.class);
         //bind(ISaveGameDAO.class).to(SaveGameCouchDbDAO.class);
         bind(ISaveGameDAO.class).to(SaveGameDb4oDAO.class);
+        bind(IHighScoreController.class).to(HighScoreController.class);
         bind(SolverPlugin.class).to(MiddleSolver.class);
     }
 }
